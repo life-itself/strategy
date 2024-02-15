@@ -15,15 +15,15 @@ Rough organization
 ## Inventory of existing materials
 
 ```dataview
-TABLE url, status
+TABLE url, level, component, description, version
 FROM "materials"
+sort file.name asc
 ```
 
 ### Inbox
 
 To be processed
 
-- [ ] Strategy Micro to Macro https://lifeitself.org/notes/strategy-macro-to-micro-2023 **Just a diagram with no text. Explains our basic logic of *how* a paradigm happens and our role (LI vision and high-level ToC).**
 - [ ] Cultivating an Emerging Paradigm https://lifeitself.org/blog/2022/02/01/cultivating-an-emerging-paradigm **Key theses on transitions and how they happen**
 - [ ] Excalidraw on phase transitions https://app.excalidraw.com/l/9u8crB2ZmUo/8F30hhvlTcl **Excalidraw explaining paradigm shifts and our role - overlaps with items 1, 3 and 5 on this list**
 - [ ] Discussion post 'High Level Overview of Life Itself "Theory of Change" / Strategy' https://github.com/orgs/life-itself/discussions/878 **Lays out the "stepping down" from the highest level outcome to day to day activities**
