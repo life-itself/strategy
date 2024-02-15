@@ -9,5 +9,4 @@ version:
 level: 
 form: 
 completion: 
-image:
 ---
