@@ -3,7 +3,7 @@ created: 2021-05-01
 date: 2022-02-01
 url: https://lifeitself.org/blog/2022/02/01/cultivating-an-emerging-paradigm
 raw: https://docs.google.com/document/d/18ilUmX8fDIcIhiGSrNBxiB0CkuKBx9TtguTu0CJgQIo/edit
-level: "3"
+version: "3"
 form: scqa + issue tree
 form_notes: Polished essay covering the full SCQA in extended form.
 completion: polished
