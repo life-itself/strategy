@@ -15,7 +15,7 @@ Rough organization
 ## Inventory of existing materials
 
 ```dataview
-TABLE url, level, component, description, version
+TABLE version, type, level, form, url
 FROM "materials"
 sort file.name asc
 ```

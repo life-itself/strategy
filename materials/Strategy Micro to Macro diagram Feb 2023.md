@@ -1,8 +1,9 @@
 ---
 url: https://lifeitself.org/notes/strategy-macro-to-micro-2023
 version: "3"
+type: diagram
 level: meta
-component: map
+form: map
 form_notes: Summary/map like. Some ways a multi-level ToC
 created: 2022-11-01
 date: 2023-02-05

@@ -1,10 +1,12 @@
 ---
 url: https://docs.google.com/document/d/1I4Dp4QICqXYNT2lGZqlTMAulX9V8moN8P06eFfFuALk/edit#heading=h.n831sqikju93
 version: "3"
+type: google doc
 level: macro
 form: scqa + issue tree
 form_notes: Gdoc complete but brief
 completion: complete
+created: 
 published: false
 image: overall-scqh-2021.png
 ---
