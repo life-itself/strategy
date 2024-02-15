@@ -9,6 +9,7 @@ completion: unpolished
 published: false
 created: 2022-09-22
 image: big-strategy-mid-2022.png
+description: '"Macro level (culture of socially engaged awakening) + How (Kibbuddhism) + Meso level & flywheel (become a facilitator of Intentional Teal Neighbourhoods and Purposful Teal Businesses)"'
 ---
 ![[big-strategy-mid-2022.png]]
 
