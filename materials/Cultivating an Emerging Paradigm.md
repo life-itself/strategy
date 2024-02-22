@@ -3,7 +3,7 @@ created: 2021-05-01
 date: 2022-02-01
 url: https://lifeitself.org/blog/2022/02/01/cultivating-an-emerging-paradigm
 doctype: blog post
-published: 
+published: blog
 description: Polished essay covering the full SCQA in extended form.
 version: "3"
 level: macro

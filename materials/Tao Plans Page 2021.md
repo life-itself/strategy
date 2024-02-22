@@ -1,12 +1,14 @@
 ---
-url: https://lifeitself.org/tao/narrative
-version: "2"
-level: 
-component: Brand narrative / vision & mission
-form_notes: Summary
 created: 2020-07-10
 date: 2021-07-25
-description: Brand narrative providing a flavour of what Life Itself is, including a high-level vision, mission and roadmap
+url: https://lifeitself.org/tao/narrative
+doctype: blog post
+published: blog
+description: Brand narrative outlining our ambition at a high level and giving flavour of Life Itself
+version: "2"
+level: macro
+form: Brand narrative
+completion: polished
 ---
-
 ![[tao-brand-narrative.png]]
+

@@ -12,6 +12,9 @@ completion: complete
 in_consolidated: 
 inlined_here: true
 ---
+
+![[../assets/strategy-review-2021.png]]
+
 ### Situation
 
 Life Itself has existed for ~5.5y and really active for 2.5y now with 3FTE, single digit pioneers and a broad community of 100s; our strategy is focused on pioneering a culture but over the last 2y has morphed to include another equal “pillar” around “transforming the narrative”; we now have two ~financially sustainable hubs (Berlin & Bergerac) running for 1-2y and are expanding both of them; on the narrative side after 2.5+y we have partnerships but minimal funding (only 15k so far 2y ago) and little in the way of completed projects to point to; overall we have found it more challenging than we imagined to create and transmit our vision and culture (e.g. re pioneers, “top-down approach”); finally we are beginning to understand and establish ourselves in the ecosystem which is (rapidly) expanding but others find it difficult to grasp what we do.[^1]
