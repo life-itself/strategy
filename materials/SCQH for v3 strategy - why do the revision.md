@@ -21,11 +21,18 @@ Summary
 - **Hypothesis**
   - High-level strategy largely unchanged from [[Overall SCQH 2021]]
   - Meso/micro-level strategy got significantly updated, as per [[Big strategy mid-2022]]
-  - 
+### Issue tree
 
-## Links
-
-- Issue tree coggle for what is the new strategy: https://coggle.it/diagram/Y3IJZ_nDY3PfaFPG/t/life-itself-v3-strategy-revision-what%27s-not-changemakers
-
+Coggle for what is the new strategy: https://coggle.it/diagram/Y3IJZ_nDY3PfaFPG/t/life-itself-v3-strategy-revision-what%27s-not-changemakers
 
 ![[../assets/scqh-for-v3-update-issue-tree-coggle.png]]
+
+Spreadsheet version
+
+![[../assets/scqh-for-v3-update-issue-tree-sheet.png]]
+
+### List of materials
+
+Also produced a list of existing materials in [[Oct 2021 Consolidated List of Materials]]
+
+![[Oct 2021 Consolidated List of Materials]]
