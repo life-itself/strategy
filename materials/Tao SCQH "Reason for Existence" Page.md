@@ -12,6 +12,10 @@ completion: incomplete
 ---
 ![[../assets/tao-scqh-page.png]]
 
+## Notes
+
+Last all team produced overall SCQH from which the overall issue/hyp trees should follow, and the 'transforming the narrative' SCQH from which the big vision ToC should flow.
+
 ## Links
 
 - Links to:

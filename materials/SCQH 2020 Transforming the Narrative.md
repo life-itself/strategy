@@ -14,7 +14,7 @@ completion: incomplete
 ![[../assets/scqh-2020-transforming-narrative.png]]
 ## Notes
 
-- Part of: [[Tao SCQH Page]]
+- Part of: [[Tao SCQH "Reason for Existence" Page]]
 - Hypothesis incomplete (links to invalid link "Plans - Transforming the Narrative")
 
 ## Links
