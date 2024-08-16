@@ -28,14 +28,16 @@ Notes
 
 See, for example, the multiple "why" levels in https://github.com/life-itself/community/issues/36
 
-    Hierarchically structured SCQHs: Like 5 whys our Why structure is hierarchical flowing down from top-most (most obvious, high-level) to lowest level (concretely what we do). It is likely that we have more than one SCQH, perhaps even one SCQH for each of these levels.
+> Hierarchically structured SCQHs: Like [5 whys][] our *why structure* is hierarchical, flowing down from the top-most, most high-level, most broad level to the lowest level (concretely what we do). It is likely that we have more than one SCQH, perhaps even one SCQH for each of these levels.
+>
+> - Why: X is not working (polycrisis) (e.g. X is personal wellbeing, climate crisis, capitalism etc)
+> - Why: it needs a paradigm shift (i.e. to address the polycrisis we need foundational transformation - rather than improvements to the existing system)
+> - Why: primacy of being (left quadrants) (a paradigm shift requires (primarily) inner transformation individually and collectively)
+> - Why: how do paradigms shifts in general and esp left quadrant ones?
+> - Why: conscious communities
+> - Why: conscious community living ...
 
-    - Why: X is not working (polycrisis) (e.g. X is personal wellbeing, climate crisis, capitalism etc)
-    - Why: it needs a paradigm shift (i.e. to address the polycrisis we need foundational transformation - rather than improvements to the existing system)
-    - Why: primacy of being (left quadrants) (a paradigm shift requires (primarily) inner transformation individually and collectively)
-    - Why: how do paradigms shifts in general and esp left quadrant ones?
-    - Why: conscious communities
-    - Why: conscious community living ...
+[5 whys]: https://en.wikipedia.org/wiki/Five_whys
 
 ## Components
 
@@ -53,6 +55,7 @@ We currently have 3 versions or iterations of our strategy:
 - v3 (2021-2023): major rework following Life Itself reorganization and challengs with earlier strategy.
 
 ## Clarifying the term strategy - Feb 2024
+
 ### Situation
 
 There are several distinct related outputs that can be produced by "strategic planning":
