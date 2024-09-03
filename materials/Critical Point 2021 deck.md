@@ -7,7 +7,7 @@ published:
 description: Slide deck outlining reason for existence and logic of approach
 version: "3"
 level: macro
-form: other
+form: slides
 completion: polished
 ---
 

@@ -16,7 +16,7 @@ completion: complete
 ## Notes
 
 - Gdoc complete but brief
-- Unpublished, but we semi-published a Critical Point deck: Slide Deck in drive: [[Why we exist slide deck]]
+- Unpublished, but we semi-published a Critical Point deck: Slide Deck in drive: [[Critical Point 2021 deck]]
 
 ## Links
 
