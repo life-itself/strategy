@@ -1,4 +1,8 @@
-A wiki/KM repo for all our strategy related materials.
+# Life Itself Strategy Materials
+
+A wiki/knowledgebase for all [Life Itself][]'s strategy related materials.
+
+[Life Itself]: https://lifeitself.org/
 
 Rough organization
 
@@ -6,7 +10,6 @@ Rough organization
 /             # put all notes here by default
 /materials/   # put entries for existing materials here
 /templates/   # templates
-/projects     # for projects related to developing strategy
 ```
 
 ## Overview of existing materials
@@ -15,17 +18,15 @@ Rough organization
 
 ## Inventory of existing materials
 
+<List dir="/materials"/>
+
 ```dataview
 TABLE version, level, form, url
 FROM "materials"
 sort file.name asc
 ```
 
-### Inbox
-
-
-
-# A history of projects to work *on* strategy
+## A history of projects to work *on* strategy
 
 - Jun 2024-🔁 (ongoing) - Strategy review and planning 🚧
   - This has somehow metamorphised a bit. Started out as a sync of Rufus & Sylvie and has grown into another strategy evolution.
