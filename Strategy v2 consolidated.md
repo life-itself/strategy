@@ -1,4 +1,5 @@
 ---
-authors: Rufus Pollock
+authors: 
+  - Rufus Pollock
 ---
 
