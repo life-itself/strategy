@@ -14,7 +14,7 @@ Rough organization
 
 ## Overview of existing materials
 
-![](Excalidraw/materials-overview-2024-02-14.excalidraw.svg)
+![](Excalidraw/materials-overview-2024-02-14.excalidraw.png)
 
 ## Inventory of existing materials
 
