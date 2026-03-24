@@ -32,7 +32,7 @@ sort file.name asc
   - This has somehow metamorphised a bit. Started out as a sync of Rufus & Sylvie and has grown into another strategy evolution.
   - Task: ❌ (TODO)
   - Shaping: missing ...
-- Jan 2024-⏸️ - Presenting our strategy (as is) 🚧⏸️ status: produced this KB and put most materials and never got to evaluation and publication
+- Jan 2024-⏸️ - [Presenting our strategy (as is)](projects/project-202401-presenting-our-strategy-v3-in-its-current-form.md) 🚧⏸️ status: produced this KB and put most materials and never got to evaluation and publication
   - Summary (from task derived from shaping)
     - Appetite: 3d (reduced by 1d given we spent 1.5d in shaping and work we did in shaping will help)
     - Problem: lot of strategy-related materials but they aren't woven together or consolidated which creates a sense of overwhelm and confusion and prevents them being published and used.
