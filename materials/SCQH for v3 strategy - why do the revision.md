@@ -12,6 +12,7 @@ completion: incomplete
 ---
 ![[scqh-for-v3-update.png]]
 
+🚩 2024-09-05 comment: this doc in first part of SCQ is motivation for doing strategy. H should have been what strategy work was needed but it is actually the new strategy. that's cool but it means this is both "why do the revision" and a partial version of the revision.
 ## Notes
 
 Summary

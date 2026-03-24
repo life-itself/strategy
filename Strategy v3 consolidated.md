@@ -7,6 +7,12 @@ authors:
 
 This document sets out in one consolidated form Life Itself's current "v3" strategy. It was developed from 2021-2023 and will be published in early 2024.
 
+## Tasks
+
+Extract / publish into files various versions of v3 strategy e.g.
+
+- [ ] hypothesis from [[materials/SCQH for v3 strategy - why do the revision|SCQH for v3 strategy - why do the revision]]
+
 ## Sketch
 
 - Background: the need for evolution of a v2 strategy.
@@ -38,7 +44,10 @@ We have had two previous major versions of our strategy.
 
 See SC in [[materials/SCQH for v3 strategy - why do the revision|SCQH for v3 strategy - why do the revision]]
 
-## Strategy
+
+## History: v3 strategy iterations
+
+- 2021-2022
 
 
 
