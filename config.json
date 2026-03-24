@@ -1,3 +1,14 @@
 {
-  "showSidebar": true
+  "theme": "lessflowery",
+  "showSidebar": true,
+  "showEditLink": true,
+  "nav": {
+    "title": "Life Itself Strategy",
+    "social": [
+      {
+        "label": "github",
+        "href": "https://github.com/life-itself/strategy"
+      }
+    ]
+  }
 }
