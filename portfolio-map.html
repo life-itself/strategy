@@ -55,7 +55,6 @@
     <div class="legend-item"><div class="legend-dot" style="background:#4A90D9"></div> Initiative (has deliverables)</div>
     <div class="legend-item"><div class="legend-dot" style="background:#E8A838"></div> Maintenance (ongoing, no clear deliverable)</div>
     <div class="legend-item"><div class="legend-dot" style="background:#50B86C"></div> Project</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#AAAAAA"></div> Idea</div>
     <div style="margin-top:8px; font-size:12px; font-weight:600;">Umbrella groups</div>
     <div class="legend-item"><div class="legend-dot" style="background:none;border:2px dashed #E91E8C"></div> Operations &amp; Management</div>
     <div class="legend-item"><div class="legend-dot" style="background:none;border:2px dashed #8B5CF6"></div> Spaces &amp; Community</div>
@@ -73,7 +72,6 @@
     <label><input type="checkbox" data-type="initiative" checked> Initiatives</label>
     <label><input type="checkbox" data-type="maintenance" checked> Maintenance</label>
     <label><input type="checkbox" data-type="project" checked> Projects</label>
-    <label><input type="checkbox" data-type="idea"> Ideas</label>
   </div>
 
   <div class="tooltip" id="tooltip"></div>
@@ -143,7 +141,6 @@ function render(entries) {
     if (text.includes("Initiative")) item.querySelector("span") || item.insertAdjacentHTML("beforeend", ` <span style='color:#888'>(${typeCounts["initiative"] || 0})</span>`);
     if (text.includes("Maintenance") && !text.includes("Operations")) item.insertAdjacentHTML("beforeend", ` <span style='color:#888'>(${typeCounts["maintenance"] || 0})</span>`);
     if (text.includes("Project") && !text.includes("Operations")) item.insertAdjacentHTML("beforeend", ` <span style='color:#888'>(${typeCounts["project"] || 0})</span>`);
-    if (text.includes("Idea")) item.insertAdjacentHTML("beforeend", ` <span style='color:#888'>(${typeCounts["idea"] || 0})</span>`);
     if (text.includes("Operations")) item.insertAdjacentHTML("beforeend", ` <span style='color:#888'>(${umbrellaCounts["pink"]})</span>`);
     if (text.includes("Spaces")) item.insertAdjacentHTML("beforeend", ` <span style='color:#888'>(${umbrellaCounts["purple"]})</span>`);
     if (text.includes("Courses")) item.insertAdjacentHTML("beforeend", ` <span style='color:#888'>(${umbrellaCounts["teal"]})</span>`);
