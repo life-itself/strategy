@@ -1,20 +1,5 @@
 const PORTFOLIO_DATA = [
   {
-    "slug": "2026-armelle",
-    "type": "initiative",
-    "file": "initiatives/2026-armelle.md",
-    "title": "Armelle Boussidon - Onboarding & Initial Tasks",
-    "description": "Initial task areas and onboarding plan for Armelle as new colleague at Life Itself.",
-    "status": "active",
-    "created": "Tue Mar 24 2026 01:00:00 GMT+0100 (Central European Standard Time)",
-    "parent": "life-itself-management",
-    "tags": null,
-    "url": null,
-    "github": null,
-    "phase": null,
-    "tracker": null
-  },
-  {
     "slug": "2rcon",
     "type": "initiative",
     "file": "initiatives/2rcon.md",
