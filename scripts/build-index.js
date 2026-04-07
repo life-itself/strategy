@@ -81,4 +81,4 @@ const json = JSON.stringify(index, null, 2);
 
 const outPath = join(REPO_ROOT, "visualizations", "index.js");
 writeFileSync(outPath, `const PORTFOLIO_DATA = ${json};\n`, "utf-8");
-console.error(`Wrote ${index.length} entries to data/index.js`);
+console.error(`Wrote ${index.length} entries to visualizations/index.js`);

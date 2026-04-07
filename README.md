@@ -26,6 +26,18 @@ FROM "materials"
 sort file.name asc
 ```
 
+## Portfolio Visualizations
+
+Interactive views of Life Itself initiatives and projects. Open any HTML file directly in a browser — no server needed.
+
+- [Force-Directed Map](visualizations/portfolio-map.html) — drag, zoom, filter by type. Best for exploring connections.
+- [Horizontal Tree](visualizations/portfolio-tree.html) — collapsible dendrogram. Best for parent-child hierarchy.
+- [Indented Tree](visualizations/portfolio-indented.html) — file-explorer style list with status and tags.
+
+To rebuild after editing markdown: `cd scripts && npm run build`
+
+<iframe src="visualizations/portfolio-indented.html" width="100%" height="500" style="border:1px solid #ddd; border-radius:8px;"></iframe>
+
 ## A history of projects to work *on* strategy
 
 - Jun 2024-🔁 (ongoing) - Strategy review and planning 🚧
