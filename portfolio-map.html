@@ -153,6 +153,7 @@ function render(entries) {
   // People legend
   const peopleMap = {};
   entries.forEach(e => {
+    if (e.slug.startsWith("proj-") || e.slug === "projects-hub") return;
     if (e.owners && e.owners.length) {
       e.owners.forEach(o => {
         const name = o.replace(/^Reference person:\s*/i, "").trim();
