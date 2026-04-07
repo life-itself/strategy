@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio – Indented Tree</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #fafafa; padding: 24px; color: #333;
+  }
+  h1 { font-size: 20px; margin-bottom: 4px; }
+  .subtitle { font-size: 13px; color: #888; margin-bottom: 20px; }
+
+  .tree { max-width: 900px; }
+
+  .tree-row {
+    display: flex; align-items: center; gap: 8px;
+    padding: 5px 0; border-bottom: 1px solid #f0f0f0;
+    cursor: default; position: relative;
+  }
+  .tree-row:hover { background: #f5f8ff; }
+  .tree-row.has-children { cursor: pointer; }
+
+  .indent { flex-shrink: 0; }
+  .toggle {
+    width: 16px; height: 16px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; color: #999; user-select: none;
+  }
+  .dot {
+    flex-shrink: 0; width: 10px; height: 10px; border-radius: 50%;
+  }
+  .name {
+    font-size: 13px; font-weight: 500; white-space: nowrap;
+    overflow: hidden; text-overflow: ellipsis;
+  }
+  .status-badge {
+    flex-shrink: 0; font-size: 10px; text-transform: uppercase;
+    letter-spacing: 0.3px; padding: 1px 6px; border-radius: 3px;
+    background: #eee; color: #666;
+  }
+  .status-badge.active { background: #e8f5e9; color: #2e7d32; }
+  .status-badge.paused { background: #fff3e0; color: #e65100; }
+  .status-badge.proposed { background: #e3f2fd; color: #1565c0; }
+  .status-badge.complete { background: #f3e5f5; color: #6a1b9a; }
+
+  .tags {
+    font-size: 11px; color: #999; white-space: nowrap;
+    overflow: hidden; text-overflow: ellipsis;
+  }
+
+  .type-label {
+    flex-shrink: 0; font-size: 10px; text-transform: uppercase;
+    letter-spacing: 0.3px; color: #aaa; width: 60px;
+  }
+
+  .legend-bar {
+    display: flex; gap: 16px; align-items: center;
+    margin-bottom: 16px; font-size: 12px; color: #666;
+  }
+  .legend-bar .swatch {
+    display: inline-block; width: 10px; height: 10px;
+    border-radius: 50%; margin-right: 4px; vertical-align: middle;
+  }
+
+  .filter-bar {
+    display: flex; gap: 12px; margin-bottom: 16px; font-size: 13px;
+  }
+  .filter-bar label { cursor: pointer; }
+</style>
+</head>
+<body>
+
+<h1>Portfolio – Indented Tree</h1>
+<p class="subtitle">Click rows with children to collapse/expand. All items grouped under their parent initiative.</p>
+
+<div class="legend-bar">
+  <span><span class="swatch" style="background:#4A90D9"></span> Initiative</span>
+  <span><span class="swatch" style="background:#50B86C"></span> Project</span>
+  <span><span class="swatch" style="background:#AAAAAA"></span> Idea</span>
+</div>
+
+<div class="filter-bar">
+  <strong>Show:</strong>
+  <label><input type="checkbox" data-type="initiative" checked> Initiatives</label>
+  <label><input type="checkbox" data-type="project" checked> Projects</label>
+  <label><input type="checkbox" data-type="idea"> Ideas</label>
+</div>
+
+<div class="tree" id="tree"></div>
+
+<script src="index.js"></script>
+<script>
+const COLOR = { initiative: "#4A90D9", project: "#50B86C", idea: "#AAAAAA" };
+
+const entries = PORTFOLIO_DATA;
+render(entries);
+
+function buildTree(entries) {
+  const bySlug = new Map(entries.map(e => [e.slug, e]));
+  const childrenMap = new Map();
+
+  for (const e of entries) {
+    if (e.parent && bySlug.has(e.parent)) {
+      if (!childrenMap.has(e.parent)) childrenMap.set(e.parent, []);
+      childrenMap.get(e.parent).push(e);
+    }
+  }
+
+  const roots = entries.filter(e => !e.parent || !bySlug.has(e.parent));
+
+  function toNode(entry, depth) {
+    const kids = (childrenMap.get(entry.slug) || [])
+      .sort((a, b) => (a.title || a.slug).localeCompare(b.title || b.slug));
+    return {
+      entry,
+      depth,
+      children: kids.map(k => toNode(k, depth + 1)),
+    };
+  }
+
+  roots.sort((a, b) => {
+    const aKids = (childrenMap.get(a.slug) || []).length;
+    const bKids = (childrenMap.get(b.slug) || []).length;
+    if (bKids !== aKids) return bKids - aKids;
+    return (a.title || a.slug).localeCompare(b.title || b.slug);
+  });
+
+  return roots.map(r => toNode(r, 0));
+}
+
+function render(entries) {
+  const tree = buildTree(entries);
+  const container = document.getElementById("tree");
+  const collapsed = new Set();
+  let activeTypes = new Set(["initiative", "project"]);
+
+  function draw() {
+    container.innerHTML = "";
+    const flat = [];
+    function flatten(nodes) {
+      for (const node of nodes) {
+        if (!activeTypes.has(node.entry.type)) continue;
+        flat.push(node);
+        if (node.children.length && !collapsed.has(node.entry.slug)) {
+          flatten(node.children);
+        }
+      }
+    }
+    flatten(tree);
+
+    for (const node of flat) {
+      const e = node.entry;
+      const hasKids = node.children.filter(c => activeTypes.has(c.entry.type)).length > 0;
+      const isCollapsed = collapsed.has(e.slug);
+
+      const row = document.createElement("div");
+      row.className = "tree-row" + (hasKids ? " has-children" : "");
+
+      const indent = document.createElement("div");
+      indent.className = "indent";
+      indent.style.width = (node.depth * 24) + "px";
+      row.appendChild(indent);
+
+      const toggle = document.createElement("div");
+      toggle.className = "toggle";
+      if (hasKids) {
+        toggle.textContent = isCollapsed ? "\u25B6" : "\u25BC";
+      }
+      row.appendChild(toggle);
+
+      const dot = document.createElement("div");
+      dot.className = "dot";
+      dot.style.background = COLOR[e.type] || "#ccc";
+      dot.style.opacity = e.status === "active" ? 1.0 : 0.35;
+      row.appendChild(dot);
+
+      const name = document.createElement("div");
+      name.className = "name";
+      name.textContent = e.title || e.slug;
+      if (e.status !== "active") name.style.opacity = 0.6;
+      row.appendChild(name);
+
+      const typeLabel = document.createElement("div");
+      typeLabel.className = "type-label";
+      typeLabel.textContent = e.type;
+      row.appendChild(typeLabel);
+
+      if (e.status) {
+        const badge = document.createElement("span");
+        badge.className = "status-badge " + e.status;
+        badge.textContent = e.status;
+        row.appendChild(badge);
+      }
+
+      if (e.tags && e.tags.length) {
+        const tags = document.createElement("div");
+        tags.className = "tags";
+        tags.textContent = "#" + e.tags.join(" #");
+        row.appendChild(tags);
+      }
+
+      if (hasKids) {
+        row.addEventListener("click", () => {
+          if (collapsed.has(e.slug)) {
+            collapsed.delete(e.slug);
+          } else {
+            collapsed.add(e.slug);
+          }
+          draw();
+        });
+      }
+
+      container.appendChild(row);
+    }
+  }
+
+  document.querySelectorAll(".filter-bar input").forEach(cb => {
+    cb.addEventListener("change", () => {
+      activeTypes = new Set();
+      document.querySelectorAll(".filter-bar input:checked").forEach(c => activeTypes.add(c.dataset.type));
+      draw();
+    });
+  });
+
+  draw();
+}
+</script>
+</body>
+</html>

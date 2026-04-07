@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio Map</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #fafafa; }
+  #container { width: 100vw; height: 100vh; position: relative; }
+  svg { width: 100%; height: 100%; }
+
+  .panel {
+    position: absolute; background: white; border: 1px solid #ddd;
+    border-radius: 8px; padding: 12px 16px; font-size: 13px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  }
+  .legend { top: 16px; left: 16px; }
+  .legend h3 { font-size: 15px; margin-bottom: 8px; }
+  .legend-item { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; }
+  .legend .hint { margin-top: 8px; font-size: 11px; color: #888; line-height: 1.5; }
+
+  .controls { top: 16px; right: 16px; }
+  .controls label { display: block; margin: 3px 0; cursor: pointer; }
+
+  .tooltip {
+    position: absolute; background: white; border: 1px solid #ccc;
+    border-radius: 6px; padding: 10px 14px; font-size: 13px;
+    max-width: 320px; pointer-events: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12); display: none;
+  }
+  .tooltip h4 { margin-bottom: 2px; }
+  .tooltip .badge {
+    display: inline-block; font-size: 10px; text-transform: uppercase;
+    letter-spacing: 0.5px; padding: 1px 6px; border-radius: 3px;
+    color: white; margin-bottom: 4px;
+  }
+  .tooltip .desc { margin-top: 4px; color: #444; }
+  .tooltip .meta { margin-top: 6px; color: #666; font-size: 11px; }
+</style>
+</head>
+<body>
+<div id="container">
+  <svg></svg>
+
+  <div class="panel legend">
+    <h3>Portfolio Map</h3>
+    <div class="legend-item"><div class="legend-dot" style="background:#4A90D9"></div> Initiative</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#50B86C"></div> Project</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#AAAAAA"></div> Idea</div>
+    <div class="hint">
+      Full opacity = active &middot; Faded = other status<br>
+      Drag nodes &middot; Scroll to zoom &middot; Click opens URL
+    </div>
+  </div>
+
+  <div class="panel controls">
+    <strong>Filter</strong>
+    <label><input type="checkbox" data-type="initiative" checked> Initiatives</label>
+    <label><input type="checkbox" data-type="project" checked> Projects</label>
+    <label><input type="checkbox" data-type="idea"> Ideas</label>
+  </div>
+
+  <div class="tooltip" id="tooltip"></div>
+</div>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="index.js"></script>
+<script>
+const COLOR = { initiative: "#4A90D9", project: "#50B86C", idea: "#AAAAAA" };
+const RADIUS = { initiative: 20, project: 14, idea: 10 };
+
+const entries = PORTFOLIO_DATA;
+render(entries);
+
+function render(entries) {
+  const slugSet = new Set(entries.map(e => e.slug));
+  const nodes = entries.map(e => ({
+    id: e.slug,
+    title: e.title || e.slug,
+    type: e.type,
+    status: e.status || "unknown",
+    description: e.description || "",
+    tags: e.tags || [],
+    url: e.url || null,
+    github: e.github || null,
+  }));
+  const links = entries
+    .filter(e => e.parent && slugSet.has(e.parent))
+    .map(e => ({ source: e.parent, target: e.slug }));
+
+  const data = { nodes, links };
+
+  const svg = d3.select("svg");
+  const container = document.getElementById("container");
+  const tooltip = document.getElementById("tooltip");
+  const width = container.clientWidth;
+  const height = container.clientHeight;
+
+  const g = svg.append("g");
+
+  svg.call(
+    d3.zoom()
+      .scaleExtent([0.2, 5])
+      .on("zoom", (e) => g.attr("transform", e.transform))
+  );
+
+  const simulation = d3.forceSimulation(data.nodes)
+    .force("link", d3.forceLink(data.links).id(d => d.id).distance(120).strength(0.7))
+    .force("charge", d3.forceManyBody().strength(-300))
+    .force("center", d3.forceCenter(width / 2, height / 2))
+    .force("collision", d3.forceCollide().radius(d => RADIUS[d.type] + 6))
+    .force("x", d3.forceX(width / 2).strength(0.04))
+    .force("y", d3.forceY(height / 2).strength(0.04));
+
+  // Arrowhead marker
+  svg.append("defs").append("marker")
+    .attr("id", "arrow")
+    .attr("viewBox", "0 -4 8 8")
+    .attr("refX", 20).attr("refY", 0)
+    .attr("markerWidth", 6).attr("markerHeight", 6)
+    .attr("orient", "auto")
+    .append("path").attr("d", "M0,-4L8,0L0,4").attr("fill", "#bbb");
+
+  const link = g.append("g")
+    .selectAll("line")
+    .data(data.links)
+    .join("line")
+    .attr("stroke", "#ccc")
+    .attr("stroke-width", 1.5)
+    .attr("marker-end", "url(#arrow)");
+
+  const node = g.append("g")
+    .selectAll("g")
+    .data(data.nodes)
+    .join("g")
+    .style("cursor", d => (d.url || d.github) ? "pointer" : "default")
+    .call(d3.drag()
+      .on("start", (e, d) => {
+        if (!e.active) simulation.alphaTarget(0.3).restart();
+        d.fx = d.x; d.fy = d.y;
+      })
+      .on("drag", (e, d) => { d.fx = e.x; d.fy = e.y; })
+      .on("end", (e, d) => {
+        if (!e.active) simulation.alphaTarget(0);
+        d.fx = null; d.fy = null;
+      })
+    );
+
+  node.append("circle")
+    .attr("r", d => RADIUS[d.type])
+    .attr("fill", d => COLOR[d.type])
+    .attr("opacity", d => d.status === "active" ? 1.0 : 0.35)
+    .attr("stroke", "#fff")
+    .attr("stroke-width", 2);
+
+  node.append("text")
+    .text(d => d.title.length > 24 ? d.title.slice(0, 22) + "…" : d.title)
+    .attr("dy", d => RADIUS[d.type] + 14)
+    .attr("text-anchor", "middle")
+    .attr("font-size", d => d.type === "initiative" ? "11px" : "10px")
+    .attr("fill", "#333")
+    .attr("pointer-events", "none");
+
+  // Tooltip
+  node.on("mouseover", (e, d) => {
+    const color = COLOR[d.type];
+    let html = `<span class="badge" style="background:${color}">${d.type}</span>`;
+    html += `<h4>${d.title}</h4>`;
+    if (d.description) html += `<div class="desc">${d.description}</div>`;
+    if (d.tags && d.tags.length) html += `<div class="meta">#${d.tags.join(" #")}</div>`;
+    html += `<div class="meta">Status: ${d.status}</div>`;
+    tooltip.innerHTML = html;
+    tooltip.style.display = "block";
+  }).on("mousemove", (e) => {
+    tooltip.style.left = (e.pageX + 14) + "px";
+    tooltip.style.top = (e.pageY - 14) + "px";
+  }).on("mouseout", () => {
+    tooltip.style.display = "none";
+  });
+
+  node.on("click", (e, d) => {
+    if (d.url) window.open(d.url, "_blank");
+    else if (d.github) window.open(d.github, "_blank");
+  });
+
+  simulation.on("tick", () => {
+    link
+      .attr("x1", d => d.source.x).attr("y1", d => d.source.y)
+      .attr("x2", d => d.target.x).attr("y2", d => d.target.y);
+    node.attr("transform", d => `translate(${d.x},${d.y})`);
+  });
+
+  // Filter controls
+  function applyFilter() {
+    const active = new Set();
+    document.querySelectorAll(".controls input:checked").forEach(c => active.add(c.dataset.type));
+    const visibleIds = new Set(data.nodes.filter(n => active.has(n.type)).map(n => n.id));
+    node.attr("display", d => visibleIds.has(d.id) ? null : "none");
+    link.attr("display", d => visibleIds.has(d.source.id) && visibleIds.has(d.target.id) ? null : "none");
+  }
+  document.querySelectorAll(".controls input").forEach(cb => {
+    cb.addEventListener("change", applyFilter);
+  });
+  applyFilter();
+}
+</script>
+</body>
+</html>
