@@ -34,9 +34,23 @@ Interactive views of Life Itself initiatives and projects. Open any HTML file di
 - [Horizontal Tree](visualizations/portfolio-tree.html) — collapsible dendrogram. Best for parent-child hierarchy.
 - [Indented Tree](visualizations/portfolio-indented.html) — file-explorer style list with status and tags.
 
-To rebuild after editing markdown: `cd scripts && npm run build`
+Data is rebuilt automatically on commit (via a pre-commit hook) whenever initiatives/ or projects/ files change.
 
 <iframe src="visualizations/portfolio-indented.html" width="100%" height="500" style="border:1px solid #ddd; border-radius:8px;"></iframe>
+
+## Building the data index
+
+The visualizations are powered by `visualizations/index.js`, generated from markdown frontmatter by the build script.
+
+```sh
+# One-time setup
+cd scripts && npm install
+
+# Rebuild manually (also runs automatically on commit)
+node scripts/build-index.js
+```
+
+The pre-commit hook triggers this automatically when any `initiatives/*.md` or `projects/*.md` file is staged.
 
 ## A history of projects to work *on* strategy
 
