@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio Map — Armelle's View</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #fafafa; }
+  #container { width: 100vw; height: 100vh; position: relative; }
+  svg { width: 100%; height: 100%; }
+
+  .panel {
+    position: absolute; background: white; border: 1px solid #ddd;
+    border-radius: 8px; padding: 12px 16px; font-size: 13px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  }
+  .legend { top: 16px; left: 16px; max-height: calc(100vh - 40px); overflow-y: auto; }
+  .legend h3 { font-size: 15px; margin-bottom: 8px; }
+  .legend-item { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; }
+  .legend .hint { margin-top: 8px; font-size: 11px; color: #888; line-height: 1.5; }
+
+  .controls { top: 16px; right: 16px; }
+  .controls label { display: block; margin: 3px 0; cursor: pointer; }
+
+  .tooltip {
+    position: absolute; background: white; border: 1px solid #ccc;
+    border-radius: 6px; padding: 10px 14px; font-size: 13px;
+    max-width: 320px; pointer-events: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12); display: none;
+  }
+  .tooltip h4 { margin-bottom: 2px; }
+  .tooltip .badge {
+    display: inline-block; font-size: 10px; text-transform: uppercase;
+    letter-spacing: 0.5px; padding: 1px 6px; border-radius: 3px;
+    color: white; margin-bottom: 4px;
+  }
+  .tooltip .desc { margin-top: 4px; color: #444; }
+  .tooltip .meta { margin-top: 6px; color: #666; font-size: 11px; }
+
+  #loading {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    font-size: 16px; color: #888;
+  }
+</style>
+</head>
+<body>
+<div id="container">
+  <svg></svg>
+  <div id="loading">Loading data&hellip;</div>
+
+  <div class="panel legend">
+    <h3>Portfolio Map — Armelle's View</h3>
+    <div class="legend-item"><div class="legend-dot" style="background:#4A90D9"></div> Initiative (has deliverables)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#E8A838"></div> Maintenance (ongoing, no clear deliverable)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#50B86C"></div> Project</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#AAAAAA"></div> Idea</div>
+    <div style="margin-top:8px; font-size:12px; font-weight:600;">Umbrella groups</div>
+    <div class="legend-item"><div class="legend-dot" style="background:none;border:2px dashed #E91E8C"></div> Operations &amp; Management</div>
+    <div class="legend-item"><div class="legend-dot" style="background:none;border:2px dashed #8B5CF6"></div> Spaces &amp; Community</div>
+    <div class="legend-item"><div class="legend-dot" style="background:none;border:2px dashed #14B8A6"></div> Courses &amp; Education</div>
+    <div class="legend-item"><div class="legend-dot" style="background:none;border:2px dashed #F97066"></div> Media &amp; Communications</div>
+    <div id="people-legend"></div>
+    <div class="hint">
+      Full opacity = active &middot; Faded = other status<br>
+      Drag nodes &middot; Scroll to zoom &middot; Click opens URL
+    </div>
+  </div>
+
+  <div class="panel controls">
+    <strong>Filter</strong>
+    <label><input type="checkbox" data-type="initiative" checked> Initiatives</label>
+    <label><input type="checkbox" data-type="maintenance" checked> Maintenance</label>
+    <label><input type="checkbox" data-type="project" checked> Projects</label>
+    <label><input type="checkbox" data-type="idea"> Ideas</label>
+  </div>
+
+  <div class="tooltip" id="tooltip"></div>
+</div>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+const COLOR = { initiative: "#4A90D9", maintenance: "#E8A838", project: "#50B86C", idea: "#AAAAAA" };
+const RADIUS = { initiative: 20, maintenance: 18, project: 14, idea: 10 };
+
+const ENTRIES = [{"slug": "2026-armelle", "type": "initiative", "file": "initiatives/2026-armelle.md", "title": "Team Onboarding 2026 (Armelle, Matthew, Yo-Yo)", "description": "Onboarding plan for new team members joining Life Itself in 2026.", "status": "active", "created": "Tue Mar 24 2026 01:00:00 GMT+0100 (Central European Standard Time)", "parent": "life-itself-management", "tags": null, "url": null, "github": null, "phase": null, "tracker": null, "category": "initiative", "umbrella": null, "owners": null, "fillColor": "pink"}, {"slug": "2rcon", "type": "initiative", "file": "initiatives/2rcon.md", "title": "2RCon", "description": "Second Renaissance related conference initiative.", "status": "active", "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)", "parent": "second-renaissance", "tags": ["lifeitself", "conference", "second-renaissance"], "url": null, "github": null, "phase": null, "tracker": null, "category": "initiative", "umbrella": null, "owners": null, "fillColor": null}, {"slug": "ai-sense-making", "type": "initiative", "file": "initiatives/ai-sense-making.md", "title": "AI Sense-Making", "description": "Inquiry into the epistemic, social, and civilisational implications of AI.", "status": "active", "created": "Wed Jan 28 2026 01:00:00 GMT+0100 (Central European Standard Time)", "parent": "life-itself", "tags": null, "url": null, "github": null, "phase": null, "tracker": null, "category": "initiative", "umbrella": null, "owners": null, "fillColor": null}, {"slug": "archipelago-place", "type": "initiative", "file": "initiatives/archipelago-place.md", "title": "Archipelago.place", "description": "Platform concept for mapping and connecting distributed places, hubs, and communities.", "status": "active", "created": "Wed Jan 28 2026 01:00:00 GMT+0100 (Central European Standard Time)", "parent": "developmental-spaces-dds", "tags": null, "url": null, "github": null, "phase": null, "tracker": null, "category": "initiative", "umbrella": null, "owners": null, "fillColor": null}, {"slug": "collective-action-course", "type": "initiative", "file": "initiatives/collective-action-course.md", "title": "Collective Action Course", "description": "Course on coordination, shared identity, and the cultural foundations of collective action.", "status": "active", "created": "Wed Jan 28 2026 01:00:00 GMT+0100 (Central European Standard Time)", "parent": "life-itself-courses", "tags": null, "url": null, "github": null, "phase": null, "tracker": null, "category": "initiative", "umbrella": null, "owners": null, "fillColor": "teal"}, {"slug": "conscious-careers-guide", "type": "initiative", "file": "initiatives/conscious-careers-guide.md", "title": "Conscious Careers Guide", "description": "Life Itself related guide initiative around conscious careers.", "status": "active", "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)", "parent": "life-itself-courses", "tags": ["lifeitself", "guide", "careers"], "url": null, "github": null, "phase": null, "tracker": null, "category": "initiative", "umbrella": null, "owners": null, "fillColor": "teal"}, {"slug": "developmental-spaces-dds", "type": "initiative", "file": "initiatives/developmental-spaces-dds.md", "title": "Developmental Spaces (DDS)", "description": "Deliberately developmental / neo-monastic spaces for sustained inner and collective development.", "status": null, "created": "Wed Jan 28 2026 01:00:00 GMT+0100 (Central European Standard Time)", "parent": "life-itself", "tags": null, "url": null, "github": null, "phase": null, "tracker": null, "category": "initiative", "umbrella": null, "owners": null, "fillColor": null}, {"slug": "farmhouse-hub", "type": "initiative", "file": "initiatives/farmhouse-hub.md", "title": "Farmhouse Hub", "description": "Ongoing maintenance and development of the farmhouse hub.", "status": "active", "created": "Sun Mar 29 2026 01:00:00 GMT+0100 (Central European Standard Time)", "parent": "life-itself-hubs", "tags": ["lifeitself", "hubs", "place"], "url": null, "github": null, "phase": null, "tracker": null, "category": "maintenance", "umbrella": null, "owners": null, "secondary_parents": null, "fillColor": "purple"}, {"slug": "life-guild", "type": "initiative", "file": "initiatives/life-guild.md", "title": "Life Guild", "description": "Life Itself sub-initiative around guild or community formation.", "status": "active", "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)", "parent": "life-itself", "tags": ["lifeitself", "community"], "url": null, "github": null, "phase": null, "tracker": null, "category": "initiative", "umbrella": null, "owners": null, "fillColor": null}, {"slug": "life-itself-courses", "type": "initiative", "file": "initiatives/life-itself-courses.md", "title": "Life Itself Courses", "description": "Umbrella initiative for course-related work within Life Itself.", "status": "active", "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)", "parent": "life-itself", "tags": ["lifeitself", "courses"], "url": null, "github": null, "phase": null, "tracker": null, "category": "initiative", "umbrella": "teal", "owners": ["Reference person: ___________"], "fillColor": "teal"}, {"slug": "life-itself-hubs", "type": "initiative", "file": "initiatives/life-itself-hubs.md", "title": "Life Itself Hubs", "description": "Residential conscious communities and hubs within the broader Life Itself ecosystem.", "status": "active", "created": "Sun Mar 29 2026 01:00:00 GMT+0100 (Central European Standard Time)", "parent": "spaces-and-community", "tags": ["lifeitself", "hubs", "community"], "url": "https://lifeiteself.org/hubs", "github": null, "phase": null, "tracker": null, "category": "maintenance", "umbrella": null, "owners": null, "fillColor": "purple"}, {"slug": "life-itself-management", "type": "initiative", "file": "initiatives/life-itself-management.md", "title": "Operations & Management", "description": "Ongoing operations, coordination, onboarding, and management for Life Itself.", "status": "active", "created": "Sun Mar 29 2026 01:00:00 GMT+0100 (Central European Standard Time)", "parent": "life-itself", "tags": ["lifeitself", "management"], "url": null, "github": null, "phase": null, "tracker": null, "category": "maintenance", "umbrella": "pink", "owners": ["Reference person: ___________"], "fillColor": "pink"}, {"slug": "life-itself-podcast", "type": "initiative", "file": "initiatives/life-itself-podcast.md", "title": "Life Itself Podcast", "description": "Podcast initiative under Life Itself.", "status": "active", "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)", "parent": "podcasts", "tags": ["lifeitself", "podcast"], "url": null, "github": null, "phase": null, "tracker": null, "category": "initiative", "umbrella": null, "owners": null, "fillColor": "coral"}, {"slug": "life-itself-practicum", "type": "initiative", "file": "initiatives/life-itself-practicum.md", "title": "Life Itself Practicum", "description": "A practicum of service, learning, and community living within Life Itself.", "status": "active", "created": "Sun Mar 29 2026 01:00:00 GMT+0100 (Central European Standard Time)", "parent": "life-itself-courses", "tags": ["lifeitself", "practicum", "learning"], "url": "https://news.lifeitself.org/p/life-itself-practicum-autumn-2025", "github": null, "phase": null, "tracker": null, "category": "initiative", "umbrella": null, "owners": null, "fillColor": "teal"}, {"slug": "life-itself", "type": "initiative", "file": "initiatives/life-itself.md", "title": "Life Itself", "description": "Core umbrella project encompassing vision, hubs, research, practice, and digital presence for wiser societies.", "status": "active", "created": "Wed Jan 28 2026 01:00:00 GMT+0100 (Central European Standard Time)", "parent": null, "tags": null, "url": null, "github": null, "phase": null, "tracker": null, "category": "initiative", "umbrella": null, "owners": ["Reference person: ___________"], "fillColor": "gold"}, {"slug": "microcasts", "type": "initiative", "file": "initiatives/microcasts.md", "title": "Microcasts", "description": "Life Itself communications sub-initiative for microcast-style content.", "status": "active", "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)", "parent": "podcasts", "tags": ["lifeitself", "communications", "media"], "url": null, "github": null, "phase": null, "tracker": null, "category": "initiative", "umbrella": null, "owners": null, "fillColor": "coral"}, {"slug": "over-the-mountains", "type": "initiative", "file": "initiatives/over-the-mountains.md", "title": "Over the Mountains", "description": "Blog and podcast exploring civilisational renewal and the emerging Second Renaissance.", "status": "active", "created": "Sun Mar 29 2026 01:00:00 GMT+0100 (Central European Standard Time)", "parent": "podcasts", "tags": ["lifeitself", "writing", "podcast"], "url": "https://overthemountains.substack.com", "github": null, "phase": null, "tracker": null, "category": "initiative", "umbrella": null, "owners": null, "fillColor": "coral"}, {"slug": "praxis-ecology", "type": "initiative", "file": "initiatives/praxis-ecology.md", "title": "Praxis Ecology", "description": "Initiative for Praxis Ecology learning and course development.", "status": "active", "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)", "parent": "life-itself-courses", "tags": ["lifeitself", "course", "learning"], "url": null, "github": null, "phase": null, "tracker": null, "category": "initiative", "umbrella": null, "owners": null, "fillColor": "teal"}, {"slug": "second-renaissance", "type": "initiative", "file": "initiatives/second-renaissance.md", "title": "Second Renaissance", "description": "Cultural-civilisational renewal project including narrative, events, and movement-building.", "status": "active", "created": "Wed Jan 28 2026 01:00:00 GMT+0100 (Central European Standard Time)", "parent": "life-itself", "tags": null, "url": null, "github": null, "phase": null, "tracker": null, "category": "initiative", "umbrella": null, "owners": ["Reference person: ___________"], "fillColor": "gold"}, {"slug": "teal-estate", "type": "initiative", "file": "initiatives/teal-estate.md", "title": "Teal Estate", "description": "Real-estate strategy and tooling for conscious co-living and community projects.", "status": "active", "created": "Wed Jan 28 2026 01:00:00 GMT+0100 (Central European Standard Time)", "parent": "spaces-and-community", "tags": null, "url": null, "github": null, "phase": null, "tracker": null, "category": "maintenance", "umbrella": null, "owners": null, "fillColor": "purple"}, {"slug": "2026-intro-to-life-itself-videos", "type": "project", "file": "projects/2026-intro-to-life-itself-videos.md", "title": "Intro to Life Itself videos", "description": "Introductory video set for Life Itself.", "status": "active", "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)", "parent": "media", "tags": null, "url": null, "github": null, "phase": null, "tracker": null, "category": "project", "umbrella": null, "owners": ["Reference person: Jarlath"], "fillColor": null}, {"slug": "2026-otm-next-podcast-set", "type": "project", "file": "projects/2026-otm-next-podcast-set.md", "title": "Next Over the Mountains podcast set", "description": "Release the next set of Over the Mountains podcasts.", "status": "active", "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)", "parent": "over-the-mountains", "tags": null, "url": null, "github": null, "phase": null, "tracker": null, "category": "project", "umbrella": null, "owners": null, "fillColor": null}, {"slug": "2026-praxis-ecology-course-v1", "type": "project", "file": "projects/2026-praxis-ecology-course-v1.md", "title": "Praxis Ecology course v1", "description": "First version of the Praxis Ecology course by Valerie.", "status": "active", "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)", "parent": "praxis-ecology", "tags": null, "url": null, "github": null, "phase": null, "tracker": null, "category": "project", "umbrella": null, "owners": null, "fillColor": null}, {"slug": "2026-second-renaissance-explorer-course-v4", "type": "project", "file": "projects/2026-second-renaissance-explorer-course-v4.md", "title": "Second Renaissance Explorer course v4", "description": "Version 4 of the Second Renaissance Explorer course.", "status": "active", "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)", "parent": "second-renaissance", "tags": null, "url": null, "github": null, "phase": null, "tracker": null, "category": "project", "umbrella": null, "owners": null, "secondary_parents": ["life-itself-courses"], "fillColor": null}, {"slug": "life-itself-websites-2025", "type": "project", "file": "projects/life-itself-websites-2025.md", "title": "Life Itself Websites 2025", "description": "Major refactor of Life Itself websites to reflect the new strategy and direction.", "status": "active", "created": "Thu Jan 29 2026 01:00:00 GMT+0100 (Central European Standard Time)", "parent": "media", "tags": null, "url": "https://lifeitself.org/", "github": "https://github.com/life-itself/next.lifeitself.org", "phase": "shipping", "tracker": "https://github.com/life-itself/next.lifeitself.org/issues", "category": "project", "umbrella": null, "owners": null, "fillColor": null}, {"slug": "2rwg", "type": "idea", "file": "ideas/2rwg.md", "title": "2RWG", "description": "Deprecated idea superseded by Over the Mountains.", "status": "deprecated", "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)", "parent": null, "tags": ["second-renaissance", "idea"], "url": null, "github": null, "phase": null, "tracker": null, "category": "idea", "umbrella": null, "owners": null, "fillColor": null}, {"slug": "backup-finders-material-in-case-it-goes-away", "type": "idea", "file": "ideas/backup-finders-material-in-case-it-goes-away.md", "title": "Backup Finders Material in Case It Goes Away", "description": "Idea to back up Finders material in case it disappears.", "status": "idea", "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)", "parent": null, "tags": null, "url": null, "github": null, "phase": null, "tracker": null, "category": "idea", "umbrella": null, "owners": null, "fillColor": null}, {"slug": "digital-asset-management-for-me-and-small-teams", "type": "idea", "file": "ideas/digital-asset-management-for-me-and-small-teams.md", "title": "Digital Asset Management for Me and Small Teams", "description": "Research pattern idea around digital asset management for individuals and small teams.", "status": "idea", "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)", "parent": null, "tags": ["pattern", "research", "assets"], "url": null, "github": null, "phase": null, "tracker": null, "category": "idea", "umbrella": null, "owners": null, "fillColor": null}, {"slug": "factoidal", "type": "idea", "file": "ideas/factoidal.md", "title": "Factoidal", "description": "DataHub sub-initiative formerly described as factoidal / compatron / interesting data.", "status": "inactive", "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)", "parent": null, "tags": ["datahub", "data"], "url": null, "github": null, "phase": null, "tracker": null, "category": "idea", "umbrella": null, "owners": null, "fillColor": null}, {"slug": "git-based-publishing-pattern", "type": "idea", "file": "ideas/git-based-publishing-pattern.md", "title": "Git-Based Publishing Pattern", "description": "A long-running pattern for storing and publishing text from Git repositories.", "status": "idea", "created": "Sun Mar 29 2026 01:00:00 GMT+0100 (Central European Standard Time)", "parent": null, "tags": ["pattern", "publishing", "git"], "url": null, "github": null, "phase": null, "tracker": null, "category": "idea", "umbrella": null, "owners": null, "fillColor": null}, {"slug": "google-analytics-to-csv", "type": "idea", "file": "ideas/google-analytics-to-csv.md", "title": "Google Analytics to CSV", "description": "Automated export of Google Analytics data to CSV files in a GitHub repository via Actions.", "status": null, "created": "Wed Jan 28 2026 01:00:00 GMT+0100 (Central European Standard Time)", "parent": null, "tags": null, "url": null, "github": null, "phase": null, "tracker": null, "category": "idea", "umbrella": null, "owners": null, "fillColor": null}, {"slug": "how-to-live-guide", "type": "idea", "file": "ideas/how-to-live-guide.md", "title": "How to Live Guide", "description": "Idea for a guide related to how to live.", "status": "idea", "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)", "parent": null, "tags": ["guide", "ideas"], "url": null, "github": null, "phase": null, "tracker": null, "category": "idea", "umbrella": null, "owners": null, "fillColor": null}, {"slug": "image-storage-app", "type": "idea", "file": "ideas/image-storage-app.md", "title": "Image Storage App", "description": "Image storage application concept.", "status": "unclear", "created": "Sun Mar 29 2026 01:00:00 GMT+0100 (Central European Standard Time)", "parent": null, "tags": ["app", "images"], "url": null, "github": null, "phase": null, "tracker": null, "category": "idea", "umbrella": null, "owners": null, "fillColor": null}, {"slug": "inspiration-by-ai", "type": "idea", "file": "ideas/inspiration-by-ai.md", "title": "Inspiration by AI", "description": "Create mood boards fast by chatting with AI.", "status": null, "created": "Mon Feb 09 2026 01:00:00 GMT+0100 (Central European Standard Time)", "parent": null, "tags": null, "url": null, "github": null, "phase": null, "tracker": null, "category": "idea", "umbrella": null, "owners": null, "fillColor": null}, {"slug": "little-wiser-sensemaking-community", "type": "idea", "file": "ideas/little-wiser-sensemaking-community.md", "title": "Little Wiser Sensemaking Community", "description": "Deprecated idea superseded by Over the Mountains.", "status": "deprecated", "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)", "parent": null, "tags": ["lifeitself", "idea", "deprecated"], "url": null, "github": null, "phase": null, "tracker": null, "category": "idea", "umbrella": null, "owners": null, "fillColor": null}, {"slug": "not-a-journal", "type": "idea", "file": "ideas/not-a-journal.md", "title": "Not a Journal", "description": "Idea for a pattern or tool that is explicitly not a journal.", "status": "idea", "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)", "parent": null, "tags": ["pattern", "ideas"], "url": null, "github": null, "phase": null, "tracker": null, "category": "idea", "umbrella": null, "owners": null, "fillColor": null}, {"slug": "open-product-comparison", "type": "idea", "file": "ideas/open-product-comparison.md", "title": "Open Product Comparison", "description": "Deprecated idea superseded by CompareThe.", "status": "deprecated", "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)", "parent": null, "tags": ["comparethe", "idea", "deprecated"], "url": null, "github": null, "phase": null, "tracker": null, "category": "idea", "umbrella": null, "owners": null, "fillColor": null}, {"slug": "papertrail", "type": "idea", "file": "ideas/papertrail.md", "title": "Papertrail", "description": "AI-enhanced bookmarking with seamless commenting and idea linking.", "status": "proposed", "created": "Fri Feb 13 2026 01:00:00 GMT+0100 (Central European Standard Time)", "parent": null, "tags": null, "url": null, "github": null, "phase": "inbox", "tracker": null, "category": "idea", "umbrella": null, "owners": null, "fillColor": null}, {"slug": "primacy-of-being-book", "type": "idea", "file": "ideas/primacy-of-being-book.md", "title": "Primacy of Being book", "description": "Book idea exploring the primacy of being.", "status": "idea", "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)", "parent": null, "tags": ["book", "writing"], "url": null, "github": null, "phase": null, "tracker": null, "category": "idea", "umbrella": null, "owners": null, "fillColor": null}, {"slug": "ultra-simple-post-something-editor-app", "type": "idea", "file": "ideas/ultra-simple-post-something-editor-app.md", "title": "Ultra Simple Post-Something Editor App", "description": "Side-project idea for an ultra simple posting editor.", "status": "idea", "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)", "parent": null, "tags": ["side-project", "app"], "url": null, "github": null, "phase": null, "tracker": null, "category": "idea", "umbrella": null, "owners": null, "fillColor": null}, {"slug": "visual-editor-html-tailwind-for-flowershow", "type": "idea", "file": "ideas/visual-editor-html-tailwind-for-flowershow.md", "title": "Visual WYSIWYG Editor for HTML/Tailwind and Flower Show", "description": null, "status": null, "created": null, "parent": null, "tags": null, "url": null, "github": null, "phase": null, "tracker": null, "category": "idea", "umbrella": null, "owners": null, "fillColor": null}, {"slug": "spaces-and-community", "type": "initiative", "file": null, "title": "Spaces & Community", "description": "Physical and community spaces: hubs, co-living, and community formation.", "status": "active", "created": null, "parent": "life-itself", "tags": ["lifeitself", "hubs", "community"], "url": null, "github": null, "phase": null, "tracker": null, "category": "maintenance", "umbrella": "purple", "owners": ["Reference person: ___________"], "fillColor": "purple"}, {"slug": "bergerac-hub", "type": "initiative", "file": null, "title": "Bergerac Hub", "description": "Life Itself hub in Bergerac, France.", "status": "active", "created": null, "parent": "life-itself-hubs", "tags": ["lifeitself", "hubs", "place"], "url": null, "github": null, "phase": null, "tracker": null, "category": "maintenance", "umbrella": null, "owners": ["Reference person: Valérie"], "fillColor": "purple"}, {"slug": "media", "type": "initiative", "file": null, "title": "Media & Communications", "description": "Umbrella for all Life Itself media output: podcasts, magazine, microcasts.", "status": "active", "created": null, "parent": "life-itself", "tags": ["lifeitself", "media", "communications"], "url": null, "github": null, "phase": null, "tracker": null, "category": "initiative", "umbrella": "coral", "owners": ["Reference person: ___________"], "fillColor": "coral", "secondary_parents": null}, {"slug": "second-renaissance-magazine", "type": "initiative", "file": null, "title": "Second Renaissance Magazine", "description": "The Second Renaissance magazine publication.", "status": "active", "created": null, "parent": "media", "tags": ["lifeitself", "second-renaissance", "magazine"], "url": null, "github": null, "phase": null, "tracker": null, "category": "project", "umbrella": null, "owners": ["Reference person: Sylvie"], "fillColor": null, "secondary_parents": null}, {"slug": "podcasts", "type": "initiative", "file": null, "title": "Podcasts", "description": "Podcast initiatives under Media & Communications.", "status": "active", "created": null, "parent": "media", "tags": ["lifeitself", "media", "podcasts"], "url": null, "github": null, "phase": null, "tracker": null, "category": "initiative", "umbrella": null, "owners": null, "fillColor": "coral"}, {"slug": "projects-hub", "type": "initiative", "file": null, "title": "Projects", "description": "Active projects with owners, deadlines and status.", "status": "active", "created": null, "parent": null, "tags": ["lifeitself", "projects"], "url": null, "github": null, "phase": null, "tracker": null, "category": "initiative", "umbrella": null, "owners": null, "people": null, "deadline": null, "fillColor": "gold"}, {"slug": "proj-2026-intro-to-life-itself-videos", "type": "project", "file": "projects/2026-intro-to-life-itself-videos.md", "title": "Intro to Life Itself videos", "description": "Introductory video set for Life Itself.", "status": "active", "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)", "parent": "projects-hub", "tags": null, "url": null, "github": null, "phase": null, "tracker": null, "category": "project", "umbrella": null, "owners": ["Reference person: Jarlath"], "fillColor": null}, {"slug": "proj-2026-otm-next-podcast-set", "type": "project", "file": "projects/2026-otm-next-podcast-set.md", "title": "Next Over the Mountains podcast set", "description": "Release the next set of Over the Mountains podcasts.", "status": "active", "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)", "parent": "projects-hub", "tags": null, "url": null, "github": null, "phase": null, "tracker": null, "category": "project", "umbrella": null, "owners": null, "fillColor": null}, {"slug": "proj-2026-praxis-ecology-course-v1", "type": "project", "file": "projects/2026-praxis-ecology-course-v1.md", "title": "Praxis Ecology course v1", "description": "First version of the Praxis Ecology course by Valerie.", "status": "active", "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)", "parent": "projects-hub", "tags": null, "url": null, "github": null, "phase": null, "tracker": null, "category": "project", "umbrella": null, "owners": null, "fillColor": null}, {"slug": "proj-2026-second-renaissance-explorer-course-v4", "type": "project", "file": "projects/2026-second-renaissance-explorer-course-v4.md", "title": "Second Renaissance Explorer course v4", "description": "Version 4 of the Second Renaissance Explorer course.", "status": "active", "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)", "parent": "projects-hub", "tags": null, "url": null, "github": null, "phase": null, "tracker": null, "category": "project", "umbrella": null, "owners": null, "secondary_parents": null, "fillColor": null}, {"slug": "proj-life-itself-websites-2025", "type": "project", "file": "projects/life-itself-websites-2025.md", "title": "Life Itself Websites 2025", "description": "Major refactor of Life Itself websites to reflect the new strategy and direction.", "status": "active", "created": "Thu Jan 29 2026 01:00:00 GMT+0100 (Central European Standard Time)", "parent": "projects-hub", "tags": null, "url": "https://lifeitself.org/", "github": "https://github.com/life-itself/next.lifeitself.org", "phase": "shipping", "tracker": "https://github.com/life-itself/next.lifeitself.org/issues", "category": "project", "umbrella": null, "owners": null, "fillColor": null}, {"slug": "proj-second-renaissance-magazine", "type": "initiative", "file": null, "title": "Second Renaissance Magazine", "description": "The Second Renaissance magazine publication.", "status": "active", "created": null, "parent": "projects-hub", "tags": ["lifeitself", "second-renaissance", "magazine"], "url": null, "github": null, "phase": null, "tracker": null, "category": "project", "umbrella": null, "owners": ["Reference person: Sylvie"], "fillColor": null, "secondary_parents": null}];
+document.getElementById("loading").remove();
+render(ENTRIES);
+
+function render(entries) {
+  const slugSet = new Set(entries.map(e => e.slug));
+  const nodes = entries.map(e => ({
+    id: e.slug,
+    title: e.title || e.slug,
+    type: e.category || e.type,
+    originalType: e.type,
+    status: e.status || "unknown",
+    description: e.description || "",
+    tags: e.tags || [],
+    url: e.url || null,
+    github: e.github || null,
+    umbrella: e.umbrella || null,
+    owners: e.owners || null,
+    people: e.people || null,
+    fillColor: e.fillColor || null,
+    deadline: e.deadline || null,
+    cadence: e.cadence || null,
+  }));
+  const links = entries
+    .filter(e => e.parent && slugSet.has(e.parent))
+    .map(e => ({ source: e.parent, target: e.slug }));
+  // Add secondary parent links
+  entries.forEach(e => {
+    if (e.secondary_parents) {
+      e.secondary_parents.forEach(sp => {
+        if (slugSet.has(sp)) links.push({ source: sp, target: e.slug });
+      });
+    }
+  });
+
+  const data = { nodes, links };
+
+  // Count items per type
+  const typeCounts = {};
+  data.nodes.forEach(n => { if (!n.id.startsWith("proj-") && n.id !== "projects-hub") typeCounts[n.type] = (typeCounts[n.type] || 0) + 1; });
+
+  // Count items per umbrella (including all descendants)
+  const umbrellaSlugs = { "life-itself-management": "pink", "spaces-and-community": "purple", "life-itself-courses": "teal", "media": "coral" };
+  const umbrellaNames = { "pink": "Operations & Management", "purple": "Spaces & Community", "teal": "Courses & Education", "coral": "Media & Communications" };
+  const umbrellaCounts = { pink: 0, purple: 0, teal: 0, coral: 0 };
+  data.nodes.forEach(n => {
+    if (!n.id.startsWith("proj-") && n.id !== "projects-hub" && n.fillColor && umbrellaCounts[n.fillColor] !== undefined) umbrellaCounts[n.fillColor]++;
+  });
+  // Also count projects under umbrellas (exclude duplicates)
+  entries.forEach(e => {
+    if (!e.slug.startsWith("proj-") && e.fillColor && umbrellaCounts[e.fillColor] !== undefined && e.type === "project") umbrellaCounts[e.fillColor]++;
+  });
+
+  // Update legend counts
+  document.querySelectorAll(".legend-item").forEach(item => {
+    const text = item.textContent;
+    if (text.includes("Initiative")) item.querySelector("span") || item.insertAdjacentHTML("beforeend", ` <span style='color:#888'>(${typeCounts["initiative"] || 0})</span>`);
+    if (text.includes("Maintenance") && !text.includes("Operations")) item.insertAdjacentHTML("beforeend", ` <span style='color:#888'>(${typeCounts["maintenance"] || 0})</span>`);
+    if (text.includes("Project") && !text.includes("Operations")) item.insertAdjacentHTML("beforeend", ` <span style='color:#888'>(${typeCounts["project"] || 0})</span>`);
+    if (text.includes("Idea")) item.insertAdjacentHTML("beforeend", ` <span style='color:#888'>(${typeCounts["idea"] || 0})</span>`);
+    if (text.includes("Operations")) item.insertAdjacentHTML("beforeend", ` <span style='color:#888'>(${umbrellaCounts["pink"]})</span>`);
+    if (text.includes("Spaces")) item.insertAdjacentHTML("beforeend", ` <span style='color:#888'>(${umbrellaCounts["purple"]})</span>`);
+    if (text.includes("Courses")) item.insertAdjacentHTML("beforeend", ` <span style='color:#888'>(${umbrellaCounts["teal"]})</span>`);
+    if (text.includes("Media")) item.insertAdjacentHTML("beforeend", ` <span style='color:#888'>(${umbrellaCounts["coral"]})</span>`);
+  });
+
+  // People legend
+  const peopleMap = {};
+  entries.forEach(e => {
+    if (e.owners && e.owners.length) {
+      e.owners.forEach(o => {
+        const name = o.replace(/^Reference person:\s*/i, "").trim();
+        if (name && name !== "___________") {
+          if (!peopleMap[name]) peopleMap[name] = [];
+          peopleMap[name].push(e.title);
+        }
+      });
+    }
+  });
+  const peopleLegend = document.getElementById("people-legend");
+  if (Object.keys(peopleMap).length) {
+    let html = '<hr style="margin:10px 0 6px; border:none; border-top:1px solid #ddd;"><div style="font-size:12px; font-weight:600;">People</div>';
+    Object.keys(peopleMap).sort().forEach(name => {
+      html += `<div style="margin:3px 0; font-size:11px;"><strong>${name}</strong> — ${peopleMap[name].join(", ")}</div>`;
+    });
+    peopleLegend.innerHTML = html;
+  }
+
+  const svg = d3.select("svg");
+  const container = document.getElementById("container");
+  const tooltip = document.getElementById("tooltip");
+  const width = container.clientWidth;
+  const height = container.clientHeight;
+
+  const g = svg.append("g");
+
+  svg.call(
+    d3.zoom()
+      .scaleExtent([0.2, 5])
+      .on("zoom", (e) => g.attr("transform", e.transform))
+  );
+
+  const simulation = d3.forceSimulation(data.nodes)
+    .force("link", d3.forceLink(data.links).id(d => d.id).distance(120).strength(0.7))
+    .force("charge", d3.forceManyBody().strength(-300))
+    .force("center", d3.forceCenter(width / 2, height / 2))
+    .force("collision", d3.forceCollide().radius(d => d.id.startsWith("proj-") ? RADIUS[d.type] + 50 : RADIUS[d.type] + 6))
+    .force("x", d3.forceX(width / 2).strength(0.04))
+    .force("y", d3.forceY(height / 2).strength(0.04));
+
+  // Arrowhead marker
+  svg.append("defs").append("marker")
+    .attr("id", "arrow")
+    .attr("viewBox", "0 -4 8 8")
+    .attr("refX", 20).attr("refY", 0)
+    .attr("markerWidth", 6).attr("markerHeight", 6)
+    .attr("orient", "auto")
+    .append("path").attr("d", "M0,-4L8,0L0,4").attr("fill", "#bbb");
+
+  const link = g.append("g")
+    .selectAll("line")
+    .data(data.links)
+    .join("line")
+    .attr("stroke", "#ccc")
+    .attr("stroke-width", 1.5)
+    .attr("marker-end", "url(#arrow)");
+
+  const node = g.append("g")
+    .selectAll("g")
+    .data(data.nodes)
+    .join("g")
+    .style("cursor", d => (d.url || d.github) ? "pointer" : "default")
+    .call(d3.drag()
+      .on("start", (e, d) => {
+        if (!e.active) simulation.alphaTarget(0.3).restart();
+        d.fx = d.x; d.fy = d.y;
+      })
+      .on("drag", (e, d) => { d.fx = e.x; d.fy = e.y; })
+      .on("end", (e, d) => {
+        if (!e.active) simulation.alphaTarget(0);
+        d.fx = null; d.fy = null;
+      })
+    );
+
+  const UMBRELLA_COLOR = { pink: "#E91E8C", purple: "#8B5CF6", teal: "#14B8A6", coral: "#F97066", gold: "#FFD700" };
+
+  // Outer ring for umbrella nodes
+  node.filter(d => d.umbrella)
+    .append("circle")
+    .attr("r", d => RADIUS[d.type] + 6)
+    .attr("fill", "none")
+    .attr("stroke", d => UMBRELLA_COLOR[d.umbrella])
+    .attr("stroke-width", 3)
+    .attr("stroke-dasharray", "5,3")
+    .attr("opacity", 0.9);
+
+  // Main node circle — outer ring in category color for umbrella members
+  node.append("circle")
+    .attr("r", d => RADIUS[d.type])
+    .attr("fill", d => {
+      if (d.fillColor) return UMBRELLA_COLOR[d.fillColor];
+      return COLOR[d.type];
+    })
+    .attr("opacity", d => d.status === "active" ? 1.0 : 0.35)
+    .attr("stroke", "#fff")
+    .attr("stroke-width", 2);
+
+  // Inner eye — shows maintenance (orange) or initiative (blue) for umbrella members
+  node.filter(d => d.fillColor)
+    .append("circle")
+    .attr("r", d => RADIUS[d.type] * 0.5)
+    .attr("fill", d => d.type === "maintenance" ? COLOR.maintenance : COLOR[d.type])
+    .attr("opacity", d => d.status === "active" ? 1.0 : 0.35)
+    .attr("stroke", "none");
+
+  node.append("text")
+    .text(d => d.title.length > 24 ? d.title.slice(0, 22) + "…" : d.title)
+    .attr("dy", d => RADIUS[d.type] + 14)
+    .attr("text-anchor", "middle")
+    .attr("font-size", d => d.type === "initiative" ? "11px" : "10px")
+    .attr("fill", "#333")
+    .attr("pointer-events", "none");
+
+  // Project info cards (only on duplicated proj- nodes in Projects flower)
+  const projectNodes = node.filter(d => d.type === "project" && d.id.startsWith("proj-"));
+  const cardY = d => RADIUS[d.type] + 18;
+  const cardW = 170, cardH = 70, cardRx = 6;
+
+  projectNodes.append("rect")
+    .attr("x", -cardW / 2)
+    .attr("y", cardY)
+    .attr("width", cardW)
+    .attr("height", cardH)
+    .attr("rx", cardRx)
+    .attr("fill", "#fff")
+    .attr("stroke", "#50B86C")
+    .attr("stroke-width", 1)
+    .attr("opacity", 0.95);
+
+  projectNodes.append("text")
+    .attr("x", -cardW / 2 + 8)
+    .attr("y", d => cardY(d) + 14)
+    .attr("text-anchor", "start")
+    .attr("font-size", "9px")
+    .attr("fill", "#333")
+    .attr("pointer-events", "none")
+    .text(d => {
+      const ref = d.owners && d.owners.length ? d.owners[0].replace(/^(Reference person|Ref):\s*/i, "") : "—";
+      return "Ref: " + ref;
+    });
+
+  projectNodes.append("text")
+    .attr("x", -cardW / 2 + 8)
+    .attr("y", d => cardY(d) + 26)
+    .attr("text-anchor", "start")
+    .attr("font-size", "9px")
+    .attr("fill", "#666")
+    .attr("pointer-events", "none")
+    .text(d => "With: " + (d.people && d.people.length ? d.people.join(", ") : "—"));
+
+  projectNodes.append("text")
+    .attr("x", -cardW / 2 + 8)
+    .attr("y", d => cardY(d) + 38)
+    .attr("text-anchor", "start")
+    .attr("font-size", "9px")
+    .attr("fill", "#333")
+    .attr("pointer-events", "none")
+    .text(d => "Deadline: " + (d.deadline || "—"));
+
+  projectNodes.append("text")
+    .attr("x", -cardW / 2 + 8)
+    .attr("y", d => cardY(d) + 50)
+    .attr("text-anchor", "start")
+    .attr("font-size", "9px")
+    .attr("fill", "#333")
+    .attr("pointer-events", "none")
+    .text(d => "Cadence: " + (d.cadence || "—"));
+
+  projectNodes.append("text")
+    .attr("x", -cardW / 2 + 8)
+    .attr("y", d => cardY(d) + 62)
+    .attr("text-anchor", "start")
+    .attr("font-size", "9px")
+    .attr("font-weight", "600")
+    .attr("fill", d => d.status === "active" ? "#50B86C" : d.status === "blocked" ? "#E8A838" : "#888")
+    .attr("pointer-events", "none")
+    .text(d => "Status: " + (d.status || "—"));
+
+  // Owner tag below title (non-project nodes)
+  node.filter(d => d.type !== "project" && d.owners && d.owners.length)
+    .append("rect")
+    .attr("x", d => -(d.owners.join(", ").length * 3 + 10))
+    .attr("y", d => RADIUS[d.type] + 18)
+    .attr("width", d => (d.owners.join(", ").length * 6 + 20))
+    .attr("height", 16)
+    .attr("rx", 8)
+    .attr("fill", d => d.umbrella ? ({"pink":"#E91E8C","purple":"#8B5CF6","teal":"#14B8A6","coral":"#F97066","gold":"#FFD700"}[d.umbrella] || "#666") : "#666")
+    .attr("opacity", 0.15);
+
+  node.filter(d => d.type !== "project" && d.owners && d.owners.length)
+    .append("text")
+    .text(d => d.owners.join(", "))
+    .attr("dy", d => RADIUS[d.type] + 30)
+    .attr("text-anchor", "middle")
+    .attr("font-size", "9px")
+    .attr("font-weight", "600")
+    .attr("fill", d => d.umbrella ? ({"pink":"#E91E8C","purple":"#8B5CF6","teal":"#14B8A6","coral":"#F97066","gold":"#FFD700"}[d.umbrella] || "#666") : "#666")
+    .attr("pointer-events", "none");
+
+  // Tooltip
+  node.on("mouseover", (e, d) => {
+    const color = COLOR[d.type];
+    let html = `<span class="badge" style="background:${color}">${d.type}</span>`;
+    html += `<h4>${d.title}</h4>`;
+    if (d.description) html += `<div class="desc">${d.description}</div>`;
+    if (d.tags && d.tags.length) html += `<div class="meta">#${d.tags.join(" #")}</div>`;
+    html += `<div class="meta">Status: ${d.status}${d.type === "maintenance" ? " | Ongoing / no deliverable" : ""}</div>`;
+    tooltip.innerHTML = html;
+    tooltip.style.display = "block";
+  }).on("mousemove", (e) => {
+    tooltip.style.left = (e.pageX + 14) + "px";
+    tooltip.style.top = (e.pageY - 14) + "px";
+  }).on("mouseout", () => {
+    tooltip.style.display = "none";
+  });
+
+  node.on("click", (e, d) => {
+    if (d.url) window.open(d.url, "_blank");
+    else if (d.github) window.open(d.github, "_blank");
+  });
+
+  simulation.on("tick", () => {
+    link
+      .attr("x1", d => d.source.x).attr("y1", d => d.source.y)
+      .attr("x2", d => d.target.x).attr("y2", d => d.target.y);
+    node.attr("transform", d => `translate(${d.x},${d.y})`);
+  });
+
+  // Filter controls
+  function applyFilter() {
+    const active = new Set();
+    document.querySelectorAll(".controls input:checked").forEach(c => active.add(c.dataset.type));
+    const visibleIds = new Set(data.nodes.filter(n => active.has(n.type)).map(n => n.id));
+    node.attr("display", d => visibleIds.has(d.id) ? null : "none");
+    link.attr("display", d => visibleIds.has(d.source.id) && visibleIds.has(d.target.id) ? null : "none");
+  }
+  document.querySelectorAll(".controls input").forEach(cb => {
+    cb.addEventListener("change", applyFilter);
+  });
+  applyFilter(); // apply on load to respect default checkbox state
+}
+</script>
+</body>
+</html>
