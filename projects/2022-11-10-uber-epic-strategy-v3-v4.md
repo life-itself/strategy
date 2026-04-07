@@ -1,3 +1,11 @@
+---
+title: "Strategy v3/v4: Revision and Implementation"
+description: 3rd major revision of Life Itself strategy along with implementation thereof.
+created: 2022-11-10
+status: active
+parent: life-itself-management
+---
+
 3rd major revision of Life Itself strategy along with implementation thereof.
 
 ## Key Documents
