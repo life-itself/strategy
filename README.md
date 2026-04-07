@@ -16,15 +16,9 @@ Rough organization
 
 ![](Excalidraw/materials-overview-2024-02-14.excalidraw.png)
 
-## Inventory of existing materials
+## Inventory of existing strategy materials
 
-<List dir="/materials"/>
-
-```dataview
-TABLE version, level, form, url
-FROM "materials"
-sort file.name asc
-```
+See materials sidebar or subfolder.
 
 ## Portfolio Visualizations
 
