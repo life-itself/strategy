@@ -121,14 +121,16 @@ function render(entries) {
 
   // Count items per type
   const typeCounts = {};
-  data.nodes.forEach(n => { if (!n.id.startsWith("proj-") && n.id !== "projects-hub" && !n.umbrella) typeCounts[n.type] = (typeCounts[n.type] || 0) + 1; });
+  const excludeFromCounts = new Set(["proj-", "projects-hub", "life-itself", "second-renaissance"]);
+  const shouldCount = n => !n.id.startsWith("proj-") && !excludeFromCounts.has(n.id) && !n.umbrella;
+  data.nodes.forEach(n => { if (shouldCount(n)) typeCounts[n.type] = (typeCounts[n.type] || 0) + 1; });
 
   // Count items per umbrella (including all descendants)
   const umbrellaSlugs = { "life-itself-management": "pink", "spaces-and-community": "purple", "life-itself-courses": "teal", "media": "coral" };
   const umbrellaNames = { "pink": "Operations & Management", "purple": "Spaces & Community", "teal": "Courses & Education", "coral": "Media & Communications" };
   const umbrellaCounts = { pink: 0, purple: 0, teal: 0, coral: 0 };
   data.nodes.forEach(n => {
-    if (!n.id.startsWith("proj-") && n.id !== "projects-hub" && !n.umbrella && n.fillColor && umbrellaCounts[n.fillColor] !== undefined) umbrellaCounts[n.fillColor]++;
+    if (shouldCount(n) && n.fillColor && umbrellaCounts[n.fillColor] !== undefined) umbrellaCounts[n.fillColor]++;
   });
   // Also count projects under umbrellas (exclude duplicates)
   entries.forEach(e => {
