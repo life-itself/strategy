@@ -49,6 +49,26 @@ const PORTFOLIO_DATA = [
     "tracker": null
   },
   {
+    "slug": "channels-brands-consolidation",
+    "type": "initiative",
+    "file": "initiatives/channels-brands-consolidation.md",
+    "title": "Channels & Brands Consolidation",
+    "description": "Consolidate Life Itself's fragmented channels and brands into one coherent presence — or at most two clearly distinct brands.",
+    "status": "active",
+    "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
+    "parent": "life-itself-strategy",
+    "tags": [
+      "lifeitself",
+      "strategy",
+      "communications",
+      "brand"
+    ],
+    "url": null,
+    "github": null,
+    "phase": null,
+    "tracker": null
+  },
+  {
     "slug": "collective-action-course",
     "type": "initiative",
     "file": "initiatives/collective-action-course.md",
@@ -440,25 +460,6 @@ const PORTFOLIO_DATA = [
     "created": "Wed Jan 28 2026 01:00:00 GMT+0100 (Central European Standard Time)",
     "parent": null,
     "tags": null,
-    "url": null,
-    "github": null,
-    "phase": null,
-    "tracker": null
-  },
-  {
-    "slug": "microcasts",
-    "type": "initiative",
-    "file": "initiatives/microcasts.md",
-    "title": "Microcasts",
-    "description": "Life Itself communications sub-initiative for microcast-style content.",
-    "status": "active",
-    "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)",
-    "parent": "comms",
-    "tags": [
-      "lifeitself",
-      "communications",
-      "media"
-    ],
     "url": null,
     "github": null,
     "phase": null,
