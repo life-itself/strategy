@@ -1,65 +1,15 @@
-# Life Itself Strategy Materials
+# Life Itself Strategy
 
-A wiki/knowledgebase for all [Life Itself][]'s strategy related materials.
+A working repository for [Life Itself][]'s strategy — developing where we're going and why, and keeping an overview of the portfolio of activities that expresses that strategy.
 
 [Life Itself]: https://lifeitself.org/
 
-## Structure
+Two main purposes:
 
-- `initiatives/` — one file per initiative. An initiative is an enduring effort that can contain projects. Use stable semantic slugs as filenames (e.g. `second-renaissance.md`).
-- `projects/` — one file per project. A project is a bounded effort nested under an initiative. Use `YYYY-` prefixed filenames (e.g. `2024-presenting-our-strategy-v3.md`).
-- `visualizations/` — interactive D3 visualizations of the portfolio. Open any HTML file directly in a browser.
-- `scripts/` — build tooling. `build-index.js` generates `visualizations/index.js` from markdown frontmatter.
+1. **Develop strategy** — working space for thinking through, drafting, and archiving Life Itself's strategy materials (SCQHs, theories of change, narratives, plans)
+2. **Portfolio overview** — a structured, living map of our initiatives and projects to support strategy work and give a clear picture of what we're doing
 
-## Data Model
-
-The hierarchy is `initiative → project`. Parent relationships are expressed in frontmatter using wiki-link slugs.
-
-### Frontmatter schema
-
-- Required: `title`, `description`, `created`, `status`
-- Optional: `parent`, `tags`, `url`, `github`, `tracker`
-
-`status` values:
-- `active` — being actively worked on (whether live or not)
-- `maintenance` — live and running but no active development work
-- `paused` — temporarily stopped with intention to return
-- `idea` — being considered, not yet started
-- `archived` — retired or deprecated, no longer pursued
-
-`category` values (optional):
-- `grouping` — organisational container; not real work in itself (e.g. Comms, Community, Life Itself Courses). Rendered as hollow circles in visualizations, excluded from status counts.
-
-`parent` uses wiki-link style: `parent: [[life-itself]]`
-
-Example:
-
-```yaml
----
-title: Second Renaissance
-description: Cultural-civilisational renewal project including narrative, events, and movement-building.
-created: 2026-01-28
-status: active
-parent: [[life-itself]]
-tags:
-  - lifeitself
-  - second-renaissance
----
-```
-
-### Cross-cutting categorization
-
-Themes and organizational groupings (media, spaces, courses) are metadata, not hierarchy. Use `tags` rather than creating grouping initiatives. This keeps the initiative list as a list of things actually being pursued, not filing cabinet labels.
-
-## Overview of existing materials
-
-![](Excalidraw/materials-overview-2024-02-14.excalidraw.png)
-
-## Inventory of existing strategy materials
-
-See materials sidebar or subfolder.
-
-## Portfolio Visualizations
+## Portfolio of Initiatives & Projects
 
 Interactive views of Life Itself initiatives and projects. Open any HTML file directly in a browser — no server needed.
 
@@ -67,43 +17,37 @@ Interactive views of Life Itself initiatives and projects. Open any HTML file di
 - [Horizontal Tree](visualizations/portfolio-tree.html) — collapsible dendrogram. Best for parent-child hierarchy.
 - [Indented Tree](visualizations/portfolio-indented.html) — file-explorer style list with status and tags.
 
-Data is rebuilt automatically on commit (via a pre-commit hook) whenever initiatives/ or projects/ files change.
-
 <iframe src="visualizations/portfolio-indented.html" width="100%" height="500" style="border:1px solid #ddd; border-radius:8px;"></iframe>
 
-## Building the data index
+The underlying data lives in `initiatives/` and `projects/`. The index is rebuilt automatically on commit whenever those files change.
 
-The visualizations are powered by `visualizations/index.js`, generated from markdown frontmatter by the build script.
+## Strategy Materials
 
-```sh
-# One-time setup
-cd scripts && npm install
+`materials/` is an archive of pre-existing strategy documents — SCQHs, theories of change, narratives, plans and reviews going back to 2017. See [materials/README.md](materials/README.md) for a full index.
 
-# Rebuild manually (also runs automatically on commit)
-node scripts/build-index.js
-```
+Key working documents at root level:
 
-The pre-commit hook triggers this automatically when any `initiatives/*.md` or `projects/*.md` file is staged.
+- [Strategy v3 consolidated](Strategy%20v3%20consolidated.md)
+- [Strategy v2 consolidated](Strategy%20v2%20consolidated.md)
+- [Framework for strategy and strategy materials](Framework%20for%20strategy%20and%20strategy%20materials.md)
 
-## A history of projects to work *on* strategy
+### Overview of existing materials
 
-- Jun 2024-🔁 (ongoing) - Strategy review and planning 🚧
-  - This has somehow metamorphised a bit. Started out as a sync of Rufus & Sylvie and has grown into another strategy evolution.
-  - Task: ❌ (TODO)
-  - Shaping: missing ...
-- Jan 2024-⏸️ - [Presenting our strategy (as is)](projects/2024-presenting-our-strategy-v3.md) 🚧⏸️ status: produced this KB and put most materials and never got to evaluation and publication
-  - Summary (from task derived from shaping)
-    - Appetite: 3d (reduced by 1d given we spent 1.5d in shaping and work we did in shaping will help)
-    - Problem: lot of strategy-related materials but they aren't woven together or consolidated which creates a sense of overwhelm and confusion and prevents them being published and used.
-    - Solution: inventory materials, create framework to organize them, create roadmap for publication. If we can, start on consolidated strategy.
-  - Task: https://github.com/life-itself/community/issues/1048
-  - Pitch: https://github.com/life-itself/comms/blob/main/pitch/2401%20Presenting%20our%20Strategy%20v3%20in%20its%20current%20form.md
-- Sep 2021 - Updated and consolidated Core SCQH / logic of existence / theory of change including summary "why Life Itself" - Sep 2021
+![](Excalidraw/materials-overview-2024-02-14.excalidraw.png)
+
+## History of strategy work
+
+A log of projects to work *on* strategy itself:
+
+- **Jun 2024–ongoing** — Strategy review and planning (ongoing)
+- **Jan 2024** ⏸️ — [Presenting our strategy (as is)](projects/2024-presenting-our-strategy-v3.md) — produced this KB and most materials; never reached evaluation and publication
+  - Appetite: 3d; Problem: lots of strategy materials not woven together, creating overwhelm; Solution: inventory, organise, create roadmap for publication
+  - Task: https://github.com/life-itself/community/issues/1048 · Pitch: [shaping doc](https://github.com/life-itself/comms/blob/main/pitch/2401%20Presenting%20our%20Strategy%20v3%20in%20its%20current%20form.md)
+- **Sep 2021** — Updated and consolidated Core SCQH / logic of existence / theory of change
   - Task: https://github.com/life-itself/community/issues/36
-  - Currently we have a large amount of material spread in many areas. We would like a consolidated structure for our SCQHs and at least one root SCQH plus a consolidated summary version so that:
-    - We have a clear, simple and short summary for e.g. our front page, for communication
-    - We have a organizing structure for our work i.e. any given activity should now be mappable against that hypothesis tree / theory of change
-- Nov 2022 (opened) `[uber][epic]` LI v3 Strategy & Implementation 
-  - This was the overall task item for doing the v3 strategy
+- **Nov 2022** — LI v3 Strategy & Implementation `[uber][epic]`
   - Task: https://github.com/life-itself/community/issues/196
-    - A10: pretty minimal https://docs.google.com/document/d/1lxWWI4IvnWPLPtQjLY2_fGkko99MnqIDKMCD6E-uDaQ/edit#heading=h.3vdu4snhplyo (could merge to issue)
+
+## Working on this repo
+
+See [AGENTS.md](AGENTS.md) for the full data model, frontmatter schema, file conventions, status values, and build instructions.
