@@ -27,6 +27,9 @@ The hierarchy is `initiative → project`. Parent relationships are expressed in
 - `idea` — being considered, not yet started
 - `archived` — retired or deprecated, no longer pursued
 
+`category` values (optional):
+- `grouping` — organisational container; not real work in itself (e.g. Comms, Community, Life Itself Courses). Rendered as hollow circles in visualizations, excluded from status counts.
+
 `parent` uses wiki-link style: `parent: [[life-itself]]`
 
 Example:

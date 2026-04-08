@@ -107,10 +107,10 @@ The name "portfolio map" is preferred over "initiatives map" since the scope inc
 
 ### v0.1 — Strategic landscape (Jobs 3 & 4)
 
-- [ ] Complete the initiatives list — all known initiatives added as markdown files
-- [ ] Ensure every initiative has: `status` (active / ideation / pause / complete) and a meaningful `description`
+- [x] Complete the initiatives list — all known initiatives added as markdown files
+- [x] Ensure every initiative has: `status` and a meaningful `description`
+- [x] Build visualizations with status-based encoding (colour by type, opacity by vitality, grouping nodes hollow)
 - [ ] Add `owner` field to all active initiatives
-- [ ] Build a "strategic landscape" view: initiatives grouped by status, showing parent theme — so the team can scan the full picture at once
 
 ### Open questions (deferred)
 
