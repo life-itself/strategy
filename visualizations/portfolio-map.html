@@ -12,39 +12,39 @@
 
   .panel {
     position: absolute; background: white; border: 1px solid #ddd;
-    border-radius: 8px; padding: 12px 16px; font-size: 13px;
+    border-radius: 8px; padding: 12px 16px; font-size: 12px;
     box-shadow: 0 1px 4px rgba(0,0,0,0.08);
   }
-  .legend { top: 16px; left: 16px; min-width: 180px; }
+  .legend { top: 16px; left: 16px; min-width: 190px; }
   .legend h3 { font-size: 15px; margin-bottom: 10px; }
-  .legend-item {
-    display: flex; align-items: center; gap: 8px; margin: 5px 0;
-    cursor: pointer; user-select: none; padding: 2px 4px; border-radius: 4px;
-  }
-  .legend-item:hover { background: #f5f5f5; }
-  .legend-item.off { opacity: 0.35; }
-  .legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
-  .legend-count { margin-left: auto; font-size: 11px; color: #999; }
-  .legend .hint { margin-top: 10px; font-size: 11px; color: #888; line-height: 1.5; border-top: 1px solid #eee; padding-top: 8px; }
 
-  .controls { top: 16px; right: 16px; }
-  .controls p { font-size: 12px; font-weight: 600; margin-bottom: 6px; color: #555; }
-  .controls label { display: block; margin: 3px 0; cursor: pointer; font-size: 12px; }
+  .legend-group { margin-bottom: 10px; }
+  .legend-group-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: #aaa; margin-bottom: 5px; }
+  .legend-item { display: flex; align-items: center; gap: 8px; margin: 4px 0; color: #555; }
+  .l-circle { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
+  .l-square  { width: 11px; height: 11px; border-radius: 2px; flex-shrink: 0; }
+
+  .status-filters { top: 16px; right: 16px; }
+  .status-filters p { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; color: #aaa; margin-bottom: 8px; }
+  .sf-btn {
+    display: flex; align-items: center; gap: 6px; padding: 3px 8px;
+    border: 1px solid #eee; border-radius: 12px; cursor: pointer;
+    user-select: none; background: #fff; margin-bottom: 4px; font-size: 12px;
+  }
+  .sf-btn:hover { background: #f5f5f5; }
+  .sf-btn.off { opacity: 0.35; }
+  .sf-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .sf-count { margin-left: auto; color: #aaa; font-size: 11px; padding-left: 8px; }
 
   .tooltip {
     position: absolute; background: white; border: 1px solid #ccc;
     border-radius: 6px; padding: 10px 14px; font-size: 13px;
-    max-width: 320px; pointer-events: none;
+    max-width: 300px; pointer-events: none;
     box-shadow: 0 2px 8px rgba(0,0,0,0.12); display: none;
   }
-  .tooltip h4 { margin-bottom: 2px; }
-  .tooltip .badge {
-    display: inline-block; font-size: 10px; text-transform: uppercase;
-    letter-spacing: 0.5px; padding: 1px 6px; border-radius: 3px;
-    color: white; margin-bottom: 4px;
-  }
-  .tooltip .desc { margin-top: 4px; color: #444; }
-  .tooltip .meta { margin-top: 6px; color: #666; font-size: 11px; }
+  .tooltip h4 { margin-bottom: 4px; }
+  .tooltip .meta { margin-top: 6px; color: #888; font-size: 11px; }
+  .tooltip .desc { margin-top: 4px; color: #444; font-size: 12px; line-height: 1.4; }
 </style>
 </head>
 <body>
@@ -53,17 +53,24 @@
 
   <div class="panel legend">
     <h3>Portfolio Map</h3>
-    <div id="legend-items"></div>
-    <div class="hint">
-      Coloured by status &middot; Size = type<br>
-      Drag nodes &middot; Scroll to zoom &middot; Click opens URL
+    <div class="legend-group">
+      <div class="legend-group-label">Type (shape &amp; colour)</div>
+      <div class="legend-item"><div class="l-circle" style="background:#4A90D9"></div> Initiative</div>
+      <div class="legend-item"><div class="l-square"  style="background:#50B86C"></div> Project</div>
+      <div class="legend-item"><div class="l-circle"  style="background:#AAAAAA"></div> Idea / Archived</div>
     </div>
+    <div class="legend-group">
+      <div class="legend-group-label">Vitality (opacity)</div>
+      <div class="legend-item"><div class="l-circle" style="background:#4A90D9;opacity:1.0"></div> Active</div>
+      <div class="legend-item"><div class="l-circle" style="background:#4A90D9;opacity:0.65"></div> Maintenance</div>
+      <div class="legend-item"><div class="l-circle" style="background:#4A90D9;opacity:0.4"></div> Paused</div>
+    </div>
+    <div style="font-size:11px;color:#aaa;margin-top:4px;">Drag · Scroll to zoom · Click opens URL</div>
   </div>
 
-  <div class="panel controls">
-    <p>Show type</p>
-    <label><input type="checkbox" data-type="initiative" checked> Initiatives</label>
-    <label><input type="checkbox" data-type="project" checked> Projects</label>
+  <div class="panel status-filters">
+    <p>Filter by status</p>
+    <div id="sf-btns"></div>
   </div>
 
   <div class="tooltip" id="tooltip"></div>
@@ -72,150 +79,125 @@
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <script src="index.js"></script>
 <script>
-const STATUS_COLOR = {
-  active:      "#4caf50",
-  maintenance: "#2196f3",
-  paused:      "#ff9800",
-  idea:        "#9c27b0",
-  archived:    "#bbb",
-};
-const STATUS_LABEL = { active: 'Active', maintenance: 'Maintenance', paused: 'Paused', idea: 'Idea', archived: 'Archived' };
-const STATUSES = ['active', 'maintenance', 'paused', 'idea', 'archived'];
-const RADIUS = { initiative: 20, project: 12 };
+const TYPE_COLOR     = { initiative: "#4A90D9", project: "#50B86C" };
+const STATUS_OPACITY = { active: 1.0, maintenance: 0.65, paused: 0.4, idea: 0.7, archived: 0.2 };
+const STATUS_LABEL   = { active: "Active", maintenance: "Maintenance", paused: "Paused", idea: "Idea", archived: "Archived" };
+const STATUSES       = ["active", "maintenance", "paused", "idea", "archived"];
+const RADIUS         = { initiative: 18, project: 11 };
+
+function nodeColor(d)   { return (d.status === "idea" || d.status === "archived") ? "#AAAAAA" : (TYPE_COLOR[d.type] || "#AAAAAA"); }
+function nodeOpacity(d) { return STATUS_OPACITY[d.status] ?? 0.5; }
 
 const hiddenStatuses = new Set();
-
-// Build legend with toggle
 const counts = {};
 STATUSES.forEach(s => counts[s] = PORTFOLIO_DATA.filter(d => d.status === s).length);
 
-const legendEl = document.getElementById('legend-items');
+const sfContainer = document.getElementById("sf-btns");
 STATUSES.forEach(s => {
-  const item = document.createElement('div');
-  item.className = 'legend-item';
-  item.id = 'leg-' + s;
-  item.innerHTML = `<div class="legend-dot" style="background:${STATUS_COLOR[s]}"></div>${STATUS_LABEL[s]}<span class="legend-count">${counts[s]}</span>`;
-  item.addEventListener('click', () => {
-    if (hiddenStatuses.has(s)) hiddenStatuses.delete(s);
-    else hiddenStatuses.add(s);
-    item.classList.toggle('off', hiddenStatuses.has(s));
+  if (!counts[s]) return;
+  const btn = document.createElement("div");
+  btn.className = "sf-btn"; btn.id = "sfbtn-" + s;
+  btn.innerHTML = `<div class="sf-dot" style="background:#888;opacity:${STATUS_OPACITY[s]}"></div>${STATUS_LABEL[s]}<span class="sf-count">${counts[s]}</span>`;
+  btn.addEventListener("click", () => {
+    if (hiddenStatuses.has(s)) hiddenStatuses.delete(s); else hiddenStatuses.add(s);
+    btn.classList.toggle("off", hiddenStatuses.has(s));
     applyFilter();
   });
-  legendEl.appendChild(item);
+  sfContainer.appendChild(btn);
 });
 
-render(PORTFOLIO_DATA);
+// Symbol generator — circle for initiatives, square for projects
+const symbolSize = d => Math.PI * Math.pow(RADIUS[d.type] || 10, 2);
+const symbolGen = d3.symbol()
+  .type(d => d.type === "project" ? d3.symbolSquare : d3.symbolCircle)
+  .size(d => symbolSize(d) * 2.8);
 
-function render(entries) {
-  const slugSet = new Set(entries.map(e => e.slug));
-  const nodes = entries.map(e => ({
-    id: e.slug,
-    title: e.title || e.slug,
-    type: e.type,
-    status: e.status || "unknown",
-    description: e.description || "",
-    tags: e.tags || [],
-    url: e.url || null,
-    github: e.github || null,
-  }));
-  const links = entries
-    .filter(e => e.parent && slugSet.has(e.parent))
-    .map(e => ({ source: e.parent, target: e.slug }));
+const slugSet = new Set(PORTFOLIO_DATA.map(e => e.slug));
+const nodes = PORTFOLIO_DATA.map(e => ({ ...e, id: e.slug }));
+const links = PORTFOLIO_DATA
+  .filter(e => e.parent && slugSet.has(e.parent))
+  .map(e => ({ source: e.parent, target: e.slug }));
 
-  const svg = d3.select("svg");
-  const container = document.getElementById("container");
-  const tooltip = document.getElementById("tooltip");
-  const width = container.clientWidth;
-  const height = container.clientHeight;
+const svg    = d3.select("svg");
+const cont   = document.getElementById("container");
+const tip    = document.getElementById("tooltip");
+const W = cont.clientWidth, H = cont.clientHeight;
 
-  const g = svg.append("g");
-  svg.call(
-    d3.zoom().scaleExtent([0.2, 5]).on("zoom", (e) => g.attr("transform", e.transform))
+const g = svg.append("g");
+svg.call(d3.zoom().scaleExtent([0.2, 5]).on("zoom", e => g.attr("transform", e.transform)));
+
+const simulation = d3.forceSimulation(nodes)
+  .force("link",      d3.forceLink(links).id(d => d.id).distance(110).strength(0.6))
+  .force("charge",    d3.forceManyBody().strength(-280))
+  .force("center",    d3.forceCenter(W / 2, H / 2))
+  .force("collision", d3.forceCollide().radius(d => (RADIUS[d.type] || 10) + 8))
+  .force("x",         d3.forceX(W / 2).strength(0.04))
+  .force("y",         d3.forceY(H / 2).strength(0.04));
+
+svg.append("defs").append("marker")
+  .attr("id", "arrow").attr("viewBox", "0 -4 8 8")
+  .attr("refX", 22).attr("refY", 0)
+  .attr("markerWidth", 6).attr("markerHeight", 6)
+  .attr("orient", "auto")
+  .append("path").attr("d", "M0,-4L8,0L0,4").attr("fill", "#ccc");
+
+const link = g.append("g")
+  .selectAll("line").data(links).join("line")
+  .attr("stroke", "#ddd").attr("stroke-width", 1.2)
+  .attr("marker-end", "url(#arrow)");
+
+const node = g.append("g")
+  .selectAll("g").data(nodes).join("g")
+  .style("cursor", d => (d.url || d.github) ? "pointer" : "default")
+  .call(d3.drag()
+    .on("start", (e, d) => { if (!e.active) simulation.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
+    .on("drag",  (e, d) => { d.fx = e.x; d.fy = e.y; })
+    .on("end",   (e, d) => { if (!e.active) simulation.alphaTarget(0); d.fx = null; d.fy = null; })
   );
 
-  const simulation = d3.forceSimulation(nodes)
-    .force("link", d3.forceLink(links).id(d => d.id).distance(120).strength(0.7))
-    .force("charge", d3.forceManyBody().strength(-300))
-    .force("center", d3.forceCenter(width / 2, height / 2))
-    .force("collision", d3.forceCollide().radius(d => (RADIUS[d.type] || 10) + 6))
-    .force("x", d3.forceX(width / 2).strength(0.04))
-    .force("y", d3.forceY(height / 2).strength(0.04));
+node.append("path")
+  .attr("d", d => symbolGen(d))
+  .attr("fill", d => nodeColor(d))
+  .attr("opacity", d => nodeOpacity(d))
+  .attr("stroke", "#fff").attr("stroke-width", 1.5);
 
-  svg.append("defs").append("marker")
-    .attr("id", "arrow").attr("viewBox", "0 -4 8 8")
-    .attr("refX", 20).attr("refY", 0)
-    .attr("markerWidth", 6).attr("markerHeight", 6)
-    .attr("orient", "auto")
-    .append("path").attr("d", "M0,-4L8,0L0,4").attr("fill", "#bbb");
+node.append("text")
+  .text(d => d.title && d.title.length > 22 ? d.title.slice(0, 20) + "…" : (d.title || d.slug))
+  .attr("dy", d => (RADIUS[d.type] || 10) + 13)
+  .attr("text-anchor", "middle")
+  .attr("font-size", d => d.type === "initiative" ? "11px" : "10px")
+  .attr("fill", "#333")
+  .attr("opacity", d => Math.max(nodeOpacity(d), 0.5))
+  .attr("pointer-events", "none");
 
-  const link = g.append("g")
-    .selectAll("line").data(links).join("line")
-    .attr("stroke", "#ccc").attr("stroke-width", 1.5)
-    .attr("marker-end", "url(#arrow)");
+node.on("mouseover", (e, d) => {
+  let html = `<h4>${d.title || d.slug}</h4>`;
+  html += `<div class="meta">${d.type} · ${STATUS_LABEL[d.status] || d.status}</div>`;
+  if (d.description) html += `<div class="desc">${d.description}</div>`;
+  if (d.tags && d.tags.length) html += `<div class="meta">#${d.tags.join(" #")}</div>`;
+  tip.innerHTML = html;
+  tip.style.display = "block";
+}).on("mousemove", e => {
+  tip.style.left = (e.pageX + 14) + "px";
+  tip.style.top  = (e.pageY - 14) + "px";
+}).on("mouseout", () => { tip.style.display = "none"; });
 
-  const node = g.append("g")
-    .selectAll("g").data(nodes).join("g")
-    .style("cursor", d => (d.url || d.github) ? "pointer" : "default")
-    .call(d3.drag()
-      .on("start", (e, d) => { if (!e.active) simulation.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
-      .on("drag", (e, d) => { d.fx = e.x; d.fy = e.y; })
-      .on("end", (e, d) => { if (!e.active) simulation.alphaTarget(0); d.fx = null; d.fy = null; })
-    );
+node.on("click", (e, d) => {
+  if (d.url) window.open(d.url, "_blank");
+  else if (d.github) window.open(d.github, "_blank");
+});
 
-  node.append("circle")
-    .attr("r", d => RADIUS[d.type] || 10)
-    .attr("fill", d => STATUS_COLOR[d.status] || "#ccc")
-    .attr("stroke", "#fff").attr("stroke-width", 2);
-
-  node.append("text")
-    .text(d => d.title.length > 24 ? d.title.slice(0, 22) + "…" : d.title)
-    .attr("dy", d => (RADIUS[d.type] || 10) + 14)
-    .attr("text-anchor", "middle")
-    .attr("font-size", d => d.type === "initiative" ? "11px" : "10px")
-    .attr("fill", "#333").attr("pointer-events", "none");
-
-  node.on("mouseover", (e, d) => {
-    const color = STATUS_COLOR[d.status] || "#999";
-    let html = `<span class="badge" style="background:${color}">${STATUS_LABEL[d.status] || d.status}</span>`;
-    html += `<h4>${d.title}</h4>`;
-    if (d.description) html += `<div class="desc">${d.description}</div>`;
-    if (d.tags && d.tags.length) html += `<div class="meta">#${d.tags.join(" #")}</div>`;
-    tooltip.innerHTML = html;
-    tooltip.style.display = "block";
-  }).on("mousemove", (e) => {
-    tooltip.style.left = (e.pageX + 14) + "px";
-    tooltip.style.top = (e.pageY - 14) + "px";
-  }).on("mouseout", () => { tooltip.style.display = "none"; });
-
-  node.on("click", (e, d) => {
-    if (d.url) window.open(d.url, "_blank");
-    else if (d.github) window.open(d.github, "_blank");
-  });
-
-  simulation.on("tick", () => {
-    link.attr("x1", d => d.source.x).attr("y1", d => d.source.y)
-        .attr("x2", d => d.target.x).attr("y2", d => d.target.y);
-    node.attr("transform", d => `translate(${d.x},${d.y})`);
-  });
-
-  window._nodesSel = node;
-  window._linksSel = link;
-  window._nodeData = nodes;
-  window._linkData = links;
-}
+simulation.on("tick", () => {
+  link.attr("x1", d => d.source.x).attr("y1", d => d.source.y)
+      .attr("x2", d => d.target.x).attr("y2", d => d.target.y);
+  node.attr("transform", d => `translate(${d.x},${d.y})`);
+});
 
 function applyFilter() {
-  const activeTypes = new Set();
-  document.querySelectorAll(".controls input:checked").forEach(c => activeTypes.add(c.dataset.type));
-  const visible = id => {
-    const n = window._nodeData.find(n => n.id === id);
-    return n && activeTypes.has(n.type) && !hiddenStatuses.has(n.status);
-  };
-  window._nodesSel.attr("display", d => (activeTypes.has(d.type) && !hiddenStatuses.has(d.status)) ? null : "none");
-  window._linksSel.attr("display", d => visible(d.source.id) && visible(d.target.id) ? null : "none");
+  const vis = d => !hiddenStatuses.has(d.status || "");
+  node.attr("display", d => vis(d) ? null : "none");
+  link.attr("display", d => vis(d.source) && vis(d.target) ? null : "none");
 }
-
-document.querySelectorAll(".controls input").forEach(cb => cb.addEventListener("change", applyFilter));
 </script>
 </body>
 </html>
