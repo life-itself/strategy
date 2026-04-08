@@ -1,0 +1,13 @@
+---
+title: Second Renaissance Newsletter
+description: Newsletter for the Second Renaissance initiative.
+created: 2026-04-08
+status: active
+parent: [[second-renaissance]]
+tags:
+  - second-renaissance
+  - communications
+---
+
+## Projects
+

@@ -3,7 +3,7 @@ title: Portfolio Map
 description: Interactive visualizations of Life Itself initiatives, projects and ideas — and the data model behind them.
 created: 2026-04-07
 status: active
-parent: life-itself-management
+parent: [[life-itself-strategy]]
 tags:
   - visualization
   - portfolio

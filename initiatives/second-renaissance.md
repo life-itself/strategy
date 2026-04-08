@@ -8,4 +8,3 @@ parent: [[life-itself]]
 
 ## Projects
 
-- [[projects/2026-second-renaissance-explorer-course-v4|Second Renaissance Explorer course v4]]

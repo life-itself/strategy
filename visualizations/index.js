@@ -303,6 +303,24 @@ const PORTFOLIO_DATA = [
     "tracker": null
   },
   {
+    "slug": "life-itself-strategy",
+    "type": "initiative",
+    "file": "initiatives/life-itself-strategy.md",
+    "title": "Life Itself Strategy",
+    "description": "Developing, presenting and maintaining the Life Itself strategy.",
+    "status": "active",
+    "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
+    "parent": "life-itself-management",
+    "tags": [
+      "lifeitself",
+      "strategy"
+    ],
+    "url": null,
+    "github": null,
+    "phase": null,
+    "tracker": null
+  },
+  {
     "slug": "life-itself",
     "type": "initiative",
     "file": "initiatives/life-itself.md",
@@ -362,7 +380,7 @@ const PORTFOLIO_DATA = [
     "description": "Blog and podcast exploring civilisational renewal and the emerging Second Renaissance.",
     "status": "active",
     "created": "Sun Mar 29 2026 01:00:00 GMT+0100 (Central European Standard Time)",
-    "parent": "life-itself",
+    "parent": "comms",
     "tags": [
       "lifeitself",
       "writing",
@@ -412,6 +430,60 @@ const PORTFOLIO_DATA = [
     "tracker": null
   },
   {
+    "slug": "second-renaissance-community-calls",
+    "type": "initiative",
+    "file": "initiatives/second-renaissance-community-calls.md",
+    "title": "Second Renaissance Community Calls",
+    "description": "Regular community calls for the Second Renaissance initiative.",
+    "status": "active",
+    "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
+    "parent": "second-renaissance",
+    "tags": [
+      "second-renaissance",
+      "community"
+    ],
+    "url": null,
+    "github": null,
+    "phase": null,
+    "tracker": null
+  },
+  {
+    "slug": "second-renaissance-course",
+    "type": "initiative",
+    "file": "initiatives/second-renaissance-course.md",
+    "title": "Second Renaissance Course",
+    "description": "Course programme for the Second Renaissance initiative, including the Explorer course series.",
+    "status": "active",
+    "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
+    "parent": "second-renaissance",
+    "tags": [
+      "second-renaissance",
+      "courses"
+    ],
+    "url": null,
+    "github": null,
+    "phase": null,
+    "tracker": null
+  },
+  {
+    "slug": "second-renaissance-newsletter",
+    "type": "initiative",
+    "file": "initiatives/second-renaissance-newsletter.md",
+    "title": "Second Renaissance Newsletter",
+    "description": "Newsletter for the Second Renaissance initiative.",
+    "status": "active",
+    "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
+    "parent": "second-renaissance",
+    "tags": [
+      "second-renaissance",
+      "communications"
+    ],
+    "url": null,
+    "github": null,
+    "phase": null,
+    "tracker": null
+  },
+  {
     "slug": "second-renaissance",
     "type": "initiative",
     "file": "initiatives/second-renaissance.md",
@@ -449,7 +521,7 @@ const PORTFOLIO_DATA = [
     "description": "3rd major revision of Life Itself strategy along with implementation thereof.",
     "status": "active",
     "created": "Thu Nov 10 2022 01:00:00 GMT+0100 (Central European Standard Time)",
-    "parent": "life-itself-management",
+    "parent": "life-itself-strategy",
     "tags": null,
     "url": null,
     "github": null,
@@ -464,7 +536,7 @@ const PORTFOLIO_DATA = [
     "description": "Inventory strategy materials, create organizing framework, and produce a roadmap for publication.",
     "status": "complete",
     "created": "Tue Jan 09 2024 01:00:00 GMT+0100 (Central European Standard Time)",
-    "parent": "life-itself-management",
+    "parent": "life-itself-strategy",
     "tags": null,
     "url": null,
     "github": null,
@@ -509,7 +581,7 @@ const PORTFOLIO_DATA = [
     "description": "Interactive visualizations of Life Itself initiatives, projects and ideas — and the data model behind them.",
     "status": "active",
     "created": "Tue Apr 07 2026 02:00:00 GMT+0200 (Central European Summer Time)",
-    "parent": "life-itself-management",
+    "parent": "life-itself-strategy",
     "tags": [
       "visualization",
       "portfolio"
@@ -542,7 +614,7 @@ const PORTFOLIO_DATA = [
     "description": "Version 4 of the Second Renaissance Explorer course.",
     "status": "active",
     "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)",
-    "parent": "second-renaissance",
+    "parent": "second-renaissance-course",
     "tags": null,
     "url": null,
     "github": null,
