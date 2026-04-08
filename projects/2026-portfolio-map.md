@@ -40,6 +40,21 @@ The name "portfolio map" is preferred over "initiatives map" since the scope inc
 
 **Current focus (April 2026):** Jobs 3 and 4 (strategic planning + ideas pipeline) are the priority. The immediate driver is a team collective strategy process in the next 2–3 weeks — we need a clear enough picture of our full landscape to make decisions together about what to continue, start, or stop. Jobs 1 (external narrative) and 2 (operational tracking) are deferred until after that.
 
+**The two key questions this needs to answer:**
+1. Is anyone working on this right now?
+2. Is this thing live and running, or still an idea / under construction?
+
+**What we have that answers these:**
+
+| Question / Job | What answers it |
+|---|---|
+| Is anyone working on this? | Filter to `active` in either visualization |
+| Is it live or an idea? | Color + opacity — grey=idea, faded=paused/maintenance |
+| Job 3 — full strategic landscape | Both visualizations with status toggles |
+| Job 4 — ideas pipeline | Filter to `idea` + `paused` in either view |
+
+**Still missing for the team session:** `owner` field on active initiatives — you can see *what* is active but not *who* is carrying it.
+
 ### 1. External narrative and orientation
 
 > When presenting Life Itself to outsiders, I want a clear view of what areas we work in and what we're doing in each, so I can quickly orient them to our work and mission.
