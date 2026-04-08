@@ -414,24 +414,6 @@ const PORTFOLIO_DATA = [
     "tracker": null
   },
   {
-    "slug": "life-itself-research-circle",
-    "type": "initiative",
-    "file": "initiatives/life-itself-research-circle.md",
-    "title": "Research Circle",
-    "description": "Research circle (previously Research Collective) for inquiry and sense-making within Life Itself Research.",
-    "status": "active",
-    "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
-    "parent": "life-itself-research",
-    "tags": [
-      "lifeitself",
-      "research"
-    ],
-    "url": null,
-    "github": null,
-    "phase": null,
-    "tracker": null
-  },
-  {
     "slug": "life-itself-research",
     "type": "initiative",
     "file": "initiatives/life-itself-research.md",
