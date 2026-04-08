@@ -1,5 +1,24 @@
 const PORTFOLIO_DATA = [
   {
+    "slug": "2r-festival",
+    "type": "initiative",
+    "file": "initiatives/2r-festival.md",
+    "title": "2R Festival",
+    "description": "The Second Renaissance Festival — a flagship gathering celebrating the emerging Second Renaissance.",
+    "status": "idea",
+    "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
+    "parent": "gatherings",
+    "tags": [
+      "second-renaissance",
+      "community",
+      "events"
+    ],
+    "url": null,
+    "github": null,
+    "phase": null,
+    "tracker": null
+  },
+  {
     "slug": "2rcon",
     "type": "initiative",
     "file": "initiatives/2rcon.md",
@@ -76,6 +95,24 @@ const PORTFOLIO_DATA = [
       "lifeitself",
       "communications",
       "media"
+    ],
+    "url": null,
+    "github": null,
+    "phase": null,
+    "tracker": null
+  },
+  {
+    "slug": "community",
+    "type": "initiative",
+    "file": "initiatives/community.md",
+    "title": "Community",
+    "description": "Life Itself community building — online presence and in-person gatherings.",
+    "status": "active",
+    "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
+    "parent": "life-itself",
+    "tags": [
+      "lifeitself",
+      "community"
     ],
     "url": null,
     "github": null,
@@ -221,6 +258,25 @@ const PORTFOLIO_DATA = [
       "lifeitself",
       "hubs",
       "place"
+    ],
+    "url": null,
+    "github": null,
+    "phase": null,
+    "tracker": null
+  },
+  {
+    "slug": "gatherings",
+    "type": "initiative",
+    "file": "initiatives/gatherings.md",
+    "title": "Gatherings",
+    "description": "In-person gatherings and events for the Life Itself and Second Renaissance community.",
+    "status": "paused",
+    "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
+    "parent": "community",
+    "tags": [
+      "lifeitself",
+      "community",
+      "events"
     ],
     "url": null,
     "github": null,
@@ -446,6 +502,25 @@ const PORTFOLIO_DATA = [
     "tracker": null
   },
   {
+    "slug": "online-community",
+    "type": "initiative",
+    "file": "initiatives/online-community.md",
+    "title": "Online Community",
+    "description": "WhatsApp groups-based online community for Life Itself members and the broader Second Renaissance network.",
+    "status": "active",
+    "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
+    "parent": "community",
+    "tags": [
+      "lifeitself",
+      "community",
+      "online"
+    ],
+    "url": null,
+    "github": null,
+    "phase": null,
+    "tracker": null
+  },
+  {
     "slug": "ops",
     "type": "initiative",
     "file": "initiatives/ops.md",
@@ -524,7 +599,7 @@ const PORTFOLIO_DATA = [
     "slug": "second-renaissance-community-calls",
     "type": "initiative",
     "file": "initiatives/second-renaissance-community-calls.md",
-    "title": "Second Renaissance Community Calls",
+    "title": "2R Community Calls",
     "description": "Regular community calls for the Second Renaissance initiative.",
     "status": "active",
     "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
@@ -542,7 +617,7 @@ const PORTFOLIO_DATA = [
     "slug": "second-renaissance-course",
     "type": "initiative",
     "file": "initiatives/second-renaissance-course.md",
-    "title": "Second Renaissance Course",
+    "title": "2R Course",
     "description": "Course programme for the Second Renaissance initiative, including the Explorer course series.",
     "status": "active",
     "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
@@ -560,7 +635,7 @@ const PORTFOLIO_DATA = [
     "slug": "second-renaissance-magazine",
     "type": "initiative",
     "file": "initiatives/second-renaissance-magazine.md",
-    "title": "Second Renaissance Magazine",
+    "title": "2R Magazine",
     "description": "A magazine exploring and expressing the ideas and culture of the Second Renaissance.",
     "status": "active",
     "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
@@ -579,7 +654,7 @@ const PORTFOLIO_DATA = [
     "slug": "second-renaissance-newsletter",
     "type": "initiative",
     "file": "initiatives/second-renaissance-newsletter.md",
-    "title": "Second Renaissance Newsletter",
+    "title": "2R Newsletter",
     "description": "Newsletter for the Second Renaissance initiative.",
     "status": "active",
     "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
@@ -782,6 +857,25 @@ const PORTFOLIO_DATA = [
     "tags": [
       "second-renaissance",
       "publishing"
+    ],
+    "url": null,
+    "github": null,
+    "phase": null,
+    "tracker": null
+  },
+  {
+    "slug": "2026-uk-gathering",
+    "type": "project",
+    "file": "projects/2026-uk-gathering.md",
+    "title": "UK Gathering 2026",
+    "description": "Life Itself UK community gathering in 2026.",
+    "status": "active",
+    "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
+    "parent": "gatherings",
+    "tags": [
+      "lifeitself",
+      "community",
+      "events"
     ],
     "url": null,
     "github": null,

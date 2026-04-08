@@ -1,5 +1,5 @@
 ---
-title: Second Renaissance Community Calls
+title: 2R Community Calls
 description: Regular community calls for the Second Renaissance initiative.
 created: 2026-04-08
 status: active

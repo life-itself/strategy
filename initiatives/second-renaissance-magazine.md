@@ -1,5 +1,5 @@
 ---
-title: Second Renaissance Magazine
+title: 2R Magazine
 description: A magazine exploring and expressing the ideas and culture of the Second Renaissance.
 created: 2026-04-08
 status: active

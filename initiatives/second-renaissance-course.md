@@ -1,5 +1,5 @@
 ---
-title: Second Renaissance Course
+title: 2R Course
 description: Course programme for the Second Renaissance initiative, including the Explorer course series.
 created: 2026-04-08
 status: active
