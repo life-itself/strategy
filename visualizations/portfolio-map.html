@@ -57,13 +57,14 @@
       <div class="legend-group-label">Type (colour)</div>
       <div class="legend-item"><div class="l-circle" style="background:#4A90D9"></div> Initiative</div>
       <div class="legend-item"><div class="l-circle" style="background:#50B86C"></div> Project</div>
-      <div class="legend-item"><div class="l-circle" style="background:#AAAAAA"></div> Idea / Archived</div>
+      <div class="legend-item"><div class="l-circle" style="background:#F2D96B;opacity:0.55"></div> Idea</div>
     </div>
     <div class="legend-group">
-      <div class="legend-group-label">Vitality (opacity — applies to all types)</div>
+      <div class="legend-group-label">Status (opacity)</div>
       <div class="legend-item"><div class="l-circle" style="background:#4A90D9;opacity:1.0"></div> Active</div>
-      <div class="legend-item"><div class="l-circle" style="background:#4A90D9;opacity:0.65"></div> Maintenance</div>
-      <div class="legend-item"><div class="l-circle" style="background:#4A90D9;opacity:0.4"></div> Paused</div>
+      <div class="legend-item"><div class="l-circle" style="background:#4A90D9;opacity:0.7"></div> Maintenance ⚙️</div>
+      <div class="legend-item"><div class="l-circle" style="background:#4A90D9;opacity:0.25"></div> Paused ⏸️</div>
+      <div class="legend-item"><div class="l-circle" style="background:#4A90D9;opacity:0.15"></div> Archived 🗄️</div>
     </div>
     <div style="font-size:11px;color:#aaa;margin-top:4px;">Drag · Scroll to zoom · Click opens URL</div>
   </div>
@@ -79,13 +80,13 @@
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <script src="index.js"></script>
 <script>
-const TYPE_COLOR     = { initiative: "#4A90D9", project: "#50B86C" };
-const STATUS_OPACITY = { active: 1.0, maintenance: 0.65, paused: 0.4, idea: 0.7, archived: 0.2 };
+const TYPE_COLOR     = { initiative: "#4A90D9", project: "#50B86C", idea: "#F2D96B" };
+const STATUS_OPACITY = { active: 1.0, maintenance: 0.7, paused: 0.25, idea: 0.55, archived: 0.15 };
 const STATUS_LABEL   = { active: "Active", maintenance: "Maintenance", paused: "Paused", idea: "Idea", archived: "Archived" };
+const STATUS_ICON    = { maintenance: "⚙️", paused: "⏸️", archived: "🗄️" };
 const STATUSES       = ["active", "maintenance", "paused", "idea", "archived"];
 
-
-function nodeColor(d)   { return (d.status === "idea" || d.status === "archived") ? "#AAAAAA" : (TYPE_COLOR[d.type] || "#AAAAAA"); }
+function nodeColor(d)   { return (d.status === "idea" || d.type === "idea") ? TYPE_COLOR.idea : (TYPE_COLOR[d.type] || "#AAAAAA"); }
 function nodeOpacity(d) { return STATUS_OPACITY[d.status] ?? 0.5; }
 
 const hiddenStatuses = new Set();
@@ -97,7 +98,8 @@ STATUSES.forEach(s => {
   if (!counts[s]) return;
   const btn = document.createElement("div");
   btn.className = "sf-btn"; btn.id = "sfbtn-" + s;
-  btn.innerHTML = `<div class="sf-dot" style="background:#888;opacity:${STATUS_OPACITY[s]}"></div>${STATUS_LABEL[s]}<span class="sf-count">${counts[s]}</span>`;
+  const dotColor = s === "idea" ? TYPE_COLOR.idea : "#4A90D9";
+  btn.innerHTML = `<div class="sf-dot" style="background:${dotColor};opacity:${STATUS_OPACITY[s]}"></div>${STATUS_LABEL[s]}<span class="sf-count">${counts[s]}</span>`;
   btn.addEventListener("click", () => {
     if (hiddenStatuses.has(s)) hiddenStatuses.delete(s); else hiddenStatuses.add(s);
     btn.classList.toggle("off", hiddenStatuses.has(s));
@@ -106,7 +108,7 @@ STATUSES.forEach(s => {
   sfContainer.appendChild(btn);
 });
 
-const RADIUS = { initiative: 18, project: 11 };
+const RADIUS = { initiative: 18, project: 11, idea: 15 };
 
 const slugSet = new Set(PORTFOLIO_DATA.map(e => e.slug));
 const nodes = PORTFOLIO_DATA.map(e => ({ ...e, id: e.slug }));
@@ -156,6 +158,13 @@ node.append("circle")
   .attr("fill", d => nodeColor(d))
   .attr("opacity", d => nodeOpacity(d))
   .attr("stroke", "#fff").attr("stroke-width", 1.5);
+
+node.append("text")
+  .text(d => STATUS_ICON[d.status] || "")
+  .attr("dy", "0.35em")
+  .attr("text-anchor", "middle")
+  .attr("font-size", d => Math.max((RADIUS[d.type] || 10) * 0.85, 10) + "px")
+  .attr("pointer-events", "none");
 
 node.append("text")
   .text(d => d.title && d.title.length > 22 ? d.title.slice(0, 20) + "…" : (d.title || d.slug))
