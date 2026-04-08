@@ -5,7 +5,7 @@ const PORTFOLIO_DATA = [
     "file": "initiatives/2rcon.md",
     "title": "2RCon",
     "description": "Second Renaissance related conference initiative.",
-    "status": "active",
+    "status": "⏸️",
     "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "second-renaissance",
     "tags": [
@@ -24,9 +24,9 @@ const PORTFOLIO_DATA = [
     "file": "initiatives/ai-sense-making.md",
     "title": "AI Sense-Making",
     "description": "Inquiry into the epistemic, social, and civilisational implications of AI.",
-    "status": "active",
+    "status": "ideation",
     "created": "Wed Jan 28 2026 01:00:00 GMT+0100 (Central European Standard Time)",
-    "parent": "life-itself",
+    "parent": "life-itself-research",
     "tags": null,
     "url": null,
     "github": null,
@@ -54,9 +54,9 @@ const PORTFOLIO_DATA = [
     "file": "initiatives/collective-action-course.md",
     "title": "Collective Action Course",
     "description": "Course on coordination, shared identity, and the cultural foundations of collective action.",
-    "status": "active",
+    "status": "ideation",
     "created": "Wed Jan 28 2026 01:00:00 GMT+0100 (Central European Standard Time)",
-    "parent": "life-itself-courses",
+    "parent": "life-itself-research",
     "tags": null,
     "url": null,
     "github": null,
@@ -124,6 +124,25 @@ const PORTFOLIO_DATA = [
     "description": "Ongoing maintenance and development of the farmhouse hub.",
     "status": "active",
     "created": "Sun Mar 29 2026 01:00:00 GMT+0100 (Central European Standard Time)",
+    "parent": "life-itself-hubs",
+    "tags": [
+      "lifeitself",
+      "hubs",
+      "place"
+    ],
+    "url": null,
+    "github": null,
+    "phase": null,
+    "tracker": null
+  },
+  {
+    "slug": "felix-hub",
+    "type": "initiative",
+    "file": "initiatives/felix-hub.md",
+    "title": "Felix Hub",
+    "description": "The Felix Hub, a Life Itself residential community space.",
+    "status": "active",
+    "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "life-itself-hubs",
     "tags": [
       "lifeitself",
@@ -266,6 +285,24 @@ const PORTFOLIO_DATA = [
     "tracker": null
   },
   {
+    "slug": "life-itself-research",
+    "type": "initiative",
+    "file": "initiatives/life-itself-research.md",
+    "title": "Life Itself Research",
+    "description": "Research initiatives within Life Itself, including inquiry into civilisational change, AI, and related topics.",
+    "status": "active",
+    "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
+    "parent": "life-itself",
+    "tags": [
+      "lifeitself",
+      "research"
+    ],
+    "url": null,
+    "github": null,
+    "phase": null,
+    "tracker": null
+  },
+  {
     "slug": "life-itself",
     "type": "initiative",
     "file": "initiatives/life-itself.md",
@@ -300,6 +337,24 @@ const PORTFOLIO_DATA = [
     "tracker": null
   },
   {
+    "slug": "ops",
+    "type": "initiative",
+    "file": "initiatives/ops.md",
+    "title": "Ops",
+    "description": "Operational work and coordination for Life Itself.",
+    "status": "active",
+    "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
+    "parent": "life-itself-management",
+    "tags": [
+      "lifeitself",
+      "operations"
+    ],
+    "url": null,
+    "github": null,
+    "phase": null,
+    "tracker": null
+  },
+  {
     "slug": "over-the-mountains",
     "type": "initiative",
     "file": "initiatives/over-the-mountains.md",
@@ -326,11 +381,30 @@ const PORTFOLIO_DATA = [
     "description": "Initiative for Praxis Ecology learning and course development.",
     "status": "active",
     "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)",
-    "parent": "life-itself",
+    "parent": "life-itself-courses",
     "tags": [
       "lifeitself",
       "course",
       "learning"
+    ],
+    "url": null,
+    "github": null,
+    "phase": null,
+    "tracker": null
+  },
+  {
+    "slug": "riverside-hub",
+    "type": "initiative",
+    "file": "initiatives/riverside-hub.md",
+    "title": "Riverside Hub",
+    "description": "The Riverside Hub, a Life Itself residential community space.",
+    "status": "pause",
+    "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
+    "parent": "life-itself-hubs",
+    "tags": [
+      "lifeitself",
+      "hubs",
+      "place"
     ],
     "url": null,
     "github": null,
@@ -405,7 +479,7 @@ const PORTFOLIO_DATA = [
     "description": "Introductory video set for Life Itself.",
     "status": "active",
     "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)",
-    "parent": "life-itself",
+    "parent": "comms",
     "tags": null,
     "url": null,
     "github": null,

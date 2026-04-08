@@ -13,3 +13,5 @@ tags:
 Umbrella initiative for Life Itself communications work across newsletter, podcast, and short-form media.
 
 ## Projects
+
+- [[projects/2026-intro-to-life-itself-videos|Intro to Life Itself videos]]

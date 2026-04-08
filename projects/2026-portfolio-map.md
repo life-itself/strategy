@@ -9,11 +9,38 @@ tags:
   - portfolio
 ---
 
-## Summary
-
 Build and maintain interactive visualizations of Life Itself's portfolio of initiatives and projects. The data lives in markdown files (initiatives/, projects/) with frontmatter; a build script generates a JS data file; HTML visualizations render it using D3.
 
 The name "portfolio map" is preferred over "initiatives map" since the scope includes initiatives, projects, and ideas.
+
+## Jobs to be done
+
+### Situation
+
+- Life Itself does not currently have a clear, current map of its initiatives and projects.
+- Existing overviews are incomplete or out of date, including material that could be shared externally.
+- We need a practical overview of current and potential work as input to 2026 strategy conversations.
+
+### Complication
+
+- Without a current portfolio map, strategic planning is harder to do systematically: it is difficult to assess what to continue, pause, merge, prioritize, or resource.
+- Newer team members and collaborators lack an easy way to understand what Life Itself is doing now.
+- Any shareable external view is harder to maintain because the underlying portfolio picture is fragmented and stale.
+
+### Question
+
+- How do we create a simple, current, and maintainable portfolio map quickly, in a form that supports 2026 strategic decision-making, helps orient team members, and can also be adapted for external sharing?
+
+### Hypothesis
+
+- A markdown-based portfolio database, with initiatives and projects modeled separately, will give us a lightweight source of truth that is easy to update.
+- From that source, we can generate simple visualizations and add fields over time, such as owners, status, or resource needs, without rebuilding the system from scratch.
+
+## Tasks
+
+- [ ] What is purpose
+- [ ] Add all the initiatives
+- [ ] How to do groupings ...
 
 ## Current state
 
