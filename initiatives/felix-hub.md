@@ -2,7 +2,7 @@
 title: Felix Hub
 description: The Felix Hub, a Life Itself residential community space.
 created: 2026-04-08
-status: active
+status: idea
 parent: [[life-itself-hubs]]
 tags:
   - lifeitself

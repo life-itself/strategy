@@ -2,7 +2,7 @@
 title: Life Guild
 description: Life Itself sub-initiative around guild or community formation.
 created: 2026-03-30
-status: active
+status: maintenance
 parent: [[second-renaissance]]
 tags:
   - lifeitself

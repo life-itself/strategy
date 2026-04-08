@@ -251,7 +251,7 @@ const PORTFOLIO_DATA = [
     "file": "initiatives/felix-hub.md",
     "title": "Felix Hub",
     "description": "The Felix Hub, a Life Itself residential community space.",
-    "status": "active",
+    "status": "idea",
     "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "life-itself-hubs",
     "tags": [
@@ -289,7 +289,7 @@ const PORTFOLIO_DATA = [
     "file": "initiatives/life-guild.md",
     "title": "Life Guild",
     "description": "Life Itself sub-initiative around guild or community formation.",
-    "status": "active",
+    "status": "maintenance",
     "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "second-renaissance",
     "tags": [
@@ -382,7 +382,7 @@ const PORTFOLIO_DATA = [
     "file": "initiatives/life-itself-podcast.md",
     "title": "Life Itself Podcast",
     "description": "Podcast initiative under Life Itself.",
-    "status": "active",
+    "status": "maintenance",
     "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "comms",
     "tags": [
@@ -400,7 +400,7 @@ const PORTFOLIO_DATA = [
     "file": "initiatives/life-itself-practicum.md",
     "title": "Life Itself Practicum",
     "description": "A practicum of service, learning, and community living within Life Itself.",
-    "status": "maintenance",
+    "status": "paused",
     "created": "Sun Mar 29 2026 01:00:00 GMT+0100 (Central European Standard Time)",
     "parent": "life-itself-courses",
     "tags": [
@@ -417,7 +417,7 @@ const PORTFOLIO_DATA = [
     "slug": "life-itself-research-circle",
     "type": "initiative",
     "file": "initiatives/life-itself-research-circle.md",
-    "title": "Life Itself Research Circle",
+    "title": "Research Circle",
     "description": "Research circle (previously Research Collective) for inquiry and sense-making within Life Itself Research.",
     "status": "active",
     "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
@@ -601,7 +601,7 @@ const PORTFOLIO_DATA = [
     "file": "initiatives/second-renaissance-community-calls.md",
     "title": "2R Community Calls",
     "description": "Regular community calls for the Second Renaissance initiative.",
-    "status": "active",
+    "status": "paused",
     "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "second-renaissance",
     "tags": [
@@ -656,7 +656,7 @@ const PORTFOLIO_DATA = [
     "file": "initiatives/second-renaissance-newsletter.md",
     "title": "2R Newsletter",
     "description": "Newsletter for the Second Renaissance initiative.",
-    "status": "active",
+    "status": "paused",
     "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "second-renaissance",
     "tags": [
