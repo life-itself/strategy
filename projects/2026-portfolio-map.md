@@ -97,11 +97,12 @@ The name "portfolio map" is preferred over "initiatives map" since the scope inc
 - [ ] Add `owner` field to all active initiatives
 - [ ] Build a "strategic landscape" view: initiatives grouped by status, showing parent theme — so the team can scan the full picture at once
 
-### Questions
+### Open questions (deferred)
 
-- [ ] Themes vs Form (e.g. Developmental Spaces vs Courses as an organizing structure. Or have both ... but then how does parent work ...)
-    - [ ] What is a parent vs a grouping ...
-- [ ] What status do we have for things that are still live but not being actively worked on (live but maintenance)
+**Hierarchy: parent vs. tag?**
+Tension: some "initiatives" (Comms, Life Itself Courses) are domains/filing labels, not things anyone is actively pursuing. Should they be parents in the tree, or just tags?
+
+Rule of thumb: if someone is accountable for it as a whole, it's an initiative with a parent. If it's just a grouping label, use a tag. But this only matters for the tree/onboarding view (Job 1) — the strategic landscape view (Job 3) groups by status, so the hierarchy is irrelevant. **Defer until after the strategy session.**
 
 ## Current state
 
