@@ -21,8 +21,7 @@
   .legend-group-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: #aaa; margin-bottom: 2px; }
   .legend-item { display: flex; align-items: center; gap: 7px; }
   .l-circle { width: 10px; height: 10px; border-radius: 50%; background: #4A90D9; flex-shrink: 0; }
-  .l-square  { width: 10px; height: 10px; border-radius: 2px; background: #50B86C; flex-shrink: 0; }
-  .l-grey    { width: 10px; height: 10px; border-radius: 50%; background: #AAAAAA; flex-shrink: 0; }
+  .l-grey   { width: 10px; height: 10px; border-radius: 50%; background: #AAAAAA; flex-shrink: 0; }
 
   .status-filters {
     display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; font-size: 12px; align-items: center;
@@ -69,17 +68,17 @@
 
 <div class="legend-bar">
   <div class="legend-group">
-    <div class="legend-group-label">Type</div>
-    <div class="legend-item"><div class="l-circle"></div> Initiative</div>
-    <div class="legend-item"><div class="l-square"></div> Project</div>
+    <div class="legend-group-label">Type (colour)</div>
+    <div class="legend-item"><div class="l-circle" style="background:#4A90D9"></div> Initiative</div>
+    <div class="legend-item"><div class="l-circle" style="background:#50B86C"></div> Project</div>
     <div class="legend-item"><div class="l-grey"></div> Idea / Archived</div>
   </div>
   <div class="legend-group">
     <div class="legend-group-label">Vitality (opacity — applies to all types)</div>
-    <div class="legend-item"><div class="l-circle" style="background:#4A90D9;opacity:1.0"></div><div class="l-square" style="background:#50B86C;opacity:1.0;margin-left:-4px"></div> Active</div>
-    <div class="legend-item"><div class="l-circle" style="background:#4A90D9;opacity:0.65"></div><div class="l-square" style="background:#50B86C;opacity:0.65;margin-left:-4px"></div> Maintenance</div>
-    <div class="legend-item"><div class="l-circle" style="background:#4A90D9;opacity:0.4"></div><div class="l-square" style="background:#50B86C;opacity:0.4;margin-left:-4px"></div> Paused</div>
-    <div class="legend-item"><div class="l-circle" style="background:#aaa;opacity:0.2"></div><div class="l-square" style="background:#aaa;opacity:0.2;margin-left:-4px"></div> Archived</div>
+    <div class="legend-item"><div class="l-circle" style="background:#4A90D9;opacity:1.0"></div> Active</div>
+    <div class="legend-item"><div class="l-circle" style="background:#4A90D9;opacity:0.65"></div> Maintenance</div>
+    <div class="legend-item"><div class="l-circle" style="background:#4A90D9;opacity:0.4"></div> Paused</div>
+    <div class="legend-item"><div class="l-circle" style="background:#aaa;opacity:0.2"></div> Archived</div>
   </div>
 </div>
 
@@ -181,7 +180,7 @@ function draw() {
     row.appendChild(toggle);
 
     const dot = document.createElement("div");
-    dot.className = e.type === "project" ? "dot-square" : "dot-circle";
+    dot.className = "dot-circle";
     dot.style.background = nodeColor(e);
     dot.style.opacity = nodeOpacity(e);
     row.appendChild(dot);
