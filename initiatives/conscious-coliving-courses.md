@@ -1,5 +1,5 @@
 ---
-title: Conscious Co-living Courses
+title: Conscious Coliving Courses
 description: Courses on conscious co-living practice and design.
 created: 2026-04-08
 status: maintenance

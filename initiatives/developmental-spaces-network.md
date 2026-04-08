@@ -1,5 +1,5 @@
 ---
-title: Developmental Spaces Network
+title: DS Network
 description: Network of deliberately developmental spaces and the people and organisations building them.
 created: 2026-04-08
 status: maintenance
