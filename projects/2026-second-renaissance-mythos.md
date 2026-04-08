@@ -1,5 +1,5 @@
 ---
-title: Second Renaissance Mythos (2026 edition)
+title: 2R Mythos (2026 edition)
 description: The 2026 edition of the Second Renaissance Magazine.
 created: 2026-04-08
 status: active
