@@ -49,26 +49,6 @@ const PORTFOLIO_DATA = [
     "tracker": null
   },
   {
-    "slug": "channels-brands-consolidation",
-    "type": "initiative",
-    "file": "initiatives/channels-brands-consolidation.md",
-    "title": "Channels & Brands Consolidation",
-    "description": "Consolidate Life Itself's fragmented channels and brands into one coherent presence — or at most two clearly distinct brands.",
-    "status": "active",
-    "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
-    "parent": "life-itself-strategy",
-    "tags": [
-      "lifeitself",
-      "strategy",
-      "communications",
-      "brand"
-    ],
-    "url": null,
-    "github": null,
-    "phase": null,
-    "tracker": null
-  },
-  {
     "slug": "collective-action-course",
     "type": "initiative",
     "file": "initiatives/collective-action-course.md",
@@ -687,6 +667,26 @@ const PORTFOLIO_DATA = [
     "created": "Tue Jan 09 2024 01:00:00 GMT+0100 (Central European Standard Time)",
     "parent": "life-itself-strategy",
     "tags": null,
+    "url": null,
+    "github": null,
+    "phase": null,
+    "tracker": null
+  },
+  {
+    "slug": "2026-channels-brands-consolidation",
+    "type": "project",
+    "file": "projects/2026-channels-brands-consolidation.md",
+    "title": "Channels & Brands Consolidation",
+    "description": "Consolidate Life Itself's fragmented channels and brands into one coherent presence — or at most two clearly distinct brands.",
+    "status": "active",
+    "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
+    "parent": "life-itself-strategy",
+    "tags": [
+      "lifeitself",
+      "strategy",
+      "communications",
+      "brand"
+    ],
     "url": null,
     "github": null,
     "phase": null,
