@@ -2,7 +2,7 @@
 title: Conscious Co-living
 description: The consciouscoliving.org website and initiative — resources and community around conscious co-living.
 created: 2026-04-08
-status: inactive
+status: maintenance
 parent: [[developmental-spaces-dds]]
 url: https://consciouscoliving.org
 tags:

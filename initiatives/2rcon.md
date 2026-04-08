@@ -2,7 +2,7 @@
 title: 2RCon
 description: Second Renaissance related conference initiative.
 created: 2026-03-30
-status: pause
+status: paused
 parent: [[second-renaissance]]
 tags:
   - lifeitself

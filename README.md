@@ -18,9 +18,14 @@ The hierarchy is `initiative → project`. Parent relationships are expressed in
 ### Frontmatter schema
 
 - Required: `title`, `description`, `created`, `status`
-- Optional: `parent`, `tags`, `url`, `github`, `tracker`, `phase`
+- Optional: `parent`, `tags`, `url`, `github`, `tracker`
 
-`status` values: `active`, `complete`, `paused`, `proposed`, `deprecated`
+`status` values:
+- `active` — being actively worked on (whether live or not)
+- `maintenance` — live and running but no active development work
+- `paused` — temporarily stopped with intention to return
+- `idea` — being considered, not yet started
+- `archived` — retired or deprecated, no longer pursued
 
 `parent` uses wiki-link style: `parent: [[life-itself]]`
 

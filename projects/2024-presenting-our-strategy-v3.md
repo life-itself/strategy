@@ -2,7 +2,7 @@
 title: Presenting our Strategy v3
 description: Inventory strategy materials, create organizing framework, and produce a roadmap for publication.
 created: 2024-01-09
-status: complete
+status: archived
 parent: [[life-itself-strategy]]
 ---
 
