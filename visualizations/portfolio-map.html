@@ -58,6 +58,7 @@
       <div class="legend-item"><div class="l-circle" style="background:#4A90D9"></div> Initiative</div>
       <div class="legend-item"><div class="l-circle" style="background:#50B86C"></div> Project</div>
       <div class="legend-item"><div class="l-circle" style="background:#F2D96B;opacity:0.55"></div> Idea</div>
+      <div class="legend-item"><div class="l-circle" style="background:transparent;border:2px solid #4A90D9;opacity:0.4"></div> Grouping</div>
     </div>
     <div class="legend-group">
       <div class="legend-group-label">Status (opacity)</div>
@@ -89,9 +90,10 @@ const STATUSES       = ["active", "maintenance", "paused", "idea", "archived"];
 function nodeColor(d)   { return (d.status === "idea" || d.type === "idea") ? TYPE_COLOR.idea : (TYPE_COLOR[d.type] || "#AAAAAA"); }
 function nodeOpacity(d) { return STATUS_OPACITY[d.status] ?? 0.5; }
 
+const isGrouping = d => d.category === "grouping";
 const hiddenStatuses = new Set();
 const counts = {};
-STATUSES.forEach(s => counts[s] = PORTFOLIO_DATA.filter(d => d.status === s).length);
+STATUSES.forEach(s => counts[s] = PORTFOLIO_DATA.filter(d => d.status === s && !isGrouping(d)).length);
 
 const sfContainer = document.getElementById("sf-btns");
 STATUSES.forEach(s => {
@@ -154,10 +156,11 @@ const node = g.append("g")
   );
 
 node.append("circle")
-  .attr("r", d => RADIUS[d.type] || 10)
-  .attr("fill", d => nodeColor(d))
-  .attr("opacity", d => nodeOpacity(d))
-  .attr("stroke", "#fff").attr("stroke-width", 1.5);
+  .attr("r", d => isGrouping(d) ? (RADIUS[d.type] || 10) - 3 : (RADIUS[d.type] || 10))
+  .attr("fill", d => isGrouping(d) ? "none" : nodeColor(d))
+  .attr("opacity", d => isGrouping(d) ? 0.4 : nodeOpacity(d))
+  .attr("stroke", d => nodeColor(d))
+  .attr("stroke-width", d => isGrouping(d) ? 2 : 0);
 
 node.append("text")
   .text(d => STATUS_ICON[d.status] || "")

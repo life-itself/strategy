@@ -72,6 +72,7 @@
     <div class="legend-item"><div class="l-circle" style="background:#4A90D9"></div> Initiative</div>
     <div class="legend-item"><div class="l-circle" style="background:#50B86C"></div> Project</div>
     <div class="legend-item"><div class="l-circle" style="background:#F2D96B;opacity:0.55"></div> Idea</div>
+    <div class="legend-item"><div class="l-circle" style="background:transparent;border:2px solid #4A90D9;opacity:0.4"></div> Grouping</div>
   </div>
   <div class="legend-group">
     <div class="legend-group-label">Status (opacity)</div>
@@ -95,13 +96,14 @@ const STATUS_OPACITY = { active: 1.0, maintenance: 0.7, paused: 0.25, idea: 0.55
 const STATUS_LABEL   = { active: "Active", maintenance: "⚙️ Maintenance", paused: "⏸️ Paused", idea: "Idea", archived: "🗄️ Archived" };
 const STATUSES = ["active", "maintenance", "paused", "idea", "archived"];
 
+const isGrouping = d => d.category === "grouping";
 function nodeColor(d)   { return (d.status === "idea" || d.type === "idea") ? TYPE_COLOR.idea : (TYPE_COLOR[d.type] || "#AAAAAA"); }
-function nodeOpacity(d) { return STATUS_OPACITY[d.status] ?? 0.5; }
+function nodeOpacity(d) { return isGrouping(d) ? 0.35 : (STATUS_OPACITY[d.status] ?? 0.5); }
 
-// Build status filter buttons
+// Build status filter buttons — exclude grouping nodes from counts
 const hiddenStatuses = new Set();
 const counts = {};
-STATUSES.forEach(s => counts[s] = PORTFOLIO_DATA.filter(d => d.status === s).length);
+STATUSES.forEach(s => counts[s] = PORTFOLIO_DATA.filter(d => d.status === s && !isGrouping(d)).length);
 
 const filtersEl = document.getElementById("status-filters");
 STATUSES.forEach(s => {
@@ -181,8 +183,14 @@ function draw() {
 
     const dot = document.createElement("div");
     dot.className = "dot-circle";
-    dot.style.background = nodeColor(e);
-    dot.style.opacity = nodeOpacity(e);
+    if (isGrouping(e)) {
+      dot.style.background = "transparent";
+      dot.style.border = "2px solid " + nodeColor(e);
+      dot.style.opacity = "0.4";
+    } else {
+      dot.style.background = nodeColor(e);
+      dot.style.opacity = nodeOpacity(e);
+    }
     row.appendChild(dot);
 
     const name = document.createElement("div");

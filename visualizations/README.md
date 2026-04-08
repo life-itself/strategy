@@ -41,6 +41,8 @@ Status icons are rendered at full opacity inside the circle so they remain reada
 | Idea | 15px |
 | Project | 11px |
 
+**Grouping nodes** (`category: grouping`) — organisational containers that are not real work in themselves (e.g. Comms, Community, Life Itself Courses). Rendered as hollow circles (stroke only, no fill). Excluded from status counts so that "how many things are active?" reflects real initiatives only.
+
 **Links** connect child items to their parent initiative (arrows point from parent to child).
 
 ### Interaction

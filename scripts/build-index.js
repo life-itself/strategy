@@ -21,7 +21,7 @@ const FOLDERS = {
 };
 
 const FIELDS = [
-  "title", "description", "status", "created", "parent",
+  "title", "description", "status", "category", "created", "parent",
   "tags", "url", "github", "phase", "tracker",
 ];
 

@@ -6,6 +6,7 @@ const PORTFOLIO_DATA = [
     "title": "2R Festival",
     "description": "The Second Renaissance Festival — a flagship gathering celebrating the emerging Second Renaissance.",
     "status": "paused",
+    "category": null,
     "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "gatherings",
     "tags": [
@@ -25,6 +26,7 @@ const PORTFOLIO_DATA = [
     "title": "2RCon",
     "description": "Second Renaissance related conference initiative.",
     "status": "paused",
+    "category": null,
     "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "second-renaissance",
     "tags": [
@@ -44,6 +46,7 @@ const PORTFOLIO_DATA = [
     "title": "AI Sense-Making",
     "description": "Inquiry into the epistemic, social, and civilisational implications of AI.",
     "status": "idea",
+    "category": null,
     "created": "Wed Jan 28 2026 01:00:00 GMT+0100 (Central European Standard Time)",
     "parent": "life-itself-research",
     "tags": null,
@@ -59,6 +62,7 @@ const PORTFOLIO_DATA = [
     "title": "Archipelago.place",
     "description": "Platform concept for mapping and connecting distributed places, hubs, and communities.",
     "status": "active",
+    "category": null,
     "created": "Wed Jan 28 2026 01:00:00 GMT+0100 (Central European Standard Time)",
     "parent": "developmental-spaces-dds",
     "tags": null,
@@ -74,6 +78,7 @@ const PORTFOLIO_DATA = [
     "title": "Collective Action Course",
     "description": "Course on coordination, shared identity, and the cultural foundations of collective action.",
     "status": "idea",
+    "category": null,
     "created": "Wed Jan 28 2026 01:00:00 GMT+0100 (Central European Standard Time)",
     "parent": "life-itself-research",
     "tags": null,
@@ -89,6 +94,7 @@ const PORTFOLIO_DATA = [
     "title": "Comms",
     "description": "Umbrella initiative for Life Itself communications work across newsletter, podcast, and short-form media.",
     "status": "active",
+    "category": "grouping",
     "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "life-itself",
     "tags": [
@@ -108,6 +114,7 @@ const PORTFOLIO_DATA = [
     "title": "Community",
     "description": "Life Itself community building — online presence and in-person gatherings.",
     "status": "active",
+    "category": "grouping",
     "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "life-itself",
     "tags": [
@@ -126,6 +133,7 @@ const PORTFOLIO_DATA = [
     "title": "Conscious Careers Guide",
     "description": "Life Itself related guide initiative around conscious careers.",
     "status": "idea",
+    "category": null,
     "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "life-itself-courses",
     "tags": [
@@ -145,6 +153,7 @@ const PORTFOLIO_DATA = [
     "title": "Conscious Coliving Courses",
     "description": "Courses on conscious co-living practice and design.",
     "status": "maintenance",
+    "category": null,
     "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "conscious-coliving",
     "tags": [
@@ -164,6 +173,7 @@ const PORTFOLIO_DATA = [
     "title": "Conscious Co-living",
     "description": "The consciouscoliving.org website and initiative — resources and community around conscious co-living.",
     "status": "maintenance",
+    "category": null,
     "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "developmental-spaces-dds",
     "tags": [
@@ -182,6 +192,7 @@ const PORTFOLIO_DATA = [
     "title": "Developmental Spaces (DDS)",
     "description": "Deliberately developmental / neo-monastic spaces for sustained inner and collective development.",
     "status": "active",
+    "category": null,
     "created": "Wed Jan 28 2026 01:00:00 GMT+0100 (Central European Standard Time)",
     "parent": "life-itself",
     "tags": null,
@@ -197,6 +208,7 @@ const PORTFOLIO_DATA = [
     "title": "DS Infrastructure",
     "description": "Basic infrastructure and content for the Developmental Spaces initiative.",
     "status": "maintenance",
+    "category": null,
     "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "developmental-spaces-dds",
     "tags": [
@@ -215,6 +227,7 @@ const PORTFOLIO_DATA = [
     "title": "DS Network",
     "description": "Network of deliberately developmental spaces and the people and organisations building them.",
     "status": "maintenance",
+    "category": null,
     "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "developmental-spaces-dds",
     "tags": [
@@ -233,6 +246,7 @@ const PORTFOLIO_DATA = [
     "title": "Farmhouse Hub",
     "description": "Ongoing maintenance and development of the farmhouse hub.",
     "status": "active",
+    "category": null,
     "created": "Sun Mar 29 2026 01:00:00 GMT+0100 (Central European Standard Time)",
     "parent": "life-itself-hubs",
     "tags": [
@@ -252,6 +266,7 @@ const PORTFOLIO_DATA = [
     "title": "Felix Hub",
     "description": "The Felix Hub, a Life Itself residential community space.",
     "status": "idea",
+    "category": null,
     "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "life-itself-hubs",
     "tags": [
@@ -271,6 +286,7 @@ const PORTFOLIO_DATA = [
     "title": "Gatherings",
     "description": "In-person gatherings and events for the Life Itself and Second Renaissance community.",
     "status": "paused",
+    "category": null,
     "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "community",
     "tags": [
@@ -290,6 +306,7 @@ const PORTFOLIO_DATA = [
     "title": "Life Guild",
     "description": "Life Itself sub-initiative around guild or community formation.",
     "status": "maintenance",
+    "category": null,
     "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "second-renaissance",
     "tags": [
@@ -308,6 +325,7 @@ const PORTFOLIO_DATA = [
     "title": "Life Itself Courses",
     "description": "Umbrella initiative for course-related work within Life Itself.",
     "status": "active",
+    "category": "grouping",
     "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "life-itself",
     "tags": [
@@ -326,6 +344,7 @@ const PORTFOLIO_DATA = [
     "title": "Life Itself Hubs",
     "description": "Residential conscious communities and hubs within the broader Life Itself ecosystem.",
     "status": "active",
+    "category": "grouping",
     "created": "Sun Mar 29 2026 01:00:00 GMT+0100 (Central European Standard Time)",
     "parent": "life-itself",
     "tags": [
@@ -345,6 +364,7 @@ const PORTFOLIO_DATA = [
     "title": "Life Itself Management",
     "description": "Ongoing management and coordination work for Life Itself.",
     "status": "active",
+    "category": "grouping",
     "created": "Sun Mar 29 2026 01:00:00 GMT+0100 (Central European Standard Time)",
     "parent": "life-itself",
     "tags": [
@@ -363,6 +383,7 @@ const PORTFOLIO_DATA = [
     "title": "Life Itself Newsletter",
     "description": "Newsletter initiative for Life Itself communications and updates.",
     "status": "active",
+    "category": null,
     "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "comms",
     "tags": [
@@ -383,6 +404,7 @@ const PORTFOLIO_DATA = [
     "title": "Life Itself Podcast",
     "description": "Podcast initiative under Life Itself.",
     "status": "maintenance",
+    "category": null,
     "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "comms",
     "tags": [
@@ -401,6 +423,7 @@ const PORTFOLIO_DATA = [
     "title": "Life Itself Practicum",
     "description": "A practicum of service, learning, and community living within Life Itself.",
     "status": "paused",
+    "category": null,
     "created": "Sun Mar 29 2026 01:00:00 GMT+0100 (Central European Standard Time)",
     "parent": "life-itself-courses",
     "tags": [
@@ -420,6 +443,7 @@ const PORTFOLIO_DATA = [
     "title": "Life Itself Research",
     "description": "Research initiatives within Life Itself, including inquiry into civilisational change, AI, and related topics.",
     "status": "active",
+    "category": null,
     "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "life-itself",
     "tags": [
@@ -438,6 +462,7 @@ const PORTFOLIO_DATA = [
     "title": "Life Itself Strategy",
     "description": "Developing, presenting and maintaining the Life Itself strategy.",
     "status": "active",
+    "category": null,
     "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "life-itself-management",
     "tags": [
@@ -456,6 +481,7 @@ const PORTFOLIO_DATA = [
     "title": "Life Itself Websites",
     "description": "Life Itself web presence including the main site and subsites.",
     "status": "active",
+    "category": null,
     "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "comms",
     "tags": [
@@ -475,6 +501,7 @@ const PORTFOLIO_DATA = [
     "title": "Life Itself",
     "description": "Core umbrella project encompassing vision, hubs, research, practice, and digital presence for wiser societies.",
     "status": "active",
+    "category": "grouping",
     "created": "Wed Jan 28 2026 01:00:00 GMT+0100 (Central European Standard Time)",
     "parent": null,
     "tags": null,
@@ -490,6 +517,7 @@ const PORTFOLIO_DATA = [
     "title": "Online Community",
     "description": "WhatsApp groups-based online community for Life Itself members and the broader Second Renaissance network.",
     "status": "active",
+    "category": null,
     "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "community",
     "tags": [
@@ -509,6 +537,7 @@ const PORTFOLIO_DATA = [
     "title": "Ops",
     "description": "Operational work and coordination for Life Itself.",
     "status": "active",
+    "category": null,
     "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "life-itself-management",
     "tags": [
@@ -527,6 +556,7 @@ const PORTFOLIO_DATA = [
     "title": "Over the Mountains",
     "description": "Blog and podcast exploring civilisational renewal and the emerging Second Renaissance.",
     "status": "active",
+    "category": null,
     "created": "Sun Mar 29 2026 01:00:00 GMT+0100 (Central European Standard Time)",
     "parent": "comms",
     "tags": [
@@ -546,6 +576,7 @@ const PORTFOLIO_DATA = [
     "title": "Praxis Ecology",
     "description": "Initiative for Praxis Ecology learning and course development.",
     "status": "active",
+    "category": null,
     "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "life-itself-courses",
     "tags": [
@@ -565,6 +596,7 @@ const PORTFOLIO_DATA = [
     "title": "Riverside Hub",
     "description": "The Riverside Hub, a Life Itself residential community space.",
     "status": "paused",
+    "category": null,
     "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "life-itself-hubs",
     "tags": [
@@ -584,6 +616,7 @@ const PORTFOLIO_DATA = [
     "title": "2R Community Calls",
     "description": "Regular community calls for the Second Renaissance initiative.",
     "status": "paused",
+    "category": null,
     "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "second-renaissance",
     "tags": [
@@ -602,6 +635,7 @@ const PORTFOLIO_DATA = [
     "title": "2R Course",
     "description": "Course programme for the Second Renaissance initiative, including the Explorer course series.",
     "status": "active",
+    "category": null,
     "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "second-renaissance",
     "tags": [
@@ -620,6 +654,7 @@ const PORTFOLIO_DATA = [
     "title": "2R Magazine",
     "description": "A magazine exploring and expressing the ideas and culture of the Second Renaissance.",
     "status": "active",
+    "category": null,
     "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "second-renaissance",
     "tags": [
@@ -639,6 +674,7 @@ const PORTFOLIO_DATA = [
     "title": "2R Newsletter",
     "description": "Newsletter for the Second Renaissance initiative.",
     "status": "paused",
+    "category": null,
     "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "second-renaissance",
     "tags": [
@@ -657,6 +693,7 @@ const PORTFOLIO_DATA = [
     "title": "Second Renaissance",
     "description": "Cultural-civilisational renewal project including narrative, events, and movement-building.",
     "status": "active",
+    "category": null,
     "created": "Wed Jan 28 2026 01:00:00 GMT+0100 (Central European Standard Time)",
     "parent": "life-itself",
     "tags": null,
@@ -672,6 +709,7 @@ const PORTFOLIO_DATA = [
     "title": "Social Media",
     "description": "Life Itself social media presence and content across platforms.",
     "status": "active",
+    "category": null,
     "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "comms",
     "tags": [
@@ -691,6 +729,7 @@ const PORTFOLIO_DATA = [
     "title": "Teal Estate",
     "description": "Real-estate strategy and tooling for conscious co-living and community projects.",
     "status": "paused",
+    "category": null,
     "created": "Wed Jan 28 2026 01:00:00 GMT+0100 (Central European Standard Time)",
     "parent": "developmental-spaces-dds",
     "tags": null,
@@ -706,6 +745,7 @@ const PORTFOLIO_DATA = [
     "title": "Strategy v3/v4: Revision and Implementation",
     "description": "3rd major revision of Life Itself strategy along with implementation thereof.",
     "status": "active",
+    "category": null,
     "created": "Thu Nov 10 2022 01:00:00 GMT+0100 (Central European Standard Time)",
     "parent": "life-itself-strategy",
     "tags": null,
@@ -721,6 +761,7 @@ const PORTFOLIO_DATA = [
     "title": "Presenting our Strategy v3",
     "description": "Inventory strategy materials, create organizing framework, and produce a roadmap for publication.",
     "status": "archived",
+    "category": null,
     "created": "Tue Jan 09 2024 01:00:00 GMT+0100 (Central European Standard Time)",
     "parent": "life-itself-strategy",
     "tags": null,
@@ -736,6 +777,7 @@ const PORTFOLIO_DATA = [
     "title": "Channels & Brands Consolidation",
     "description": "Consolidate Life Itself's fragmented channels and brands into one coherent presence — or at most two clearly distinct brands.",
     "status": "active",
+    "category": null,
     "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "life-itself-strategy",
     "tags": [
@@ -756,6 +798,7 @@ const PORTFOLIO_DATA = [
     "title": "Intro to Life Itself videos",
     "description": "Introductory video set for Life Itself.",
     "status": "active",
+    "category": null,
     "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "comms",
     "tags": null,
@@ -771,6 +814,7 @@ const PORTFOLIO_DATA = [
     "title": "Next Over the Mountains podcast set",
     "description": "Release the next set of Over the Mountains podcasts.",
     "status": "active",
+    "category": null,
     "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "over-the-mountains",
     "tags": null,
@@ -786,6 +830,7 @@ const PORTFOLIO_DATA = [
     "title": "Portfolio Map",
     "description": "Interactive visualizations of Life Itself initiatives, projects and ideas — and the data model behind them.",
     "status": "active",
+    "category": null,
     "created": "Tue Apr 07 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "life-itself-strategy",
     "tags": [
@@ -804,6 +849,7 @@ const PORTFOLIO_DATA = [
     "title": "Praxis Ecology course v1",
     "description": "First version of the Praxis Ecology course by Valerie.",
     "status": "active",
+    "category": null,
     "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "praxis-ecology",
     "tags": null,
@@ -819,6 +865,7 @@ const PORTFOLIO_DATA = [
     "title": "2R Explorer course v4",
     "description": "Version 4 of the Second Renaissance Explorer course.",
     "status": "active",
+    "category": null,
     "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "second-renaissance-course",
     "tags": null,
@@ -834,6 +881,7 @@ const PORTFOLIO_DATA = [
     "title": "2R Mythos (2026 edition)",
     "description": "The 2026 edition of the Second Renaissance Magazine.",
     "status": "active",
+    "category": null,
     "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "second-renaissance-magazine",
     "tags": [
@@ -852,6 +900,7 @@ const PORTFOLIO_DATA = [
     "title": "UK Gathering 2026",
     "description": "Life Itself UK community gathering in 2026.",
     "status": "active",
+    "category": null,
     "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "gatherings",
     "tags": [
@@ -871,6 +920,7 @@ const PORTFOLIO_DATA = [
     "title": "DS Consolidation",
     "description": "Converge Developmental Spaces, conscious co-living, and related work into one consolidated effort under the Developmental Spaces initiative. Full analysis in conversation thread.",
     "status": "active",
+    "category": null,
     "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "developmental-spaces-dds",
     "tags": [
@@ -889,6 +939,7 @@ const PORTFOLIO_DATA = [
     "title": "Life Itself Websites 2025",
     "description": "Major refactor of Life Itself websites to reflect the new strategy and direction.",
     "status": "active",
+    "category": null,
     "created": "Thu Jan 29 2026 01:00:00 GMT+0100 (Central European Standard Time)",
     "parent": "life-itself-websites",
     "tags": null,

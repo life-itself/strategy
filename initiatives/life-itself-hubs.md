@@ -2,6 +2,7 @@
 title: Life Itself Hubs
 description: Residential conscious communities and hubs within the broader Life Itself ecosystem.
 created: 2026-03-29
+category: grouping
 status: active
 parent: [[life-itself]]
 url: https://lifeiteself.org/hubs

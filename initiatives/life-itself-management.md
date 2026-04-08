@@ -2,6 +2,7 @@
 title: Life Itself Management
 description: Ongoing management and coordination work for Life Itself.
 created: 2026-03-29
+category: grouping
 status: active
 parent: [[life-itself]]
 tags:
