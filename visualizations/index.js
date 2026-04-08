@@ -428,6 +428,24 @@ const PORTFOLIO_DATA = [
     "tracker": null
   },
   {
+    "slug": "2026-portfolio-map",
+    "type": "project",
+    "file": "projects/2026-portfolio-map.md",
+    "title": "Portfolio Map",
+    "description": "Interactive visualizations of Life Itself initiatives, projects and ideas — and the data model behind them.",
+    "status": "active",
+    "created": "Tue Apr 07 2026 02:00:00 GMT+0200 (Central European Summer Time)",
+    "parent": "life-itself-management",
+    "tags": [
+      "visualization",
+      "portfolio"
+    ],
+    "url": null,
+    "github": null,
+    "phase": null,
+    "tracker": null
+  },
+  {
     "slug": "2026-praxis-ecology-course-v1",
     "type": "project",
     "file": "projects/2026-praxis-ecology-course-v1.md",
@@ -471,23 +489,5 @@ const PORTFOLIO_DATA = [
     "github": "https://github.com/life-itself/next.lifeitself.org",
     "phase": "shipping",
     "tracker": "https://github.com/life-itself/next.lifeitself.org/issues"
-  },
-  {
-    "slug": "portfolio-map",
-    "type": "project",
-    "file": "projects/portfolio-map.md",
-    "title": "Portfolio Map",
-    "description": "Interactive visualizations of Life Itself initiatives, projects and ideas — and the data model behind them.",
-    "status": "active",
-    "created": "Tue Apr 07 2026 02:00:00 GMT+0200 (Central European Summer Time)",
-    "parent": "life-itself-management",
-    "tags": [
-      "visualization",
-      "portfolio"
-    ],
-    "url": null,
-    "github": null,
-    "phase": null,
-    "tracker": null
   }
 ];
