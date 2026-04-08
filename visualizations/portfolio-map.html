@@ -60,10 +60,10 @@
       <div class="legend-item"><div class="l-circle"  style="background:#AAAAAA"></div> Idea / Archived</div>
     </div>
     <div class="legend-group">
-      <div class="legend-group-label">Vitality (opacity)</div>
-      <div class="legend-item"><div class="l-circle" style="background:#4A90D9;opacity:1.0"></div> Active</div>
-      <div class="legend-item"><div class="l-circle" style="background:#4A90D9;opacity:0.65"></div> Maintenance</div>
-      <div class="legend-item"><div class="l-circle" style="background:#4A90D9;opacity:0.4"></div> Paused</div>
+      <div class="legend-group-label">Vitality (opacity — applies to all types)</div>
+      <div class="legend-item"><div class="l-circle" style="background:#4A90D9;opacity:1.0"></div><div class="l-square" style="background:#50B86C;opacity:1.0;margin-left:-2px"></div> Active</div>
+      <div class="legend-item"><div class="l-circle" style="background:#4A90D9;opacity:0.65"></div><div class="l-square" style="background:#50B86C;opacity:0.65;margin-left:-2px"></div> Maintenance</div>
+      <div class="legend-item"><div class="l-circle" style="background:#4A90D9;opacity:0.4"></div><div class="l-square" style="background:#50B86C;opacity:0.4;margin-left:-2px"></div> Paused</div>
     </div>
     <div style="font-size:11px;color:#aaa;margin-top:4px;">Drag · Scroll to zoom · Click opens URL</div>
   </div>
@@ -107,10 +107,11 @@ STATUSES.forEach(s => {
 });
 
 // Symbol generator — circle for initiatives, square for projects
-const symbolSize = d => Math.PI * Math.pow(RADIUS[d.type] || 10, 2);
+// d3.symbol size = area in px². Circle r≈15 → area≈700. Square side≈17 → area≈300.
+const SYMBOL_SIZE = { initiative: 700, project: 300 };
 const symbolGen = d3.symbol()
   .type(d => d.type === "project" ? d3.symbolSquare : d3.symbolCircle)
-  .size(d => symbolSize(d) * 2.8);
+  .size(d => SYMBOL_SIZE[d.type] || 300);
 
 const slugSet = new Set(PORTFOLIO_DATA.map(e => e.slug));
 const nodes = PORTFOLIO_DATA.map(e => ({ ...e, id: e.slug }));
@@ -130,7 +131,7 @@ const simulation = d3.forceSimulation(nodes)
   .force("link",      d3.forceLink(links).id(d => d.id).distance(110).strength(0.6))
   .force("charge",    d3.forceManyBody().strength(-280))
   .force("center",    d3.forceCenter(W / 2, H / 2))
-  .force("collision", d3.forceCollide().radius(d => (RADIUS[d.type] || 10) + 8))
+  .force("collision", d3.forceCollide().radius(d => (d.type === "initiative" ? 18 : 13) + 6))
   .force("x",         d3.forceX(W / 2).strength(0.04))
   .force("y",         d3.forceY(H / 2).strength(0.04));
 
