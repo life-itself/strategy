@@ -4,13 +4,44 @@ A wiki/knowledgebase for all [Life Itself][]'s strategy related materials.
 
 [Life Itself]: https://lifeitself.org/
 
-Rough organization
+## Structure
 
+- `initiatives/` — one file per initiative. An initiative is an enduring effort that can contain projects. Use stable semantic slugs as filenames (e.g. `second-renaissance.md`).
+- `projects/` — one file per project. A project is a bounded effort nested under an initiative. Use `YYYY-` prefixed filenames (e.g. `2024-presenting-our-strategy-v3.md`).
+- `visualizations/` — interactive D3 visualizations of the portfolio. Open any HTML file directly in a browser.
+- `scripts/` — build tooling. `build-index.js` generates `visualizations/index.js` from markdown frontmatter.
+
+## Data Model
+
+The hierarchy is `initiative → project`. Parent relationships are expressed in frontmatter using wiki-link slugs.
+
+### Frontmatter schema
+
+- Required: `title`, `description`, `created`, `status`
+- Optional: `parent`, `tags`, `url`, `github`, `tracker`, `phase`
+
+`status` values: `active`, `complete`, `paused`, `proposed`, `deprecated`
+
+`parent` uses wiki-link style: `parent: [[life-itself]]`
+
+Example:
+
+```yaml
+---
+title: Second Renaissance
+description: Cultural-civilisational renewal project including narrative, events, and movement-building.
+created: 2026-01-28
+status: active
+parent: [[life-itself]]
+tags:
+  - lifeitself
+  - second-renaissance
+---
 ```
-/             # put all notes here by default
-/materials/   # put entries for existing materials here
-/templates/   # templates
-```
+
+### Cross-cutting categorization
+
+Themes and organizational groupings (media, spaces, courses) are metadata, not hierarchy. Use `tags` rather than creating grouping initiatives. This keeps the initiative list as a list of things actually being pursued, not filing cabinet labels.
 
 ## Overview of existing materials
 
