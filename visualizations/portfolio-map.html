@@ -83,7 +83,7 @@ const TYPE_COLOR     = { initiative: "#4A90D9", project: "#50B86C" };
 const STATUS_OPACITY = { active: 1.0, maintenance: 0.65, paused: 0.4, idea: 0.7, archived: 0.2 };
 const STATUS_LABEL   = { active: "Active", maintenance: "Maintenance", paused: "Paused", idea: "Idea", archived: "Archived" };
 const STATUSES       = ["active", "maintenance", "paused", "idea", "archived"];
-const RADIUS         = { initiative: 18, project: 11 };
+
 
 function nodeColor(d)   { return (d.status === "idea" || d.status === "archived") ? "#AAAAAA" : (TYPE_COLOR[d.type] || "#AAAAAA"); }
 function nodeOpacity(d) { return STATUS_OPACITY[d.status] ?? 0.5; }
