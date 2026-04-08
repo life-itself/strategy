@@ -64,6 +64,25 @@ const PORTFOLIO_DATA = [
     "tracker": null
   },
   {
+    "slug": "comms",
+    "type": "initiative",
+    "file": "initiatives/comms.md",
+    "title": "Comms",
+    "description": "Umbrella initiative for Life Itself communications work across newsletter, podcast, and short-form media.",
+    "status": "active",
+    "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
+    "parent": "life-itself",
+    "tags": [
+      "lifeitself",
+      "communications",
+      "media"
+    ],
+    "url": null,
+    "github": null,
+    "phase": null,
+    "tracker": null
+  },
+  {
     "slug": "conscious-careers-guide",
     "type": "initiative",
     "file": "initiatives/conscious-careers-guide.md",
@@ -190,6 +209,26 @@ const PORTFOLIO_DATA = [
     "tracker": null
   },
   {
+    "slug": "life-itself-newsletter",
+    "type": "initiative",
+    "file": "initiatives/life-itself-newsletter.md",
+    "title": "Life Itself Newsletter",
+    "description": "Newsletter initiative for Life Itself communications and updates.",
+    "status": "active",
+    "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
+    "parent": "comms",
+    "tags": [
+      "lifeitself",
+      "communications",
+      "newsletter",
+      "media"
+    ],
+    "url": null,
+    "github": null,
+    "phase": null,
+    "tracker": null
+  },
+  {
     "slug": "life-itself-podcast",
     "type": "initiative",
     "file": "initiatives/life-itself-podcast.md",
@@ -197,7 +236,7 @@ const PORTFOLIO_DATA = [
     "description": "Podcast initiative under Life Itself.",
     "status": "active",
     "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)",
-    "parent": "life-itself",
+    "parent": "comms",
     "tags": [
       "lifeitself",
       "podcast"
@@ -249,7 +288,7 @@ const PORTFOLIO_DATA = [
     "description": "Life Itself communications sub-initiative for microcast-style content.",
     "status": "active",
     "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)",
-    "parent": "life-itself",
+    "parent": "comms",
     "tags": [
       "lifeitself",
       "communications",
