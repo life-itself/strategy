@@ -97,6 +97,12 @@ The name "portfolio map" is preferred over "initiatives map" since the scope inc
 - [ ] Add `owner` field to all active initiatives
 - [ ] Build a "strategic landscape" view: initiatives grouped by status, showing parent theme — so the team can scan the full picture at once
 
+### Questions
+
+- [ ] Themes vs Form (e.g. Developmental Spaces vs Courses as an organizing structure. Or have both ... but then how does parent work ...)
+    - [ ] What is a parent vs a grouping ...
+- [ ] What status do we have for things that are still live but not being actively worked on (live but maintenance)
+
 ## Current state
 
 Three visualizations exist in `visualizations/`:

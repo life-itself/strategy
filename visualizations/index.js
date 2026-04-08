@@ -5,7 +5,7 @@ const PORTFOLIO_DATA = [
     "file": "initiatives/2rcon.md",
     "title": "2RCon",
     "description": "Second Renaissance related conference initiative.",
-    "status": "⏸️",
+    "status": "pause",
     "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "second-renaissance",
     "tags": [
@@ -88,7 +88,7 @@ const PORTFOLIO_DATA = [
     "file": "initiatives/conscious-careers-guide.md",
     "title": "Conscious Careers Guide",
     "description": "Life Itself related guide initiative around conscious careers.",
-    "status": "active",
+    "status": "ideation",
     "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)",
     "parent": "life-itself-courses",
     "tags": [
@@ -102,15 +102,88 @@ const PORTFOLIO_DATA = [
     "tracker": null
   },
   {
+    "slug": "conscious-coliving-courses",
+    "type": "initiative",
+    "file": "initiatives/conscious-coliving-courses.md",
+    "title": "Conscious Co-living Courses",
+    "description": "Courses on conscious co-living practice and design.",
+    "status": "inactive",
+    "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
+    "parent": "conscious-coliving",
+    "tags": [
+      "developmental-spaces",
+      "conscious-coliving",
+      "courses"
+    ],
+    "url": null,
+    "github": null,
+    "phase": null,
+    "tracker": null
+  },
+  {
+    "slug": "conscious-coliving",
+    "type": "initiative",
+    "file": "initiatives/conscious-coliving.md",
+    "title": "Conscious Co-living",
+    "description": "The consciouscoliving.org website and initiative — resources and community around conscious co-living.",
+    "status": "inactive",
+    "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
+    "parent": "developmental-spaces-dds",
+    "tags": [
+      "developmental-spaces",
+      "conscious-coliving"
+    ],
+    "url": "https://consciouscoliving.org",
+    "github": null,
+    "phase": null,
+    "tracker": null
+  },
+  {
     "slug": "developmental-spaces-dds",
     "type": "initiative",
     "file": "initiatives/developmental-spaces-dds.md",
     "title": "Developmental Spaces (DDS)",
     "description": "Deliberately developmental / neo-monastic spaces for sustained inner and collective development.",
-    "status": null,
+    "status": "active",
     "created": "Wed Jan 28 2026 01:00:00 GMT+0100 (Central European Standard Time)",
     "parent": "life-itself",
     "tags": null,
+    "url": null,
+    "github": null,
+    "phase": null,
+    "tracker": null
+  },
+  {
+    "slug": "developmental-spaces-infrastructure",
+    "type": "initiative",
+    "file": "initiatives/developmental-spaces-infrastructure.md",
+    "title": "Developmental Spaces Infrastructure",
+    "description": "Basic infrastructure and content for the Developmental Spaces initiative.",
+    "status": "inactive",
+    "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
+    "parent": "developmental-spaces-dds",
+    "tags": [
+      "developmental-spaces",
+      "infrastructure"
+    ],
+    "url": null,
+    "github": null,
+    "phase": null,
+    "tracker": null
+  },
+  {
+    "slug": "developmental-spaces-network",
+    "type": "initiative",
+    "file": "initiatives/developmental-spaces-network.md",
+    "title": "Developmental Spaces Network",
+    "description": "Network of deliberately developmental spaces and the people and organisations building them.",
+    "status": "inactive",
+    "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
+    "parent": "developmental-spaces-dds",
+    "tags": [
+      "developmental-spaces",
+      "network"
+    ],
     "url": null,
     "github": null,
     "phase": null,
@@ -162,7 +235,7 @@ const PORTFOLIO_DATA = [
     "description": "Life Itself sub-initiative around guild or community formation.",
     "status": "active",
     "created": "Mon Mar 30 2026 02:00:00 GMT+0200 (Central European Summer Time)",
-    "parent": "life-itself",
+    "parent": "second-renaissance",
     "tags": [
       "lifeitself",
       "community"
@@ -271,15 +344,33 @@ const PORTFOLIO_DATA = [
     "file": "initiatives/life-itself-practicum.md",
     "title": "Life Itself Practicum",
     "description": "A practicum of service, learning, and community living within Life Itself.",
-    "status": "active",
+    "status": "inactive",
     "created": "Sun Mar 29 2026 01:00:00 GMT+0100 (Central European Standard Time)",
-    "parent": "life-itself",
+    "parent": "life-itself-courses",
     "tags": [
       "lifeitself",
       "practicum",
       "learning"
     ],
     "url": "https://news.lifeitself.org/p/life-itself-practicum-autumn-2025",
+    "github": null,
+    "phase": null,
+    "tracker": null
+  },
+  {
+    "slug": "life-itself-research-circle",
+    "type": "initiative",
+    "file": "initiatives/life-itself-research-circle.md",
+    "title": "Life Itself Research Circle",
+    "description": "Research circle (previously Research Collective) for inquiry and sense-making within Life Itself Research.",
+    "status": "active",
+    "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
+    "parent": "life-itself-research",
+    "tags": [
+      "lifeitself",
+      "research"
+    ],
+    "url": null,
     "github": null,
     "phase": null,
     "tracker": null
@@ -314,6 +405,25 @@ const PORTFOLIO_DATA = [
     "tags": [
       "lifeitself",
       "strategy"
+    ],
+    "url": null,
+    "github": null,
+    "phase": null,
+    "tracker": null
+  },
+  {
+    "slug": "life-itself-websites",
+    "type": "initiative",
+    "file": "initiatives/life-itself-websites.md",
+    "title": "Life Itself Websites",
+    "description": "Life Itself web presence including the main site and subsites.",
+    "status": "active",
+    "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
+    "parent": "comms",
+    "tags": [
+      "lifeitself",
+      "website",
+      "communications"
     ],
     "url": null,
     "github": null,
@@ -466,6 +576,25 @@ const PORTFOLIO_DATA = [
     "tracker": null
   },
   {
+    "slug": "second-renaissance-magazine",
+    "type": "initiative",
+    "file": "initiatives/second-renaissance-magazine.md",
+    "title": "Second Renaissance Magazine",
+    "description": "A magazine exploring and expressing the ideas and culture of the Second Renaissance.",
+    "status": "active",
+    "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
+    "parent": "second-renaissance",
+    "tags": [
+      "second-renaissance",
+      "media",
+      "publishing"
+    ],
+    "url": null,
+    "github": null,
+    "phase": null,
+    "tracker": null
+  },
+  {
     "slug": "second-renaissance-newsletter",
     "type": "initiative",
     "file": "initiatives/second-renaissance-newsletter.md",
@@ -499,12 +628,31 @@ const PORTFOLIO_DATA = [
     "tracker": null
   },
   {
+    "slug": "social-media",
+    "type": "initiative",
+    "file": "initiatives/social-media.md",
+    "title": "Social Media",
+    "description": "Life Itself social media presence and content across platforms.",
+    "status": "active",
+    "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
+    "parent": "comms",
+    "tags": [
+      "lifeitself",
+      "communications",
+      "social-media"
+    ],
+    "url": null,
+    "github": null,
+    "phase": null,
+    "tracker": null
+  },
+  {
     "slug": "teal-estate",
     "type": "initiative",
     "file": "initiatives/teal-estate.md",
     "title": "Teal Estate",
     "description": "Real-estate strategy and tooling for conscious co-living and community projects.",
-    "status": "active",
+    "status": "pause",
     "created": "Wed Jan 28 2026 01:00:00 GMT+0100 (Central European Standard Time)",
     "parent": "developmental-spaces-dds",
     "tags": null,
@@ -622,6 +770,42 @@ const PORTFOLIO_DATA = [
     "tracker": null
   },
   {
+    "slug": "2026-second-renaissance-mythos",
+    "type": "project",
+    "file": "projects/2026-second-renaissance-mythos.md",
+    "title": "Second Renaissance Mythos (2026 edition)",
+    "description": "The 2026 edition of the Second Renaissance Magazine.",
+    "status": "active",
+    "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
+    "parent": "second-renaissance-magazine",
+    "tags": [
+      "second-renaissance",
+      "publishing"
+    ],
+    "url": null,
+    "github": null,
+    "phase": null,
+    "tracker": null
+  },
+  {
+    "slug": "developmental-spaces-consolidation",
+    "type": "project",
+    "file": "projects/developmental-spaces-consolidation.md",
+    "title": "Developmental Spaces Consolidation",
+    "description": "Converge Developmental Spaces, conscious co-living, and related work into one consolidated effort under the Developmental Spaces initiative. Full analysis in conversation thread.",
+    "status": "active",
+    "created": "Wed Apr 08 2026 02:00:00 GMT+0200 (Central European Summer Time)",
+    "parent": "developmental-spaces-dds",
+    "tags": [
+      "developmental-spaces",
+      "strategy"
+    ],
+    "url": null,
+    "github": null,
+    "phase": null,
+    "tracker": null
+  },
+  {
     "slug": "life-itself-websites-2025",
     "type": "project",
     "file": "projects/life-itself-websites-2025.md",
@@ -629,7 +813,7 @@ const PORTFOLIO_DATA = [
     "description": "Major refactor of Life Itself websites to reflect the new strategy and direction.",
     "status": "active",
     "created": "Thu Jan 29 2026 01:00:00 GMT+0100 (Central European Standard Time)",
-    "parent": "life-itself-management",
+    "parent": "life-itself-websites",
     "tags": null,
     "url": "https://lifeitself.org/",
     "github": "https://github.com/life-itself/next.lifeitself.org",

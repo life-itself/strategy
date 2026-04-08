@@ -7,7 +7,7 @@ url: https://lifeitself.org/
 tracker: https://github.com/life-itself/next.lifeitself.org/issues
 phase: shipping
 status: active
-parent: [[life-itself-management]]
+parent: [[life-itself-websites]]
 ---
 
 An effort to significantly update the Life Itself web presence - including the main site and subsites like Life Itself Research - to align with the new strategy. This involves restructuring content and navigation to represent the updated direction, and potentially other upgrades.
