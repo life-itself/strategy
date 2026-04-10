@@ -111,6 +111,8 @@ The name "portfolio map" is preferred over "initiatives map" since the scope inc
 - [x] Ensure every initiative has: `status` and a meaningful `description`
 - [x] Build visualizations with status-based encoding (colour by type, opacity by vitality, grouping nodes hollow)
 - [ ] Add `owner` field to all active initiatives
+- [ ] Add support for initiative/project start and end dates in the portfolio data model and visualizations
+  - [ ] When dates are supported, record a start date for Sensemaking Studio (`2024-01-01`) and leave end date empty while it remains paused rather than finished
 
 ### Open questions (deferred)
 
@@ -203,3 +205,6 @@ Not worth adding:
 - Umbrella grouping initiatives (spaces-and-community, media, podcasts, projects-hub): use tags instead
 - `fillColor` / `umbrella`: purely visual, let the visualization derive these from tags
 - `proj-*` duplicates: a visualization concern, not a data concern
+
+## To do
+

@@ -1,5 +1,24 @@
 const PORTFOLIO_DATA = [
   {
+    "slug": "2r-art-collective",
+    "type": "initiative",
+    "file": "initiatives/2r-art-collective.md",
+    "title": "2R Art Collective",
+    "description": "Second Renaissance art collective for artistic collaboration and cultural production.",
+    "status": "active",
+    "category": null,
+    "created": "Fri Apr 10 2026 02:00:00 GMT+0200 (Central European Summer Time)",
+    "parent": "second-renaissance",
+    "tags": [
+      "second-renaissance",
+      "art"
+    ],
+    "url": "https://secondrenaissance.net/art/collective",
+    "github": null,
+    "phase": null,
+    "tracker": null
+  },
+  {
     "slug": "2r-festival",
     "type": "initiative",
     "file": "initiatives/2r-festival.md",
@@ -531,6 +550,24 @@ const PORTFOLIO_DATA = [
     "tracker": null
   },
   {
+    "slug": "online-shop",
+    "type": "initiative",
+    "file": "initiatives/online-shop.md",
+    "title": "Online Shop",
+    "description": "Potential online shop for Life Itself and related initiatives.",
+    "status": "idea",
+    "category": null,
+    "created": "Fri Apr 10 2026 02:00:00 GMT+0200 (Central European Summer Time)",
+    "parent": "life-itself",
+    "tags": [
+      "commerce"
+    ],
+    "url": null,
+    "github": null,
+    "phase": null,
+    "tracker": null
+  },
+  {
     "slug": "ops",
     "type": "initiative",
     "file": "initiatives/ops.md",
@@ -698,6 +735,22 @@ const PORTFOLIO_DATA = [
     "parent": "life-itself",
     "tags": null,
     "url": null,
+    "github": null,
+    "phase": null,
+    "tracker": null
+  },
+  {
+    "slug": "sensemaking-studio",
+    "type": "initiative",
+    "file": "initiatives/sensemaking-studio.md",
+    "title": "Sensemaking Studio",
+    "description": "Consulting offering for sensemaking, strategy, and related advisory work.",
+    "status": "paused",
+    "category": null,
+    "created": "Mon Jan 01 2024 01:00:00 GMT+0100 (Central European Standard Time)",
+    "parent": "life-itself",
+    "tags": null,
+    "url": "https://studio.lifeitself.org",
     "github": null,
     "phase": null,
     "tracker": null
