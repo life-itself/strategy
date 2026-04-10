@@ -7,8 +7,8 @@ This file documents conventions for working in this repository — useful both f
 - `initiatives/` — one file per initiative. An initiative is an enduring effort that can contain projects. Use stable semantic slugs as filenames (e.g. `second-renaissance.md`).
 - `projects/` — one file per project. A project is a bounded effort nested under an initiative. Use `YYYY-` prefixed filenames (e.g. `2024-presenting-our-strategy-v3.md`).
 - `materials/` — archive of pre-existing strategy documents (SCQHs, ToCs, narratives, plans).
-- `visualizations/` — interactive D3 visualizations of the portfolio. Open any HTML file directly in a browser.
-- `scripts/` — build tooling. `build-index.js` generates `visualizations/index.js` from markdown frontmatter.
+- `portfolio/` — interactive D3 visualizations of the portfolio. Open any HTML file directly in a browser. See `portfolio/README.md` for build instructions.
+- `portfolio/scripts/` — build tooling. `build-index.js` generates `portfolio/index.js` from markdown frontmatter.
 
 ## Data model
 
@@ -61,14 +61,4 @@ Themes and organizational groupings (media, spaces, courses) are metadata, not h
 
 ## Building the data index
 
-The visualizations are powered by `visualizations/index.js`, generated from markdown frontmatter.
-
-```sh
-# One-time setup
-cd scripts && npm install
-
-# Rebuild manually (also runs automatically on commit)
-node scripts/build-index.js
-```
-
-The pre-commit hook triggers this automatically when any `initiatives/*.md` or `projects/*.md` file is staged.
+See `portfolio/README.md` for build instructions.

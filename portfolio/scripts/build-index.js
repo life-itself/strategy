@@ -12,7 +12,7 @@ import { fileURLToPath } from "url";
 import matter from "gray-matter";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const REPO_ROOT = resolve(__dirname, "..");
+const REPO_ROOT = resolve(__dirname, "../..");
 
 const FOLDERS = {
   initiatives: "initiative",
@@ -79,6 +79,6 @@ function buildIndex() {
 const index = buildIndex();
 const json = JSON.stringify(index, null, 2);
 
-const outPath = join(REPO_ROOT, "visualizations", "index.js");
+const outPath = join(REPO_ROOT, "portfolio", "index.js");
 writeFileSync(outPath, `const PORTFOLIO_DATA = ${json};\n`, "utf-8");
-console.error(`Wrote ${index.length} entries to visualizations/index.js`);
+console.error(`Wrote ${index.length} entries to portfolio/index.js`);

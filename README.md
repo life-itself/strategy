@@ -13,11 +13,11 @@ Two main purposes:
 
 Interactive views of Life Itself initiatives and projects. Open any HTML file directly in a browser — no server needed.
 
-- [Force-Directed Map](visualizations/portfolio-map.html) — drag, zoom, filter by type. Best for exploring connections.
-- [Horizontal Tree](visualizations/portfolio-tree.html) — collapsible dendrogram. Best for parent-child hierarchy.
-- [Indented Tree](visualizations/portfolio-indented.html) — file-explorer style list with status and tags.
+- [Force-Directed Map](portfolio/portfolio-map.html) — drag, zoom, filter by type. Best for exploring connections.
+- [Horizontal Tree](portfolio/portfolio-tree.html) — collapsible dendrogram. Best for parent-child hierarchy.
+- [Indented Tree](portfolio/portfolio-indented.html) — file-explorer style list with status and tags.
 
-<iframe src="visualizations/portfolio-indented.html" width="100%" height="500" style="border:1px solid #ddd; border-radius:8px;"></iframe>
+<iframe src="portfolio/portfolio-indented.html" width="100%" height="500" style="border:1px solid #ddd; border-radius:8px;"></iframe>
 
 The underlying data lives in `initiatives/` and `projects/`. The index is rebuilt automatically on commit whenever those files change.
 
