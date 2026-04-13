@@ -865,6 +865,25 @@ const PORTFOLIO_DATA = [
     "tracker": null
   },
   {
+    "slug": "2026-digital-asset-management-setup",
+    "type": "project",
+    "file": "projects/2026-digital-asset-management-setup.md",
+    "title": "Digital Asset Management Setup",
+    "description": "Set up a digital asset management (DAM) process and system for Life Itself.",
+    "status": "active",
+    "category": null,
+    "created": "Mon Apr 13 2026 02:00:00 GMT+0200 (Central European Summer Time)",
+    "parent": "ops",
+    "tags": [
+      "ops",
+      "dam"
+    ],
+    "url": null,
+    "github": null,
+    "phase": null,
+    "tracker": null
+  },
+  {
     "slug": "2026-intro-to-life-itself-videos",
     "type": "project",
     "file": "projects/2026-intro-to-life-itself-videos.md",
