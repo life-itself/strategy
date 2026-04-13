@@ -11,3 +11,5 @@ tags:
 ---
 
 ## Projects
+
+- [[projects/2026-art-of-ritual-workshop|Art of Ritual Workshop]]

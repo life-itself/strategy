@@ -824,6 +824,26 @@ const PORTFOLIO_DATA = [
     "tracker": null
   },
   {
+    "slug": "2026-art-of-ritual-workshop",
+    "type": "project",
+    "file": "projects/2026-art-of-ritual-workshop.md",
+    "title": "Art of Ritual Workshop",
+    "description": "Workshop/residency under the Second Renaissance Art Collective.",
+    "status": "active",
+    "category": null,
+    "created": "Mon Apr 13 2026 02:00:00 GMT+0200 (Central European Summer Time)",
+    "parent": "2r-art-collective",
+    "tags": [
+      "second-renaissance",
+      "art",
+      "residency"
+    ],
+    "url": null,
+    "github": null,
+    "phase": null,
+    "tracker": null
+  },
+  {
     "slug": "2026-channels-brands-consolidation",
     "type": "project",
     "file": "projects/2026-channels-brands-consolidation.md",
@@ -940,6 +960,25 @@ const PORTFOLIO_DATA = [
     "tags": [
       "second-renaissance",
       "publishing"
+    ],
+    "url": null,
+    "github": null,
+    "phase": null,
+    "tracker": null
+  },
+  {
+    "slug": "2026-strategy",
+    "type": "project",
+    "file": "projects/2026-strategy.md",
+    "title": "2026 Strategy",
+    "description": "Finish and publish the Life Itself strategy for 2026.",
+    "status": "active",
+    "category": null,
+    "created": "Mon Apr 13 2026 02:00:00 GMT+0200 (Central European Summer Time)",
+    "parent": "life-itself-strategy",
+    "tags": [
+      "lifeitself",
+      "strategy"
     ],
     "url": null,
     "github": null,

@@ -14,3 +14,4 @@ tags:
 - [[projects/2022-11-10-uber-epic-strategy-v3-v4|Strategy v3/v4: Revision and Implementation]]
 - [[projects/2024-presenting-our-strategy-v3|Presenting our Strategy v3]]
 - [[projects/2026-portfolio-map|Portfolio Map]]
+- [[projects/2026-strategy|2026 Strategy]]
