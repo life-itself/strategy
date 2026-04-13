@@ -59,6 +59,10 @@ Themes and organizational groupings (media, spaces, courses) are metadata, not h
 - Use `tags` for cross-cutting themes rather than creating grouping initiatives that aren't real initiatives.
 - For initiatives that exist purely as organisational containers, add `category: grouping` to their frontmatter.
 
+## Site publishing
+
+This repo is published as a website via [Flowershow](https://flowershow.app). Markdown files render as pages; HTML and Tailwind classes in markdown work natively — no build step needed for styling.
+
 ## Building the data index
 
 See `portfolio/README.md` for build instructions.
