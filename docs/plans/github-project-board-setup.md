@@ -92,6 +92,23 @@ GitHub Projects wins on the two things that matter most for a team: low friction
 
 ---
 
-## Open questions
+## Status (as of 2026-04-20)
 
-- Confirm board name "Life Itself Team" or prefer something else?
+### Completed
+
+- ✅ Created project board: [Life Itself Team](https://github.com/orgs/life-itself/projects/34)
+- ✅ Field schema replicated from project 22 (Status, Phase, Priority, Estimate, Start, End, Note)
+- ✅ Created `epic` label in `life-itself/strategy`
+- ✅ Created 9 epic issues (#4–#12) and 13 task issues (#13–#25) in `life-itself/strategy`
+- ✅ Sub-issue parent/child links established between tasks and epics
+- ✅ All issues set Phase=🚢 Ship, Status=🏗️ In progress
+
+### Blocked: GitHub Projects v2 bug
+
+Issues exist and show the project in their sidebar, but the project board lists 0 items and the UI is empty. The issue-side and project-side are inconsistent: `Issue.projectItems` confirms the link, but `ProjectV2.items` returns nothing. Reproduced on two separate projects (#34 and #35). Full analysis: [`docs/github-projects-v2-support-report-2026-04-20.md`](../github-projects-v2-support-report-2026-04-20.md).
+
+### Next steps (once unblocked)
+
+1. Confirm issues appear on board (may resolve after GitHub fixes bug or token scope added)
+2. Create two views in browser: Roadmap (filter `epic` label) + Tasks (group by assignee)
+3. Assign team members to task issues
