@@ -3,6 +3,7 @@ title: Over the Mountains
 description: Blog and podcast exploring civilisational renewal and the emerging Second Renaissance.
 created: 2026-03-29
 status: active
+owner: jarlath-rice
 parent: [[comms]]
 url: https://overthemountains.substack.com
 tags:

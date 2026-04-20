@@ -4,6 +4,7 @@ description: Core umbrella project encompassing vision, hubs, research, practice
 created: 2026-01-28
 category: grouping
 status: active
+owner: rufus-pollock
 ---
 
 ## Projects

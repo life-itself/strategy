@@ -4,6 +4,7 @@ description: Umbrella initiative for Life Itself communications work across news
 created: 2026-04-08
 category: grouping
 status: active
+owner: yoyo-pasieka
 parent: [[life-itself]]
 tags:
   - lifeitself

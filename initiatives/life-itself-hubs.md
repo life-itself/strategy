@@ -4,6 +4,7 @@ description: Residential conscious communities and hubs within the broader Life 
 created: 2026-03-29
 category: grouping
 status: active
+owner: matthew-de-caussin
 parent: [[life-itself]]
 url: https://lifeiteself.org/hubs
 tags:

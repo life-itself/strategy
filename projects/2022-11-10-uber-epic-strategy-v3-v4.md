@@ -2,7 +2,9 @@
 title: "Strategy v3/v4: Revision and Implementation"
 description: 3rd major revision of Life Itself strategy along with implementation thereof.
 created: 2022-11-10
-status: active
+status: superseded
+superseded_by: [[2026-strategy]]
+owner: rufus-pollock
 parent: [[life-itself-strategy]]
 ---
 

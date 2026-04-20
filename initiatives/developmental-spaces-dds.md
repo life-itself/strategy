@@ -4,6 +4,7 @@ description: Deliberately developmental / neo-monastic spaces for sustained inne
 parent: [[life-itself]]
 created: 2026-01-28
 status: active
+owner: rufus-pollock
 ---
 
 ## Projects

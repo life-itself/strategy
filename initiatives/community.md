@@ -4,6 +4,7 @@ description: Life Itself community building — online presence and in-person ga
 created: 2026-04-08
 category: grouping
 status: active
+owner: armelle-boussidan
 parent: [[life-itself]]
 tags:
   - lifeitself

@@ -797,7 +797,7 @@ const PORTFOLIO_DATA = [
     "file": "projects/2022-11-10-uber-epic-strategy-v3-v4.md",
     "title": "Strategy v3/v4: Revision and Implementation",
     "description": "3rd major revision of Life Itself strategy along with implementation thereof.",
-    "status": "active",
+    "status": "superseded",
     "category": null,
     "created": "Thu Nov 10 2022 01:00:00 GMT+0100 (Central European Standard Time)",
     "parent": "life-itself-strategy",

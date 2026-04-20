@@ -7,6 +7,7 @@ url: https://lifeitself.org/
 tracker: https://github.com/life-itself/next.lifeitself.org/issues
 phase: shipping
 status: active
+owner: rufus-pollock
 parent: [[life-itself-websites]]
 ---
 

@@ -3,6 +3,7 @@ title: Life Itself Strategy
 description: Developing, presenting and maintaining the Life Itself strategy.
 created: 2026-04-08
 status: active
+owner: rufus-pollock
 parent: [[life-itself-management]]
 tags:
   - lifeitself

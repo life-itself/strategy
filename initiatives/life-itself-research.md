@@ -3,6 +3,7 @@ title: Life Itself Research
 description: Research initiatives within Life Itself, including inquiry into civilisational change, AI, and related topics.
 created: 2026-04-08
 status: active
+owner: rufus-pollock
 parent: [[life-itself]]
 tags:
   - lifeitself
