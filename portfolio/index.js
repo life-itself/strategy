@@ -16,7 +16,8 @@ const PORTFOLIO_DATA = [
     "url": "https://secondrenaissance.net/art/collective",
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/2r-art-collective"
   },
   {
     "slug": "2r-festival",
@@ -36,7 +37,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/2r-festival"
   },
   {
     "slug": "2rcon",
@@ -56,7 +58,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/2rcon"
   },
   {
     "slug": "ai-sense-making",
@@ -72,7 +75,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/ai-sense-making"
   },
   {
     "slug": "archipelago-place",
@@ -88,7 +92,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/archipelago-place"
   },
   {
     "slug": "collective-action-course",
@@ -104,7 +109,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/collective-action-course"
   },
   {
     "slug": "comms",
@@ -124,7 +130,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/comms"
   },
   {
     "slug": "community",
@@ -143,7 +150,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/community"
   },
   {
     "slug": "conscious-careers-guide",
@@ -163,7 +171,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/conscious-careers-guide"
   },
   {
     "slug": "conscious-coliving-courses",
@@ -183,7 +192,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/conscious-coliving-courses"
   },
   {
     "slug": "conscious-coliving",
@@ -202,7 +212,8 @@ const PORTFOLIO_DATA = [
     "url": "https://consciouscoliving.org",
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/conscious-coliving"
   },
   {
     "slug": "developmental-spaces-dds",
@@ -218,7 +229,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/developmental-spaces-dds"
   },
   {
     "slug": "developmental-spaces-infrastructure",
@@ -237,7 +249,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/developmental-spaces-infrastructure"
   },
   {
     "slug": "developmental-spaces-network",
@@ -256,7 +269,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/developmental-spaces-network"
   },
   {
     "slug": "farmhouse-hub",
@@ -276,7 +290,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/farmhouse-hub"
   },
   {
     "slug": "felix-hub",
@@ -296,7 +311,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/felix-hub"
   },
   {
     "slug": "gatherings",
@@ -316,7 +332,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/gatherings"
   },
   {
     "slug": "life-guild",
@@ -335,7 +352,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/life-guild"
   },
   {
     "slug": "life-itself-courses",
@@ -354,7 +372,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/life-itself-courses"
   },
   {
     "slug": "life-itself-hubs",
@@ -374,7 +393,8 @@ const PORTFOLIO_DATA = [
     "url": "https://lifeiteself.org/hubs",
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/life-itself-hubs"
   },
   {
     "slug": "life-itself-management",
@@ -393,7 +413,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/life-itself-management"
   },
   {
     "slug": "life-itself-newsletter",
@@ -414,7 +435,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/life-itself-newsletter"
   },
   {
     "slug": "life-itself-podcast",
@@ -433,7 +455,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/life-itself-podcast"
   },
   {
     "slug": "life-itself-practicum",
@@ -453,7 +476,8 @@ const PORTFOLIO_DATA = [
     "url": "https://news.lifeitself.org/p/life-itself-practicum-autumn-2025",
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/life-itself-practicum"
   },
   {
     "slug": "life-itself-research",
@@ -472,7 +496,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/life-itself-research"
   },
   {
     "slug": "life-itself-strategy",
@@ -491,7 +516,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/life-itself-strategy"
   },
   {
     "slug": "life-itself-websites",
@@ -511,7 +537,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/life-itself-websites"
   },
   {
     "slug": "life-itself",
@@ -527,7 +554,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/life-itself"
   },
   {
     "slug": "online-community",
@@ -547,7 +575,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/online-community"
   },
   {
     "slug": "online-shop",
@@ -565,7 +594,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/online-shop"
   },
   {
     "slug": "ops",
@@ -584,7 +614,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/ops"
   },
   {
     "slug": "over-the-mountains",
@@ -604,7 +635,8 @@ const PORTFOLIO_DATA = [
     "url": "https://overthemountains.substack.com",
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/over-the-mountains"
   },
   {
     "slug": "praxis-ecology",
@@ -624,7 +656,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/praxis-ecology"
   },
   {
     "slug": "riverside-hub",
@@ -644,7 +677,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/riverside-hub"
   },
   {
     "slug": "second-renaissance-book",
@@ -664,7 +698,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/second-renaissance-book"
   },
   {
     "slug": "second-renaissance-community-calls",
@@ -683,7 +718,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/second-renaissance-community-calls"
   },
   {
     "slug": "second-renaissance-course",
@@ -702,7 +738,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/second-renaissance-course"
   },
   {
     "slug": "second-renaissance-magazine",
@@ -722,7 +759,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/second-renaissance-magazine"
   },
   {
     "slug": "second-renaissance-newsletter",
@@ -741,7 +779,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/second-renaissance-newsletter"
   },
   {
     "slug": "second-renaissance",
@@ -757,7 +796,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/second-renaissance"
   },
   {
     "slug": "sensemaking-studio",
@@ -773,7 +813,8 @@ const PORTFOLIO_DATA = [
     "url": "https://studio.lifeitself.org",
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/sensemaking-studio"
   },
   {
     "slug": "social-media",
@@ -793,7 +834,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/social-media"
   },
   {
     "slug": "teal-estate",
@@ -809,7 +851,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/initiatives/teal-estate"
   },
   {
     "slug": "2022-11-10-uber-epic-strategy-v3-v4",
@@ -825,7 +868,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/projects/2022-11-10-uber-epic-strategy-v3-v4"
   },
   {
     "slug": "2024-presenting-our-strategy-v3",
@@ -841,7 +885,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/projects/2024-presenting-our-strategy-v3"
   },
   {
     "slug": "2026-art-of-ritual-workshop",
@@ -861,7 +906,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/projects/2026-art-of-ritual-workshop"
   },
   {
     "slug": "2026-channels-brands-consolidation",
@@ -882,7 +928,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/projects/2026-channels-brands-consolidation"
   },
   {
     "slug": "2026-digital-asset-management-setup",
@@ -901,7 +948,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/projects/2026-digital-asset-management-setup"
   },
   {
     "slug": "2026-intro-to-life-itself-videos",
@@ -917,7 +965,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/projects/2026-intro-to-life-itself-videos"
   },
   {
     "slug": "2026-otm-next-podcast-set",
@@ -933,7 +982,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/projects/2026-otm-next-podcast-set"
   },
   {
     "slug": "2026-portfolio-map",
@@ -952,7 +1002,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/projects/2026-portfolio-map"
   },
   {
     "slug": "2026-praxis-ecology-course-v1",
@@ -968,7 +1019,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/projects/2026-praxis-ecology-course-v1"
   },
   {
     "slug": "2026-second-renaissance-explorer-course-v4",
@@ -984,7 +1036,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/projects/2026-second-renaissance-explorer-course-v4"
   },
   {
     "slug": "2026-second-renaissance-mythos",
@@ -1003,7 +1056,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/projects/2026-second-renaissance-mythos"
   },
   {
     "slug": "2026-strategy",
@@ -1022,7 +1076,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/projects/2026-strategy"
   },
   {
     "slug": "2026-taiwan-film",
@@ -1042,7 +1097,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/projects/2026-taiwan-film"
   },
   {
     "slug": "2026-uk-gathering",
@@ -1062,7 +1118,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/projects/2026-uk-gathering"
   },
   {
     "slug": "developmental-spaces-consolidation",
@@ -1081,7 +1138,8 @@ const PORTFOLIO_DATA = [
     "url": null,
     "github": null,
     "phase": null,
-    "tracker": null
+    "tracker": null,
+    "sitePath": "/projects/developmental-spaces-consolidation"
   },
   {
     "slug": "life-itself-websites-2025",
@@ -1097,6 +1155,7 @@ const PORTFOLIO_DATA = [
     "url": "https://lifeitself.org/",
     "github": "https://github.com/life-itself/next.lifeitself.org",
     "phase": "shipping",
-    "tracker": "https://github.com/life-itself/next.lifeitself.org/issues"
+    "tracker": "https://github.com/life-itself/next.lifeitself.org/issues",
+    "sitePath": "/projects/life-itself-websites-2025"
   }
 ];

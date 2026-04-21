@@ -2,5 +2,5 @@
 id: rosie-bell
 name: Rosie Bell
 github:
-role: Collaborator
+role: writing-communications
 ---
