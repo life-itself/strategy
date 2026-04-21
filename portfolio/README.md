@@ -93,7 +93,8 @@ Status icons are rendered at full opacity inside the circle so they remain reada
 
 - Drag nodes to reposition
 - Scroll to zoom
-- Click a node to open its URL
+- Click a node to open its local site page
+- In the tree view, use the `View` link on a row to open its local site page
 - Hover for tooltip (title, type, status, description, tags)
 - Filter panel (top right) toggles visibility by status
 

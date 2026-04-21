@@ -59,12 +59,19 @@
     letter-spacing: 0.3px; padding: 1px 6px; border-radius: 3px;
     background: #f0f0f0; color: #888;
   }
+  .view-link {
+    flex-shrink: 0; font-size: 11px; font-weight: 600;
+    color: #4A90D9; text-decoration: none;
+    border: 1px solid #dbe7f7; border-radius: 999px;
+    padding: 2px 8px; background: #fff;
+  }
+  .view-link:hover { background: #f5f8ff; text-decoration: none; }
 </style>
 </head>
 <body>
 
 <h1>Portfolio – Indented Tree</h1>
-<p class="subtitle">Click rows with children to collapse/expand. Click a status to toggle it.</p>
+<p class="subtitle">Click rows with children to collapse/expand. Use View to open the local page. Click a status to toggle it.</p>
 
 <div class="legend-bar">
   <div class="legend-group">
@@ -209,6 +216,15 @@ function draw() {
       badge.className = "status-badge";
       badge.textContent = STATUS_LABEL[e.status] || e.status;
       row.appendChild(badge);
+    }
+
+    if (e.sitePath) {
+      const viewLink = document.createElement("a");
+      viewLink.className = "view-link";
+      viewLink.href = e.sitePath;
+      viewLink.textContent = "View";
+      viewLink.addEventListener("click", clickEvent => clickEvent.stopPropagation());
+      row.appendChild(viewLink);
     }
 
     if (hasKids) {

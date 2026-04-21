@@ -67,7 +67,7 @@
       <div class="legend-item"><div class="l-circle" style="background:#4A90D9;opacity:0.25"></div> Paused ⏸️</div>
       <div class="legend-item"><div class="l-circle" style="background:#4A90D9;opacity:0.15"></div> Archived 🗄️</div>
     </div>
-    <div style="font-size:11px;color:#aaa;margin-top:4px;">Drag · Scroll to zoom · Click opens URL</div>
+    <div style="font-size:11px;color:#aaa;margin-top:4px;">Drag · Scroll to zoom · Click opens page</div>
   </div>
 
   <div class="panel status-filters">
@@ -148,7 +148,7 @@ const link = g.append("g")
 
 const node = g.append("g")
   .selectAll("g").data(nodes).join("g")
-  .style("cursor", d => (d.url || d.github) ? "pointer" : "default")
+  .style("cursor", d => d.sitePath ? "pointer" : "default")
   .call(d3.drag()
     .on("start", (e, d) => { if (!e.active) simulation.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
     .on("drag",  (e, d) => { d.fx = e.x; d.fy = e.y; })
@@ -191,8 +191,7 @@ node.on("mouseover", (e, d) => {
 }).on("mouseout", () => { tip.style.display = "none"; });
 
 node.on("click", (e, d) => {
-  if (d.url) window.open(d.url, "_blank");
-  else if (d.github) window.open(d.github, "_blank");
+  if (d.sitePath) window.location.href = d.sitePath;
 });
 
 simulation.on("tick", () => {

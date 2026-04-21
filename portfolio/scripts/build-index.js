@@ -10,6 +10,7 @@ import { readFileSync, writeFileSync, readdirSync, existsSync } from "fs";
 import { join, basename, resolve, dirname } from "path";
 import { fileURLToPath } from "url";
 import matter from "gray-matter";
+import { toSitePath } from "./site-path.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = resolve(__dirname, "../..");
@@ -53,6 +54,8 @@ function parseFile(filePath, folder, type) {
   if (!entry.title) {
     entry.title = slug.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase());
   }
+
+  entry.sitePath = toSitePath(entry.file);
 
   return entry;
 }
