@@ -647,6 +647,26 @@ const PORTFOLIO_DATA = [
     "tracker": null
   },
   {
+    "slug": "second-renaissance-book",
+    "type": "initiative",
+    "file": "initiatives/second-renaissance-book.md",
+    "title": "Second Renaissance Book",
+    "description": "A book articulating the Second Renaissance vision and ideas.",
+    "status": "active",
+    "category": null,
+    "created": "Tue Apr 21 2026 02:00:00 GMT+0200 (Central European Summer Time)",
+    "parent": "second-renaissance",
+    "tags": [
+      "second-renaissance",
+      "writing",
+      "product"
+    ],
+    "url": null,
+    "github": null,
+    "phase": null,
+    "tracker": null
+  },
+  {
     "slug": "second-renaissance-community-calls",
     "type": "initiative",
     "file": "initiatives/second-renaissance-community-calls.md",
@@ -998,6 +1018,26 @@ const PORTFOLIO_DATA = [
     "tags": [
       "lifeitself",
       "strategy"
+    ],
+    "url": null,
+    "github": null,
+    "phase": null,
+    "tracker": null
+  },
+  {
+    "slug": "2026-taiwan-film",
+    "type": "project",
+    "file": "projects/2026-taiwan-film.md",
+    "title": "Taiwan Film",
+    "description": "An art film piece by Sylvie, produced under the Second Renaissance Art Collective.",
+    "status": "active",
+    "category": null,
+    "created": "Tue Apr 21 2026 02:00:00 GMT+0200 (Central European Summer Time)",
+    "parent": "2r-art-collective",
+    "tags": [
+      "second-renaissance",
+      "art",
+      "film"
     ],
     "url": null,
     "github": null,
