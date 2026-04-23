@@ -1,5 +1,10 @@
 # Life Itself Strategy
 
+> **This repo has been merged into [life-itself/tao](https://github.com/life-itself/tao) and is now archived.**  
+> All content lives at https://github.com/life-itself/tao — please go there for current strategy, portfolio, initiatives, and plans.
+
+---
+
 A working repository for [Life Itself][]'s strategy — developing where we're going and why, and keeping an overview of the portfolio of activities that expresses that strategy.
 
 [Life Itself]: https://lifeitself.org/
