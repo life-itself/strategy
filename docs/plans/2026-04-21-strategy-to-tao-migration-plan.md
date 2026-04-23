@@ -84,18 +84,9 @@ Both should be on `main` with no uncommitted changes before starting.
 
 In `~/src/lifeitself/tao`, create the following new directories:
 
-```
-strategy/
-strategy/initiatives/
-strategy/portfolio/
-strategy/projects/
-strategy/docs/
-strategy/archive/
-strategy/log/
-strategy/calendar/
-strategy/templates/
-meetings/
-people/
+```bash
+mkdir -p initiatives portfolio projects plans meetings people
+mkdir -p strategy/docs/plans strategy/archive strategy/log strategy/calendar strategy/templates
 ```
 
 ---
@@ -107,8 +98,10 @@ Copy each folder as follows. Use `cp -r` (not `mv`) so the strategy repo stays i
 ```bash
 # Top-level operational content
 cp -r ~/src/lifeitself/strategy/initiatives/. ~/src/lifeitself/tao/initiatives/
-cp -r ~/src/lifeitself/strategy/portfolio/. ~/src/lifeitself/tao/portfolio/
 cp -r ~/src/lifeitself/strategy/projects/. ~/src/lifeitself/tao/projects/
+
+# Portfolio — exclude node_modules
+rsync -av --exclude='scripts/node_modules' ~/src/lifeitself/strategy/portfolio/. ~/src/lifeitself/tao/portfolio/
 
 # Strategy thinking layer
 cp -r ~/src/lifeitself/strategy/docs/. ~/src/lifeitself/tao/strategy/docs/
@@ -116,12 +109,12 @@ cp -r ~/src/lifeitself/strategy/log/. ~/src/lifeitself/tao/strategy/log/
 
 # Archive
 cp -r ~/src/lifeitself/strategy/materials/. ~/src/lifeitself/tao/strategy/archive/
-cp "~/src/lifeitself/strategy/Strategy v2 consolidated.md" ~/src/lifeitself/tao/strategy/archive/
-cp "~/src/lifeitself/strategy/Strategy v3 consolidated.md" ~/src/lifeitself/tao/strategy/archive/
-cp "~/src/lifeitself/strategy/Framework for strategy and strategy materials.md" ~/src/lifeitself/tao/strategy/archive/
-cp "~/src/lifeitself/strategy/Materials Template Documentation.md" ~/src/lifeitself/tao/strategy/archive/
+cp ~/src/lifeitself/strategy/Strategy\ v2\ consolidated.md ~/src/lifeitself/tao/strategy/archive/
+cp ~/src/lifeitself/strategy/Strategy\ v3\ consolidated.md ~/src/lifeitself/tao/strategy/archive/
+cp ~/src/lifeitself/strategy/Framework\ for\ strategy\ and\ strategy\ materials.md ~/src/lifeitself/tao/strategy/archive/
+cp ~/src/lifeitself/strategy/Materials\ Template\ Documentation.md ~/src/lifeitself/tao/strategy/archive/
 
-# Plans — merge into existing tao plans folder
+# Plans — weekly operational plans into plans/
 cp -r ~/src/lifeitself/strategy/plans/. ~/src/lifeitself/tao/plans/
 
 # Meetings — new folder
@@ -140,7 +133,15 @@ cp -r ~/src/lifeitself/strategy/Excalidraw/. ~/src/lifeitself/tao/excalidraw/
 cp -r ~/src/lifeitself/strategy/calendar/. ~/src/lifeitself/tao/strategy/calendar/
 ```
 
-Do **not** copy: `sandbox/`, `portfolio/scripts/node_modules/` (re-install dependencies instead).
+After copying, ensure `portfolio/scripts/node_modules` is not present in tao:
+```bash
+rm -rf ~/src/lifeitself/tao/portfolio/scripts/node_modules
+```
+
+Then add to tao's `.gitignore` (create it if it doesn't exist):
+```
+portfolio/scripts/node_modules/
+```
 
 ---
 
@@ -165,16 +166,17 @@ grep -r "\.\./\.\." ~/src/lifeitself/tao/strategy --include="*.md" -l
 ### Step 4: Update tao navigation and index
 
 **`tao/config.json`**: add navigation entries for the new sections. Look at the existing `config.json` structure and add:
-- Strategy (linking to `strategy/`)
-- Initiatives (linking to `strategy/initiatives/`)
-- Portfolio (linking to `strategy/portfolio/`)
-- Plans (already exists — verify it still works after merge)
+- Initiatives (linking to `initiatives/`)
+- Portfolio (linking to `portfolio/`)
+- Projects (linking to `projects/`)
+- Plans (linking to `plans/`)
 - Meetings (linking to `meetings/`)
 - People (linking to `people/`)
+- Strategy (linking to `strategy/`) — for the thinking/analysis layer
 
 **`tao/index.md`**: add a "Strategy and portfolio" section linking to:
-- Portfolio map (`strategy/portfolio/`)
-- Initiatives (`strategy/initiatives/`)
+- Portfolio map (`portfolio/`)
+- Initiatives (`initiatives/`)
 - Weekly plans (`plans/`)
 - Meeting notes (`meetings/`)
 
@@ -234,23 +236,35 @@ Check https://tao.lifeitself.org once deployed — verify key pages load, especi
 
 ---
 
-### Step 9: Archive the strategy repo
+### Step 9: Handle READMEs
+
+The strategy repo README should be split across three destinations:
+
+- **Content about strategy work** → `strategy/README.md` in tao (the thinking/analysis layer)
+- **Content about portfolio, initiatives, and what we do** → tao root `README.md` (update or extend tao's existing index)
+- **Content about metadata conventions, portfolio scripts, and how portfolio data works** → `portfolio/README.md` in tao
+
+Do not copy the strategy repo README wholesale — read it and distribute the content appropriately.
+
+### Step 10: Mark strategy repo as archived
 
 Once migration is verified on the live tao site:
 
-1. Update `strategy` repo `README.md` to say: *"This repo has been merged into [life-itself/tao](https://github.com/life-itself/tao). This repo is now archived."*
-2. Add a redirect or notice at the top of key pages (`portfolio/README.md`, `initiatives/` etc.) pointing to tao.
-3. Archive the repo on GitHub: Settings → Danger Zone → Archive this repository.
+1. Update `strategy` repo `README.md` to: *"This repo has been merged into [life-itself/tao](https://github.com/life-itself/tao) and is now archived."*
+2. Commit and push that change.
+3. **Manual step (human required):** archive the repo on GitHub via Settings → Danger Zone → Archive this repository.
 
-Do **not** delete the strategy repo — keep it as a read-only archive for git history and any inbound links.
+Do **not** delete the strategy repo — keep as read-only archive for git history and inbound links.
 
 ---
 
 ## What to watch out for
 
-- **`portfolio/scripts/node_modules/`** — do not copy this. Run `npm install` in the new location instead.
+- **`portfolio/scripts/node_modules/`** — use `rsync --exclude` as shown in Step 2, then verify with `rm -rf` and add to `.gitignore`.
 - **Excalidraw folder name** — strategy uses `Excalidraw/` (capital E), tao uses `exalidraw/` (lowercase). Merge into lowercase.
 - **`config.json` conflicts** — both repos have a `config.json` for the Flowershow site. Do not overwrite tao's config; manually merge the relevant nav entries.
-- **`plans/README.md`** — strategy repo has one; tao has `plans.md` at root. Check for content overlap before copying.
+- **`plans/README.md`** — strategy repo has one at `plans/README.md`; handle as part of the README split in Step 9.
+- **Tao's existing root-level plan files** — tao has `plan-2018.md` through `plan-2023.md` at root and a `plans.md` index. These are historical annual plans; leave them at root or move into `plans/` for consistency — decide before committing.
 - **People profiles** — check if tao already has any people content before copying `people/` wholesale.
-- **GitHub issues** — strategy repo may have open issues. Review and either close, move manually to `community` repo, or open equivalent issues in `tao` before archiving.
+- **GitHub issues** — strategy repo has open issues (at minimum the great-convergence tracking issue). Review before archiving; move any still-relevant ones to `tao` repo manually.
+- **Step 10 archive** — requires manual action in GitHub web UI; an AI agent cannot do this.
