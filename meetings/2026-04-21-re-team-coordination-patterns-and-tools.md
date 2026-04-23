@@ -92,11 +92,11 @@ Tue, 21 Apr 26 · Yoyo, Armelle, Valerie, Jarlath, Matthew
 
 ### Next Steps
 
-- Rufus & Armelle: create tao summary page (within 1 hour)
-- Jarlath & Matthew: follow-up meeting on digital asset management
-- Team training session once tool decisions finalized
-- Monday weekly meetings start with new format
-- Matthew added to standup calendar for transcript access
+- Rufus & Armelle: create tao summary page (within 1 hour) ⏭️
+- Jarlath & Matthew: follow-up meeting on digital asset management **✅2026-04-21 they met**
+- Team training session once tool decisions finalized **⛔2026-04-23 waiting on decisions**
+- Monday weekly meetings start with new format **✅2026-04-23 this is happening**
+- [x] Matthew added to standup calendar for transcript access **✅2026-04-23**
 
 ## Rufus notes to self
 
